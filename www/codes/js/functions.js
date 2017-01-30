@@ -50,7 +50,7 @@ function change_settings(){
 function get_people_list(){
 	$.ajax({
 		async: false,		
-		type: "POST",
+		type: "GET",
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
 		timeout: 260000,
@@ -183,7 +183,7 @@ $( function(){
 function change_person_status(){
 	$.ajax({
 		async: false,		
-		type: "POST",
+		type: "GET",
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
 		timeout: 260000,
@@ -212,7 +212,7 @@ function change_person_status(){
 function change_person_delete(){
 	$.ajax({
 		async: false,		
-		type: "POST",
+		type: "GET",
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
 		timeout: 260000,
@@ -243,7 +243,7 @@ function change_person_rename(){
 	if(personName!="" && personSurname!="" && personId!=""){
 		$.ajax({
 			async: false,		
-			type: "POST",
+			type: "GET",
 			crossDomain: true,
 			url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
 			timeout: 260000,
@@ -280,7 +280,7 @@ function add_person_to_database(){
 	if(personName!="" && personSurname!=""){
 		$.ajax({
 			async: false,		
-			type: "POST",
+			type: "GET",
 			crossDomain: true,
 			url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
 			timeout: 260000,
@@ -334,7 +334,7 @@ function add_person_to_database(){
 function get_department_list(){
 	$.ajax({
 		async: false,		
-		type: "POST",
+		type: "GET",
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getDepartmentList,
 		timeout: 260000,
@@ -423,7 +423,7 @@ $( function(){
 function change_department_delete(){
 	$.ajax({
 		async: false,		
-		type: "POST",
+		type: "GET",
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getDepartmentList,
 		timeout: 260000,
@@ -453,7 +453,7 @@ function change_department_rename(){
 	if(departmentName!="" && departmentId!=""){
 		$.ajax({
 			async: false,		
-			type: "POST",
+			type: "GET",
 			crossDomain: true,
 			url: siteUrlAdress+"/"+xmlsUrl.getDepartmentList,
 			timeout: 260000,
@@ -488,7 +488,7 @@ function add_department_to_database(){
 	if(departmentName!=""){
 		$.ajax({
 			async: false,		
-			type: "POST",
+			type: "GET",
 			crossDomain: true,
 			url: siteUrlAdress+"/"+xmlsUrl.getDepartmentList,
 			timeout: 260000,
@@ -536,7 +536,7 @@ function get_morning_notes_list(){
 	//$("#cem").html(siteUrlAdress+"/"+xmlsUrl.getMorningNotesList);
 	$.ajax({
 		async: false,		
-		type: "POST",
+		type: "GET",
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getMorningNotesList,
 		timeout: 260000,
@@ -659,7 +659,7 @@ function get_morning_notes_list(){
 function addResponsiblePerson(){
 	$.ajax({
 		async: false,		
-		type: "POST",
+		type: "GET",
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
 		timeout: 260000,
@@ -710,7 +710,7 @@ function deleteResponsiblePerson(e){
 function addResponsibleDepartment(){
 	$.ajax({
 		async: false,		
-		type: "POST",
+		type: "GET",
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getDepartmentList,
 		timeout: 260000,
@@ -774,7 +774,7 @@ function submit_new_morning_note_form(){
 	d=frm.serialize()+"&un="+userPref.uName+"&p="+userPref.uPassword+"&s="+xmlsString.submitNewMorningNote;
     //frm.submit(function (e) {
         $.ajax({
-            type: "POST",
+            type: "GET",
 			crossDomain: true,
             url: siteUrlAdress+"/"+xmlsUrl.submitNewMorningNote,
 			timeout: 260000,
@@ -824,7 +824,7 @@ function get_morning_note(){
 	//alert(noteId);
 	$.ajax({
 		async: false,		
-		type: "POST",
+		type: "GET",
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getMorningNote,
 		timeout: 260000,
@@ -892,7 +892,7 @@ function submit_edit_morning_note_form(){
 	d=frm.serialize()+"&un="+userPref.uName+"&p="+userPref.uPassword+"&s="+xmlsString.submitEditMorningNote;
     //frm.submit(function (e) {
         $.ajax({
-            type: "POST",
+            type: "GET",
 			crossDomain: true,
             url: siteUrlAdress+"/"+xmlsUrl.submitEditMorningNote,
 			timeout: 260000,
@@ -964,7 +964,7 @@ function get_search_morning_note(){
 	
 	$.ajax({
 		async: false,		
-		type: "POST",
+		type: "GET",
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.searchMorningNote,
 		timeout: 260000,
@@ -1092,7 +1092,7 @@ function get_search_advanced_morning_note(){
 	d=frm.serialize()+"&un="+userPref.uName+"&p="+userPref.uPassword+"&s="+xmlsString.searchAdvancedMorningNote+"&fId="+firstNoteId+"&lId="+lastNoteId;
 	$.ajax({
 		async: false,		
-		type: "POST",
+		type: "GET",
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.searchAdvancedMorningNote,
 		timeout: 260000,
@@ -1206,7 +1206,7 @@ function show_morning_note(){
 	//alert(noteId);
 	$.ajax({
 		async: false,		
-		type: "POST",
+		type: "GET",
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getMorningNoteToShow,
 		timeout: 260000,
@@ -1348,7 +1348,7 @@ function xml_login(username, password, toPage){
 	
 	$.ajax({
 		async: false,		
-		type: "POST",
+		type: "GET",
 		crossDomain: true,
 		url: geturl,
 		timeout: 260000,

@@ -369,7 +369,7 @@ function user_login(){
 	var uRemember=$("#"+elementsName.userRememeber).is(":checked");
 	$.ajax({
 		async: false,		
-		type: "POST",
+		type: "GET",
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.userLoginControl,
 		timeout: 260000,
@@ -401,7 +401,7 @@ function user_login(){
 
 //Her sayfanın başında kullanılacak
 function user_control(){	
-	alert(siteUrlAdress+"/"+xmlsUrl.userLoginControl);
+	//alert(siteUrlAdress+"/"+xmlsUrl.userLoginControl);
 	$.ajax({
 		async: false,		
 		type: "GET",
@@ -416,7 +416,7 @@ function user_control(){
 	})
 	.done(function(r){
 		var uc = $(r).find('result').text();
-		alert(uc+"-"+userPref.uName+"-"+userPref.uPassword+"-"+$(this).text());
+		//alert(uc+"-"+userPref.uName+"-"+userPref.uPassword+"-"+$(this).text());
 		if(uc==1){
 			var ur="s";
 			if(userPref.uRemember=="true") ur="y";
