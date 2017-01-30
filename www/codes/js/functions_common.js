@@ -37,7 +37,7 @@ $( function() {
 var pageNo;
 //xml bağlantıları gibi gerçek siteyle bağlantılı adreserde kullanılacak.
 //var siteUrlAdress="http://localhost/uygulamalar/tayangu/an-el/1";
-var siteUrlAdress="http://www.tayangu.com.tr/an-el";
+var siteUrlAdress="http://www.tayangu.com.tr/anel";
 var messages = {
 	"tr" : {
 		"0" : "Kullanıcı adını ve şifreyi kontrol edip tekrar deneyin lütfen!",
