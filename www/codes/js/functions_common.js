@@ -33,15 +33,13 @@ function write_titles_on_page()
 
 var app = {
     // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
+    
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('deviceready', onDeviceReady, false);
     },
     // deviceready Event Handler
     //
@@ -164,21 +162,25 @@ var xmlsString = {
 
 
 function on_start(){
-	//alert("cem1");
+	alert("cem1");
+	document.addEventListener('deviceready', onDeviceReady, false);
 	
-	find_page_number();
-	//alert("cem4");
-	get_user_prefs();
-	//alert("cem2");
-	user_control();
-	//alert("cem3");
-	write_new_language_on_page();
-	//alert("cem4");
-	on_start_this_page();//Her sayfanın kendi başlangıç kodunun olduğu kod
-	//alert("cem5");
+	
 }
 
-
+function onDeviceReady(){
+	alert("cem2");
+	find_page_number();
+	alert("cem3");
+	get_user_prefs();
+	alert("cem4");
+	user_control();
+	alert("cem5");
+	write_new_language_on_page();
+	alert("cem6");
+	on_start_this_page();//Her sayfanın kendi başlangıç kodunun olduğu kod
+	alert("cem7");
+}
 
 function get_user_prefs(){
 	if(get_site_cookie(cookies.userName)!="") userPref.uName=get_site_cookie(cookies.userName);
