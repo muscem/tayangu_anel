@@ -36,7 +36,8 @@ $( function() {
 
 var pageNo;
 //xml bağlantıları gibi gerçek siteyle bağlantılı adreserde kullanılacak.
-var siteUrlAdress="http://localhost/uygulamalar/tayangu/an-el/1";
+//var siteUrlAdress="http://localhost/uygulamalar/tayangu/an-el/1";
+var siteUrlAdress="http://tayangu.com.tr/anel";
 var messages = {
 	"tr" : {
 		"0" : "Kullanıcı adını ve şifreyi kontrol edip tekrar deneyin lütfen!",
@@ -94,16 +95,16 @@ var elementsName={
 }
 
 var xmlsUrl = {
-	"userLoginControl":"_xmls/xml_login_control.php",
-	"getPeopleList":"_xmls/xml_people_list.php",
-	"getDepartmentList":"_xmls/xml_department_list.php",
-	"getMorningNotesList":"_xmls/xml_morning_notes.php",
-	"submitNewMorningNote":"_xmls/xml_morning_notes.php",
-	"getMorningNote":"_xmls/xml_morning_notes.php",
-	"submitEditMorningNote":"_xmls/xml_morning_notes.php",
-	"searchMorningNote":"_xmls/xml_morning_notes.php",
-	"searchAdvancedMorningNote":"_xmls/xml_morning_notes.php",
-	"getMorningNoteToShow":"_xmls/xml_morning_notes.php"
+	"userLoginControl":"xmls/xml_login_control.php",
+	"getPeopleList":"xmls/xml_people_list.php",
+	"getDepartmentList":"xmls/xml_department_list.php",
+	"getMorningNotesList":"xmls/xml_morning_notes.php",
+	"submitNewMorningNote":"xmls/xml_morning_notes.php",
+	"getMorningNote":"xmls/xml_morning_notes.php",
+	"submitEditMorningNote":"xmls/xml_morning_notes.php",
+	"searchMorningNote":"xmls/xml_morning_notes.php",
+	"searchAdvancedMorningNote":"xmls/xml_morning_notes.php",
+	"getMorningNoteToShow":"xmls/xml_morning_notes.php"
 }
 
 var xmlsString = {

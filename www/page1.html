@@ -11,9 +11,10 @@
 <script src="codes/js/languages.js" charset="utf-8"></script>
 <script src="codes/js/functions_common.js" charset="utf-8"></script>
 <script src="codes/js/functions.js" charset="utf-8"></script>
+<script type="text/javascript" src="codes/ckeditor/ckeditor.js"></script>
 <script>
 function on_start_this_page(){
-	$("#language-flag").attr("src", "_images/flag-"+userPref.lang+".png");
+	$("#language-flag").attr("src", "images/flag-"+userPref.lang+".png");
 }
 </script>
 </head>
@@ -24,7 +25,7 @@ function on_start_this_page(){
 	
     <div id="header">
         <div class="grid2-45 grid2h-10"></div>
-        <div class="grid2-7"><img id="language-flag" src="_images/flag-tr.png" class="icon title-0 alt-0" title="Dil" alt="Dil" onClick="open_page(pages.settingLanguage, '', '')" /></div>
+        <div class="grid2-7"><img id="language-flag" src="images/flag-tr.png" class="icon title-0 alt-0" title="Dil" alt="Dil" onClick="open_page(pages.settingLanguage, '', '')" /></div>
     </div>
     
     

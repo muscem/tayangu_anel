@@ -74,16 +74,16 @@ function get_people_list(){
 			data+='<div class="grid2-7 margin-2 person-status-icon">';
 			data+='<img class="icon"';
 			if(working==1){
-				 data+=' src="_images/working.png"';
+				 data+=' src="images/working.png"';
 			}
 			else{
-				data+=' src="_images/working_not.png"';
+				data+=' src="images/working_not.png"';
 			}
 			data+=' />';
 			data+='</div>';
 			
-			data+='<div class="grid2-7 margin-2 person-delete-icon"><img class="icon" src="_images/delete.png" /></div>';
-			data+='<div class="grid2-7 margin-2 person-rename-icon"><img class="icon" src="_images/rename.png" /></div>';
+			data+='<div class="grid2-7 margin-2 person-delete-icon"><img class="icon" src="images/delete.png" /></div>';
+			data+='<div class="grid2-7 margin-2 person-rename-icon"><img class="icon" src="images/rename.png" /></div>';
 			
 			data+='<div class="person margin-2">'+name+' '+surname+'</div>';
 			
@@ -346,8 +346,8 @@ function get_department_list(){
 			name=$(this).find('name').text();
 			
 			data+='<div class="part-2">';
-			data+='<div class="grid2-7 margin-2 department-delete-icon"><img class="icon" src="_images/delete.png" /></div>';
-			data+='<div class="grid2-7 margin-2 department-rename-icon"><img class="icon" src="_images/rename.png" /></div>';
+			data+='<div class="grid2-7 margin-2 department-delete-icon"><img class="icon" src="images/delete.png" /></div>';
+			data+='<div class="grid2-7 margin-2 department-rename-icon"><img class="icon" src="images/rename.png" /></div>';
 			data+='<div class="department margin-2">'+name+'</div>';
 			data+='<div class="department-id hide">'+id+'</div>';
 			data+='<div class="department-name hide">'+name+'</div>';
@@ -676,7 +676,7 @@ function addResponsiblePerson(){
 			}
         });
 		data+='</select>';
-		data+='<img class="minus-button" src="_images/minus-red.png" onclick="deleteResponsiblePerson(this);" />';
+		data+='<img class="minus-button" src="images/minus-red.png" onclick="deleteResponsiblePerson(this);" />';
 		data+='</div>';
 		$("#resp-pers").append(data);
 		
@@ -721,7 +721,7 @@ function addResponsibleDepartment(){
 			data+='<option value="'+id+'">'+name+'</option>\';';
         });
 		data+='</select>';
-		data+='<img class="minus-button" src="_images/minus-red.png" onclick="deleteResponsibleDepartment(this);" />';
+		data+='<img class="minus-button" src="images/minus-red.png" onclick="deleteResponsibleDepartment(this);" />';
 		data+='</div>';
 		$("#resp-dep").append(data);
 		
@@ -744,7 +744,7 @@ function addTargetDate(){
 	var data;
 	data='<div class="grid-100">';
 	data+='<input type="text" name="target[]"  class="form-element-2" />';
-	data+='<img class="minus-button" src="_images/minus-red.png" onclick="deleteTargetDate(this);" />';
+	data+='<img class="minus-button" src="images/minus-red.png" onclick="deleteTargetDate(this);" />';
 	data+='</div>';
 	$("#target-date").append(data);
 	stop_search();//home12.html için gerekli
@@ -844,7 +844,7 @@ function get_morning_note(){
 				tDate=$(this).text();
 				data='<div class="grid-100">';
 				data+='<input type="text" name="target[]"  class="form-element-2" value="'+tDate+'" />';
-				data+='<img class="minus-button" src="_images/minus-red.png" onclick="deleteTargetDate(this);" />';
+				data+='<img class="minus-button" src="images/minus-red.png" onclick="deleteTargetDate(this);" />';
 				data+='</div>';
 				$("#note-target-date").append(data);
 	
@@ -908,12 +908,12 @@ function submit_edit_morning_note_form(){
 
 /* Başlangıç - page12.html */
 function change_between_display(e){
-	if($(e).attr("src")=="_images/between-grey.png"){
-		$(e).attr("src","_images/between-white.png");
+	if($(e).attr("src")=="images/between-grey.png"){
+		$(e).attr("src","images/between-white.png");
 		$(e).parent().parent().find("div").last().removeClass("hide");
 	}
 	else{
-		$(e).attr("src","_images/between-grey.png");
+		$(e).attr("src","images/between-grey.png");
 		$(e).parent().parent().find("div").last().addClass("hide");
 	}
 	stop_search();
@@ -921,13 +921,13 @@ function change_between_display(e){
 
 
 function change_search_mode(e){
-	if($(e).attr("src")=="_images/search-advanced.png"){
-		$(e).attr("src","_images/search.png");
+	if($(e).attr("src")=="images/search-advanced.png"){
+		$(e).attr("src","images/search.png");
 		$("#morning-notes-search-basic").addClass("hide");
 		$("#morning-notes-search-advanced").removeClass("hide");
 	}
 	else{
-		$(e).attr("src","_images/search-advanced.png");
+		$(e).attr("src","images/search-advanced.png");
 		$("#morning-notes-search-advanced").addClass("hide");
 		$("#morning-notes-search-basic").removeClass("hide");
 	}
@@ -1325,7 +1325,7 @@ function xml_login(username, password, toPage){
 		toPage = "";
 	}
 	
-	var geturl="_xmls/xml_login.php";
+	var geturl="xmls/xml_login.php";
 	var type="user_login";
 	
 	$.ajax({
