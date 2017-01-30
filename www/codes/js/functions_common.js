@@ -32,7 +32,7 @@ function write_titles_on_page()
 */
 
 
-$.support.cors=true;
+
 document.addEventListener("deviceready", onDeviceReady, false);
 
 // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
@@ -40,6 +40,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
 	// Now safe to use the PhoneGap API
 	alert("Device is ready");
+	$.support.cors=true;
 	on_start();
 }
 
