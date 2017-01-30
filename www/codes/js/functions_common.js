@@ -37,7 +37,7 @@ $( function() {
 var pageNo;
 //xml bağlantıları gibi gerçek siteyle bağlantılı adreserde kullanılacak.
 //var siteUrlAdress="http://localhost/uygulamalar/tayangu/an-el/1";
-var siteUrlAdress="http://tayangu.com.tr/anel";
+var siteUrlAdress="http://www.tayangu.com.tr/an-el";
 var messages = {
 	"tr" : {
 		"0" : "Kullanıcı adını ve şifreyi kontrol edip tekrar deneyin lütfen!",
@@ -265,7 +265,8 @@ function open_back_page(){
 }
 
 function redirect_page(u){
-	window.location.replace(siteUrlAdress+"/"+u);
+	//window.location.replace(siteUrlAdress+"/"+u);
+	window.location.replace(u);
 }
 
 
@@ -357,6 +358,7 @@ function user_login(){
 	$.ajax({
 		async: false,		
 		type: "POST",
+		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.userLoginControl,
 		timeout: 260000,
 		data: {un:uName,
@@ -391,6 +393,7 @@ function user_control(){
 	$.ajax({
 		async: false,		
 		type: "POST",
+		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.userLoginControl,
 		timeout: 260000,
 		data: {un:userPref.uName,

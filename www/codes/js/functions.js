@@ -51,6 +51,7 @@ function get_people_list(){
 	$.ajax({
 		async: false,		
 		type: "POST",
+		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
 		timeout: 260000,
 		data: {un:userPref.uName,
@@ -183,6 +184,7 @@ function change_person_status(){
 	$.ajax({
 		async: false,		
 		type: "POST",
+		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
 		timeout: 260000,
 		data: {un:userPref.uName,
@@ -211,6 +213,7 @@ function change_person_delete(){
 	$.ajax({
 		async: false,		
 		type: "POST",
+		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
 		timeout: 260000,
 		data: {un:userPref.uName,
@@ -241,6 +244,7 @@ function change_person_rename(){
 		$.ajax({
 			async: false,		
 			type: "POST",
+			crossDomain: true,
 			url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
 			timeout: 260000,
 			data: {un:userPref.uName,
@@ -277,6 +281,7 @@ function add_person_to_database(){
 		$.ajax({
 			async: false,		
 			type: "POST",
+			crossDomain: true,
 			url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
 			timeout: 260000,
 			data: {un:userPref.uName,
@@ -330,6 +335,7 @@ function get_department_list(){
 	$.ajax({
 		async: false,		
 		type: "POST",
+		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getDepartmentList,
 		timeout: 260000,
 		data: {un:userPref.uName,
@@ -418,6 +424,7 @@ function change_department_delete(){
 	$.ajax({
 		async: false,		
 		type: "POST",
+		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getDepartmentList,
 		timeout: 260000,
 		data: {un:userPref.uName,
@@ -447,6 +454,7 @@ function change_department_rename(){
 		$.ajax({
 			async: false,		
 			type: "POST",
+			crossDomain: true,
 			url: siteUrlAdress+"/"+xmlsUrl.getDepartmentList,
 			timeout: 260000,
 			data: {un:userPref.uName,
@@ -481,6 +489,7 @@ function add_department_to_database(){
 		$.ajax({
 			async: false,		
 			type: "POST",
+			crossDomain: true,
 			url: siteUrlAdress+"/"+xmlsUrl.getDepartmentList,
 			timeout: 260000,
 			data: {un:userPref.uName,
@@ -528,6 +537,7 @@ function get_morning_notes_list(){
 	$.ajax({
 		async: false,		
 		type: "POST",
+		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getMorningNotesList,
 		timeout: 260000,
 		data: {un:userPref.uName,
@@ -650,6 +660,7 @@ function addResponsiblePerson(){
 	$.ajax({
 		async: false,		
 		type: "POST",
+		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
 		timeout: 260000,
 		data: {un:userPref.uName,
@@ -700,6 +711,7 @@ function addResponsibleDepartment(){
 	$.ajax({
 		async: false,		
 		type: "POST",
+		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getDepartmentList,
 		timeout: 260000,
 		data: {un:userPref.uName,
@@ -763,6 +775,7 @@ function submit_new_morning_note_form(){
     //frm.submit(function (e) {
         $.ajax({
             type: "POST",
+			crossDomain: true,
             url: siteUrlAdress+"/"+xmlsUrl.submitNewMorningNote,
 			timeout: 260000,
             data: d,
@@ -812,6 +825,7 @@ function get_morning_note(){
 	$.ajax({
 		async: false,		
 		type: "POST",
+		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getMorningNote,
 		timeout: 260000,
 		data: {un:userPref.uName,
@@ -879,6 +893,7 @@ function submit_edit_morning_note_form(){
     //frm.submit(function (e) {
         $.ajax({
             type: "POST",
+			crossDomain: true,
             url: siteUrlAdress+"/"+xmlsUrl.submitEditMorningNote,
 			timeout: 260000,
             data: d,
@@ -950,6 +965,7 @@ function get_search_morning_note(){
 	$.ajax({
 		async: false,		
 		type: "POST",
+		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.searchMorningNote,
 		timeout: 260000,
 		data: {
@@ -1077,6 +1093,7 @@ function get_search_advanced_morning_note(){
 	$.ajax({
 		async: false,		
 		type: "POST",
+		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.searchAdvancedMorningNote,
 		timeout: 260000,
 		data: d,
@@ -1190,6 +1207,7 @@ function show_morning_note(){
 	$.ajax({
 		async: false,		
 		type: "POST",
+		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getMorningNoteToShow,
 		timeout: 260000,
 		data: {un:userPref.uName,
@@ -1331,6 +1349,7 @@ function xml_login(username, password, toPage){
 	$.ajax({
 		async: false,		
 		type: "POST",
+		crossDomain: true,
 		url: geturl,
 		timeout: 260000,
 		data: {un:username,
