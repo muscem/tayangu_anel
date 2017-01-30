@@ -411,7 +411,7 @@ function user_control(){
 				p:"123456",
 				s:"user_login_control"
 			},
-		dataType: "jsonp xml"
+		dataType: "xml"
 	})
 	.done(function(r){
 		var uc = $(r).find('result').text();
