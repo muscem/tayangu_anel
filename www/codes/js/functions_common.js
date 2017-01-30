@@ -142,19 +142,19 @@ var xmlsString = {
 
 
 function on_start(){
-	alert("cem1");
+	//alert("cem1");
 	//document.addEventListener('deviceready', onDeviceReady, false);
-	alert("cem2");
+	//alert("cem2");
 	find_page_number();
-	alert("cem3");
+	//alert("cem3");
 	get_user_prefs();
-	alert("cem4");
+	//alert("cem4");
 	user_control();
-	alert("cem5");
+	//alert("cem5");
 	write_new_language_on_page();
-	alert("cem6");
+	//alert("cem6");
 	on_start_this_page();//Her sayfanın kendi başlangıç kodunun olduğu kod
-	alert("cem7");
+	//alert("cem7");
 }
 
 function get_user_prefs(){
