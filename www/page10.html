@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Tayangu</title>
+<link rel="stylesheet" href="_codes/css/jquery-ui.css">
+<link rel="stylesheet" href="_codes/css/mycssframework.css">
+<link rel="stylesheet" href="_codes/css/main.css">
+<script src="_codes/js/jquery.js"></script>
+<script src="_codes/js/jquery-ui.js"></script>
+<script src="_codes/js/languages.js"></script>
+<script src="_codes/js/functions_common.js"></script>
+<script src="_codes/js/functions.js"></script>
+<script type="text/javascript" src="_codes/ckeditor/ckeditor.js"></script>
+
+<script>
+//var personId, personStatus, personName, personSurname;
+function on_start_this_page(){
+	//get_department_list();
+	addResponsiblePerson();
+	addResponsibleDepartment();
+}
+
+
+
+
+
+
+
+</script>
+</head>
+
+<body onload="on_start();">
+<div id="background-logo"></div>
+
+
+
+<div id="wrapper" class="unselectable">
+	
+    <div id="header">
+    	
+        <div class="grid2-7"><img src="_images/arrow-left.png" class="icon title-0 alt-0" title="Geri" alt="Geri" onClick="open_page('page8.html', '', '')" /></div>
+        
+        <div class="grid2-7"><img src="_images/home.png" class="icon title-1 alt-1" title="Ana Sayfa" alt="Ana Sayfa" onClick="open_page(pages.main, '', '')" /></div>
+        
+        <div class="grid2-86 grid2h-10"></div>
+    </div>
+    
+    <div id="content">
+        
+        <div class="heading-2 label-1">Yeni Sabah Notu Ekleme</div>
+        
+        <div id="morning_note-list">
+        
+        
+            <form method="post" action="" id="new_morning_note_form">
+                <div class="grid-100 margin-1">
+                    <div class="grid-30">No</div>
+                    <div class="grid-70"><input type="text" name="no"  class="form-element-2" /></div>
+                </div>
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-30">Başlangıç Tarihi</div>
+                    <div class="grid-70"><input type="text" name="start" class="form-element-2" /></div>
+                </div>
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-30">Hedef Tarih
+                    <img class="minus-button" src="_images/plus-green.png" onclick="addTargetDate();" /></div>
+                    <div class="grid-70" id="target-date">
+                        <div class="grid-100">
+                            <input type="text" name="target[]"  class="form-element-2" /><img class="minus-button" src="_images/minus-red.png" onclick="deleteTargetDate(this);" />
+                        </div>
+                     </div>
+                </div>
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-30">Bitmiş</div>
+                    <div class="grid-70">
+                        <input type="checkbox" name="finished"  class="form-element-2">
+                    </div>
+                </div>
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-30">Gecikme</div>
+                    <div class="grid-70"><input type="text" name="delay" class="form-element-2" disabled="disabled" /></div>
+                </div>
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-30">Başlık</div>
+                    <div class="grid-70"><input type="text" name="header"  class="form-element-2" /></div>
+                </div>
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-30">Konu</div>
+                    <div class="grid-70"><textarea name="subject"  class="form-element-2"></textarea></div>
+                </div>
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-30">Araştırma</div>
+                    <div class="grid-70"><textarea name="prosecution"  class="form-element-2"></textarea></div>
+                </div>
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-30">Sorumlu Birim
+                        <img class="minus-button" src="_images/plus-green.png" onclick="addResponsibleDepartment();" />
+                    </div>
+                    <div class="grid-70" id="resp-dep">
+                    </div>
+                </div>
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-30">Sorumlu Kişi
+                        <img class="minus-button" src="_images/plus-green.png" onclick="addResponsiblePerson();" />
+                    </div>
+                    <div class="grid-70" id="resp-pers">
+                        
+                    </div>
+                </div>
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-30">Notlarım</div>
+                    <div class="grid-70"><textarea name="my-notes"  class="form-element-2"></textarea></div>
+                </div>
+                
+                <input type="button" name="kaydet" value="Kaydet" onclick="submit_new_morning_note_form();" />
+            </form>
+
+
+
+        </div>
+        
+    </div>
+    
+</div>
+
+
+<div id="morning-note-added" class="hide">
+    <div class="morning-note-part">Sabah toplantısı notu başaraıyla kaydedildi.</div>
+    
+    <div class="morning-note-part">Yeni bir not girmek ister misiniz?</div>
+    
+    <div class="morning-note-part">
+        <div id="morning-note-added-yes" class="grid2-40 center label-3">Evet</div>
+        <div class="grid2-20 grid2h-10"></div>
+        <div id="morning-note-added-no" class="grid2-40 center label-4">Hayır</div>
+    </div>
+</div>
+
+<div id="morning-note-not-added" class="hide">
+    <div class="morning-note-part">Bir sorun oluştu ve sabah toplantısı notu kaydedilemedi.</div>
+    
+    <div class="morning-note-part">
+    	<div class="grid2-20 grid2h-10"></div>
+        <div id="morning-note-not-added-ok" class="grid2-60 center label-3">Tamam</div>
+        <div class="grid2-20 grid2h-10"></div>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Tayangu</title>
+<link rel="stylesheet" href="_codes/css/jquery-ui.css">
+<link rel="stylesheet" href="_codes/css/mycssframework.css">
+<link rel="stylesheet" href="_codes/css/main.css">
+<script src="_codes/js/jquery.js"></script>
+<script src="_codes/js/jquery-ui.js"></script>
+<script src="_codes/js/languages.js"></script>
+<script src="_codes/js/functions_common.js"></script>
+<script src="_codes/js/functions.js"></script>
+<script type="text/javascript" src="_codes/ckeditor/ckeditor.js"></script>
+
+<script>
+var departmentId, departmentName;
+function on_start_this_page(){
+	get_department_list();
+}
+</script>
+</head>
+
+<body onload="on_start();">
+<div id="background-logo"></div>
+
+
+
+<div id="wrapper" class="unselectable">
+	
+    <div id="header">
+    	
+        <div class="grid2-7"><img src="_images/arrow-left.png" class="icon title-0 alt-0" title="Geri" alt="Geri" onClick="open_page('page5.html', '', '')" /></div>
+        
+        <div class="grid2-7"><img src="_images/home.png" class="icon title-1 alt-1" title="Ana Sayfa" alt="Ana Sayfa" onClick="open_page(pages.main, '', '')" /></div>
+        
+        <div class="grid2-79 grid2h-10"></div>
+        
+        <div class="grid2-7"><img src="_images/plus-green.png" class="icon department-add-icon title-2 alt-2" title="Bölüm Ekle" alt="Bölüm Ekle" /></div>      
+        
+    </div>
+    
+    <div id="content">  
+          
+        <div class="heading-1 label-0">An-El</div>
+        
+        <div class="heading-2 label-1">Bölümlerin Listesi</div>
+        
+        <div id="department-list"></div>
+        
+    </div>
+    
+</div>
+
+
+<div id="department-delete" class="hide">
+    <div class="department-delete-part">
+    	<span id="department-delete-name"></span>
+        <span id="department-delete-message" class="label-2"> isimli bölümü silmek istediğinize emin misiniz? <br /><br />Silinen bölüm ismi listede gözükmeyecektir. Bu işlemi geri alamazsınız. Bu işlemin gerçekleşebilmesi için veritabanında bu bölümle bağlantılı bilgiler bulunmaması gerekmektedir. Silme işlemi; sadece yanlışlıkla oluşturulan bölüm isimleri için kullanılmalıdır.</span>
+    </div>
+    <div class="department-delete-part">
+        <div id="department-delete-yes" class="grid2-40 center label-3">Evet</div>
+        <div class="grid2-20 grid2h-10"></div>
+        <div id="department-delete-no" class="grid2-40 center label-4">Hayır</div>
+    </div>
+</div>
+
+
+<div id="department-rename" class="hide">
+    <div class="department-rename-part">
+    	<div class="grid-20">
+    		<span id="department-rename-name"></span>
+        </div>
+        <div class="grid-70">
+    		<input type="text" name="department-new-name" id="department-new-name" />
+        </div>
+    </div>
+    
+    <div class="department-rename-part">
+        <div id="department-rename-yes" class="grid2-40 center label-5">Değiştir</div>
+        <div class="grid2-20 grid2h-10"></div>
+        <div id="department-rename-no" class="grid2-40 center label-6">İptal</div>
+    </div>
+</div>
+
+
+
+
+
+<div id="department-add" class="hide">
+
+	<div class="department-add-part center label-7">Yeni Bölüm Ekleme</div>
+    
+    <div class="department-add-part">
+	    <div class="grid-20 label-8">Ad</div>
+        <div class="grid-70">
+    		<input type="text" name="department-add-name" id="department-add-name" />
+        </div>
+    </div>
+    
+    <div class="department-add-part">
+        <div id="department-add-yes" class="grid2-40 center label-9">Ekle</div>
+        <div class="grid2-20 grid2h-10"></div>
+        <div id="department-add-no" class="grid2-40 center label-10">İptal</div>
+    </div>
+</div>
+
+
+</body>
+</html>

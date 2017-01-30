@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Tayangu</title>
+<link rel="stylesheet" href="_codes/css/jquery-ui.css">
+<link rel="stylesheet" href="_codes/css/mycssframework.css">
+<link rel="stylesheet" href="_codes/css/main.css">
+<script src="_codes/js/jquery.js"></script>
+<script src="_codes/js/jquery-ui.js"></script>
+<script src="_codes/js/languages.js"></script>
+<script src="_codes/js/functions_common.js"></script>
+<script src="_codes/js/functions.js"></script>
+<script type="text/javascript" src="_codes/ckeditor/ckeditor.js"></script>
+
+<script>
+var personId, personStatus, personName, personSurname;
+function on_start_this_page(){
+	get_department_list();
+}
+
+/*$('body').bind( "touchstart", function(e){
+        //$('div#extras').fadeTo('fast', 1);
+});
+
+$('body').bind( "touchend", function(e){
+        //$('div#extras').delay(2000).fadeTo(1500, 0);
+});*/
+</script>
+</head>
+
+<body onload="on_start();">
+<div id="background-logo"></div>
+
+
+
+<div id="wrapper" class="unselectable">
+	
+    <div id="header">
+    	
+        <div class="grid2-7"><img src="_images/arrow-left.png" class="icon title-0 alt-0" title="Geri" alt="Geri" onClick="open_page('page5.html', '', '')" /></div>
+        
+        <div class="grid2-7"><img src="_images/home.png" class="icon title-1 alt-1" title="Ana Sayfa" alt="Ana Sayfa" onClick="open_page(pages.main, '', '')" /></div>
+        
+        <div class="grid2-79 grid2h-10"></div>
+        
+        <div class="grid2-7"><img src="_images/plus-green.png" class="icon person-add-icon title-2 alt-2" title="Kişi Ekle" alt="Kişi Ekle" /></div>      
+        
+    </div>
+    
+    <div id="content">  
+          
+        <div class="heading-1 label-0">An-El</div>
+        
+        <div class="heading-2 label-1">Bölümlerin Listesi</div>
+        
+        <div id="department-list"></div>
+        
+    </div>
+    
+</div>
+
+
+<div id="person-status" class="hide">
+    <div class="person-status-part">
+    	<span id="person-status-name"></span>
+        <span id="person-status-message" class="label-2"> isimli çalışanının çalışma durumunu değiştirmek istediğinize emin misiniz?</span>
+    </div>
+    
+    <div class="person-status-part">
+        <div id="person-status-yes" class="grid2-40 center label-3">Evet</div>
+        <div class="grid2-20 grid2h-10"></div>
+        <div id="person-status-no" class="grid2-40 center label-4">Hayır</div>
+    </div>
+</div>
+
+
+<div id="person-delete" class="hide">
+    <div class="person-delete-part">
+    	<span id="person-delete-name"></span>
+        <span id="person-delete-message" class="label-5"> isimli çalışanı silmek istediğinize emin misiniz? <br /><br />Silinen kişinin ismi listede gözükmeyecektir. Bu işlemi geri alamazsınız. Bu işlemin gerçekleşebilmesi için veritabanında bu çalışanla bağlantılı bilgiler bulunmaması gerekmektedir. Silme işlemi; sadece yanlışlıkla oluşturulan isimler için kullanılmalıdır.</span>
+    </div>
+    <div class="person-delete-part">
+        <div id="person-delete-yes" class="grid2-40 center label-6">Evet</div>
+        <div class="grid2-20 grid2h-10"></div>
+        <div id="person-delete-no" class="grid2-40 center label-7">Hayır</div>
+    </div>
+</div>
+
+
+<div id="person-rename" class="hide">
+    <div class="person-rename-part">
+    	<div class="grid-20">
+    		<span id="person-rename-name"></span>
+        </div>
+        <div class="grid-70">
+    		<input type="text" name="person-new-name" id="person-new-name" />
+        </div>
+    </div>
+    
+    <div class="person-rename-part">
+    	<div class="grid-20">
+    		<span id="person-rename-surname"></span>
+        </div>
+        <div class="grid-70">
+    		<input type="text" name="person-new-surname" id="person-new-surname" />
+        </div>
+    </div>
+    
+    <div class="person-rename-part">
+        <div id="person-rename-yes" class="grid2-40 center label-8">Değiştir</div>
+        <div class="grid2-20 grid2h-10"></div>
+        <div id="person-rename-no" class="grid2-40 center label-9">İptal</div>
+    </div>
+</div>
+
+
+
+
+
+<div id="person-add" class="hide">
+
+	<div class="person-add-part center label-10">Yeni Çalışan Ekleme</div>
+    
+    <div class="person-add-part">
+	    <div class="grid-20 label-11">Ad</div>
+        <div class="grid-70">
+    		<input type="text" name="person-add-name" id="person-add-name" />
+        </div>
+    </div>
+    
+    <div class="person-add-part">
+    	<div class="grid-20 label-12">Soyad</div>
+        <div class="grid-70">
+    		<input type="text" name="person-add-surname" id="person-add-surname" />
+        </div>
+    </div>
+    
+    <div class="person-add-part">
+        <div id="person-add-yes" class="grid2-40 center label-13">Ekle</div>
+        <div class="grid2-20 grid2h-10"></div>
+        <div id="person-add-no" class="grid2-40 center label-14">İptal</div>
+    </div>
+</div>
+
+
+</body>
+</html>

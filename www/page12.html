@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Tayangu</title>
+<link rel="stylesheet" href="_codes/css/jquery-ui.css">
+<link rel="stylesheet" href="_codes/css/mycssframework.css">
+<link rel="stylesheet" href="_codes/css/main.css">
+<script src="_codes/js/jquery.js"></script>
+<script src="_codes/js/jquery-ui.js"></script>
+<script src="_codes/js/languages.js"></script>
+<script src="_codes/js/functions_common.js"></script>
+<script src="_codes/js/functions.js"></script>
+<script type="text/javascript" src="_codes/ckeditor/ckeditor.js"></script>
+
+<script>
+var firstNoteId, lastNoteId, getNotes, noteCount, searchMode, wScrollTop;
+firstNoteId=0;
+lastNoteId=0;
+getNotes=0;
+noteCount=1;
+searchMode="";
+wScrollTop=0;
+function on_start_this_page(){
+//		get_morning_notes_list();
+//		while($(window).height() >= $(document).height()*0.95){
+//			on_start_this_page();
+//		}	
+}
+
+function windows_size_check_after_search(){
+	if(getNotes==0) {
+		while($(window).height() >= $(document).height()*0.95){
+			if(searchMode=="basic"){
+					getNotes=1;
+					get_search_morning_note();
+			}
+			else if(searchMode=="advanced"){
+				getNotes=1;
+				get_search_advanced_morning_note();
+	
+			}
+		}
+	}
+}
+
+$(window).scroll(function(){
+	if(wScrollTop<$(window).scrollTop()){
+		if($(window).scrollTop() + $(window).height() > $(document).height()*0.9){
+			if(getNotes==0) {
+				if(searchMode=="basic"){
+					getNotes=1;
+					get_search_morning_note();
+				}
+				else if(searchMode=="advanced"){
+					getNotes=1;
+					get_search_advanced_morning_note();
+				}
+			}
+		}
+	}
+	wScrollTop=$(window).scrollTop();
+});
+
+
+</script>
+</head>
+
+<body onload="on_start();">
+<div id="background-logo"></div>
+
+<div id="wrapper" class="unselectable">
+	
+    <div id="header">
+    	
+        <div class="grid2-7"><img src="_images/arrow-left.png" class="icon title-0 alt-0" title="Geri" alt="Geri" onClick="open_page('page8.html', '', '')" /></div>
+        
+        <div class="grid2-7"><img src="_images/home.png" class="icon title-1 alt-1" title="Ana Sayfa" alt="Ana Sayfa" onClick="open_page(pages.main, '', '')" /></div>
+        
+        <div class="grid2-78 grid2h-10"></div>
+        
+        <div class="grid2-7"><img src="_images/search-advanced.png" class="icon title-2 alt-2" title="Gelişmiş Arama" alt="Gelişmiş Arama" onClick="change_search_mode(this);" /></div>
+        
+    </div>
+    
+    <div id="content">
+        
+        <div class="heading-2 label-0">Sabah Toplantısı Notları Listesi</div>
+        
+        <div id="morning-notes-search">
+            <div id="morning-notes-search-basic" class="grid-100">
+                <div class="grid2-50"><input type="text" name="aranacak" id="aranacak" onchange="stop_search();" class="form-element-2" /></div>
+                <div class="grid2-50"><input type="button" name="ara" id="ara" onclick="search_morning_note()" value="Ara" class="form-element-2" /></div>
+            </div>
+            
+            <div id="morning-notes-search-advanced" class="grid-100 hide">
+                <form method="post" action="" id="morning_note_advanced_search_form">
+                    <div class="grid-100 margin-1">
+                        <div class="grid-30">No <img class="between-button" src="_images/between-grey.png" onclick="change_between_display(this);" /></div>
+                        <div class="grid-30"><input type="text" name="no1" class="form-element-2" onchange="stop_search();" /></div>
+                        <div class="grid-40 hide"><input type="text" name="no2" class="form-element-2" onchange="stop_search();" /></div>
+                    </div>
+                    
+                    <div class="grid-100 margin-1">
+                        <div class="grid-30">Başlangıç Tarihi <img class="between-button" src="_images/between-grey.png" onclick="change_between_display(this);" /></div>
+                        <div class="grid-30"><input type="text" name="start1" class="form-element-2" onchange="stop_search();" /></div>
+                        <div class="grid-40 hide"><input type="text" name="start2" class="form-element-2" onchange="stop_search();" /></div>
+                    </div>
+                    
+                    <div class="grid-100 margin-1">
+                        <div class="grid-30">Hedef Tarih <img class="between-button" src="_images/between-grey.png" onclick="change_between_display(this);" /></div>
+                        <div class="grid-30"><input type="text" name="target1"  class="form-element-2" onchange="stop_search();" /></div>
+                        <div class="grid-40 hide"><input type="text" name="target2"  class="form-element-2" onchange="stop_search();" /></div>
+                    </div>
+                    
+                    <div class="grid-100 margin-1">
+                        <div class="grid-30">Bitmiş</div>
+                        <div class="grid-70">
+                            <select name="finished" class="form-element-2" onchange="stop_search();">
+                                <option value="2">---</option>
+                                <option value="0">Sadece Bitmemişlerde</option>
+                                <option value="1">Sadece Bitmişlerde</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="grid-100 margin-1">
+                        <div class="grid-30">Gecikme <img class="between-button" src="_images/between-grey.png" onclick="change_between_display(this);" /></div>
+                        <div class="grid-30"><input type="text" name="delay1" class="form-element-2" onchange="stop_search();" /></div>
+                        <div class="grid-40 hide"><input type="text" name="delay2" class="form-element-2" onchange="stop_search();" /></div>
+                    </div>
+                    
+                    <div class="grid-100 margin-1">
+                        <div class="grid-30">Başlık</div>
+                        <div class="grid-70"><input type="text" name="header"  class="form-element-2" onchange="stop_search();" /></div>
+                    </div>
+                    
+                    <div class="grid-100 margin-1">
+                        <div class="grid-30">Konu</div>
+                        <div class="grid-70"><textarea name="subject" class="form-element-2" onchange="stop_search();"></textarea></div>
+                    </div>
+                    
+                    <div class="grid-100 margin-1">
+                        <div class="grid-30">Araştırma</div>
+                        <div class="grid-70"><textarea name="prosecution"  class="form-element-2" onchange="stop_search();"></textarea></div>
+                    </div>
+                    
+                    <div class="grid-100 margin-1">
+                        <div class="grid-30">Sorumlu Birim
+                            <img class="minus-button" src="_images/plus-green.png" onclick="addResponsibleDepartment();" />
+                        </div>
+                        <div class="grid-70" id="resp-dep">
+                        </div>
+                    </div>
+                    
+                    <div class="grid-100 margin-1">
+                        <div class="grid-30">Sorumlu Kişi
+                            <img class="minus-button" src="_images/plus-green.png" onclick="addResponsiblePerson();" />
+                        </div>
+                        <div class="grid-70" id="resp-pers">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="grid-100 margin-1">
+                        <div class="grid-30">Notlarım</div>
+                        <div class="grid-70"><textarea name="my-notes"  class="form-element-2" onchange="stop_search();"></textarea></div>
+                    </div>
+                    
+                    <input type="button" name="ara" value="Ara" onclick="search_advanced_morning_note();" />
+                    </form>
+            </div>
+            
+        </div>
+        
+        <div id="search-morning-notes-list"></div>
+        
+    </div>
+    
+</div>
+
+<div id="morning-note-content" class="hide">
+<div id="morning-note"></div>
+</div>
+</body>
+</html>

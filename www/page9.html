@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Tayangu</title>
+<link rel="stylesheet" href="_codes/css/jquery-ui.css">
+<link rel="stylesheet" href="_codes/css/mycssframework.css">
+<link rel="stylesheet" href="_codes/css/main.css">
+<script src="_codes/js/jquery.js"></script>
+<script src="_codes/js/jquery-ui.js"></script>
+<script src="_codes/js/languages.js"></script>
+<script src="_codes/js/functions_common.js"></script>
+<script src="_codes/js/functions.js"></script>
+<script type="text/javascript" src="_codes/ckeditor/ckeditor.js"></script>
+
+<script>
+var firstNoteId, lastNoteId, getNotes, noteCount;
+firstNoteId=0;
+lastNoteId=0;
+getNotes=0;
+noteCount=1;
+function on_start_this_page(){
+	//alert("cem5");
+	//if(getNotes==0){
+		get_morning_notes_list();
+		//alert($(window).height() +"-"+ $(document).height())
+		while($(window).height() >= $(document).height()*0.95){
+			on_start_this_page();
+		}
+	//}
+	
+}
+
+/*$('body').bind( "touchstart", function(e){
+        //$('div#extras').fadeTo('fast', 1);
+});
+
+$('body').bind( "touchend", function(e){
+        //$('div#extras').delay(2000).fadeTo(1500, 0);
+});*/
+
+$(window).scroll(function(){
+	if($(window).scrollTop() + $(window).height() > $(document).height()*0.9){
+		if(getNotes==0) {
+			getNotes=1;
+			get_morning_notes_list();
+		}
+	}   
+});
+
+/*window.onscroll = function(ev) {
+	//alert("cem");
+	$("#cem").html(
+		"window.innerHeight="+window.innerHeight+"<br>"+
+		"window.scrollHeight="+document.body.scrollHeight+"<br>"+
+		"window.offsetHeight="+document.body.offsetHeight+"<br>"+
+		"window.scrollY="+window.scrollY+"<br>"+
+		"window.clientHeight="+window.clientHeight+"<br>"+
+		"window.Height="+window.Height+"<br>"+
+		"window.scrollTop="+window.scrollTop+"<br>"+
+		"document.body.innerHeight="+document.body.innerHeight+"<br>"+
+		"document.body.scrollHeight="+document.body.scrollHeight+"<br>"+
+		"document.body.offsetHeight="+document.body.offsetHeight+"<br>"+
+		"document.body.scrollY="+window.scrollY+"<br>"+
+		"document.body.clientHeight="+document.body.clientHeight+"<br>"+
+		"document.body.Height="+document.body.Height+"<br>"+
+		"document.body.scrollTop="+document.body.scrollTop+"<br>"+
+		"$(window).scrollTop()="+$(window).scrollTop()+"<br>"+
+		"$(window).height()="+$(window).height()+"<br>"+
+		"$(document).height()="+$(document).height()
+	);
+	
+    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+      // you're at the bottom of the page
+	  
+    }
+};*/
+
+
+</script>
+</head>
+
+<body onload="on_start();">
+<div id="background-logo"></div>
+
+<div id="wrapper" class="unselectable">
+	
+    <div id="header">
+    	
+        <div class="grid2-7"><img src="_images/arrow-left.png" class="icon title-0 alt-0" title="Geri" alt="Geri" onClick="open_page('page8.html', '', '')" /></div>
+        
+        <div class="grid2-7"><img src="_images/home.png" class="icon title-1 alt-1" title="Ana Sayfa" alt="Ana Sayfa" onClick="open_page(pages.main, '', '')" /></div>
+        
+        <div class="grid2-76 grid2h-10"></div>
+        
+    </div>
+    
+    <div id="content">
+        
+        <div class="heading-2 label-0">Sabah Toplantısı Notları Listesi</div>
+        
+        <div id="morning-notes-list"></div>
+        
+    </div>
+    
+</div>
+
+</body>
+</html>

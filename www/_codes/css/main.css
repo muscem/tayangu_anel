@@ -1,0 +1,306 @@
+/*a:link    {color:green;}
+a:visited {color:green;}
+a:hover   {color:red;}
+a:active */
+
+/* Baslangiç - Her sayfada geçen kisimlar için  */
+body{
+	margin:0px auto;
+	padding:0px;
+	width:100%;
+	font-size:2.5vw;
+	color:#FFF;
+	background-color:#00F;
+}
+
+@media screen and (max-width:768px) {
+	body{
+		font-size:3.0vw;
+	}
+	
+}
+
+#wrapper{
+	margin:0px auto;
+	padding:0px;
+	/*width:100%;*/
+	/*border:#000 solid 5px;*/
+	
+}
+
+#header{
+	background:url(../../_images/background/bg_black_220.png) repeat;
+	padding:0px;
+	margin:0px;
+	width:100%;
+	overflow:auto;
+}
+
+#background-logo{
+	position:fixed;
+	background:url(../../_images/background-logo.jpg) no-repeat top center;
+	height:100%;
+	width:100%;
+	z-index:-999999;
+}
+
+.icon{
+	width:80%;
+	padding:10%;
+}
+
+.heading-1{
+	font-size:3em;
+	font-weight:bolder;
+	width:90%;
+	margin: 3% auto;
+	text-align:center;
+}
+
+.heading-2{
+	font-size:2em;
+	font-weight:bolder;
+	width:90%;
+	margin: 3% auto;
+	text-align:center;
+}
+
+#content{
+	background:url(../../_images/background/bg_black_100.png) repeat;
+	width:85%;
+	margin:5% auto;
+	padding:3%;
+	float:none;
+	clear:both;
+	overflow:auto;
+}
+
+.part-1{
+	width:95%;
+	margin:3% auto;
+	float:none;
+	clear:both;
+	overflow:auto;
+}
+
+.part-2{
+	background:url(../../_images/background/bg_yellow_50.png) repeat;
+	width:95%;
+	margin:3% auto;
+	float:none;
+	clear:both;
+	overflow:auto;
+	font-size:1.5em;
+	padding:3%;
+}
+
+/*.part-3{
+	background:url(../../_images/background/bg_black_200.png) repeat;
+	width:95%;
+	margin:3% auto;
+	float:none;
+	clear:both;
+	overflow:auto;
+	font-size:1.5em;
+	padding:3%;
+}*/
+
+.person{
+	margin:3% 0px 0 px 1%;
+	float:left;
+}
+
+@media screen and (max-width:768px) {
+
+}
+
+
+
+
+
+.link{
+	text-decoration:none;
+	color:#FFF;
+}
+
+
+
+.dep-header, .people-header{
+	font-weight:bold;
+	font-size:3.5vw;
+}
+
+@media screen and (max-width:768px) {
+	.dep-header, .people-header{
+		font-size:4.5vw;
+	}
+}
+
+.minus-button{
+	height: 2.5vw;
+	margin-left:1%;
+}
+.between-button{
+	height: 2.5vw;
+	margin-left:5%;
+}
+
+.notes{
+	background:url(../../_images/background/bg_black_100.png) repeat;
+	margin:1%;
+	padding:1%;
+	width:95%;
+}
+
+
+
+/* Baslangiç - notes.html */
+/* Bitis - notes.html */
+
+
+
+
+
+
+/* Baslangiç - page6.html */
+#person-status, #person-delete, #person-rename, #person-add{
+	background:url(../../_images/background/bg_black_200.png) repeat;
+	position:fixed;
+	height:100%;
+	width:100%;
+	z-index:999999;
+	overflow:auto;
+	top:0%;
+	left:0px;
+	padding:30% 0% 0% 0%;
+}
+
+.person-status-part, .person-delete-part, .person-rename-part, .person-add-part{
+	background:url(../../_images/background/bg_white_100.png) repeat;
+	width:90%;
+	margin:1% auto;
+	padding:2%;
+	overflow:auto;
+}
+
+#person-add-no, #person-add-yes, #person-delete-no, #person-delete-yes, #person-rename-no, #person-rename-yes,  #person-status-no, #person-status-yes{
+	background:url(../../_images/background/bg_yellow_50.png) repeat;
+	padding:2% 0%;
+}
+/* Bitis - page6.html */
+
+
+/* Baslangiç - page7.html */
+#department-delete, #department-rename, #department-add{
+	background:url(../../_images/background/bg_black_200.png) repeat;
+	position:fixed;
+	height:100%;
+	width:100%;
+	z-index:999999;
+	overflow:auto;
+	top:0%;
+	left:0px;
+	padding:30% 0% 0% 0%;
+
+}
+
+.department-delete-part, .department-rename-part, .department-add-part{
+	background:url(../../_images/background/bg_white_100.png) repeat;
+	width:90%;
+	margin:1% auto;
+	padding:2%;
+	overflow:auto;
+}
+
+#department-add-no, #department-add-yes, #department-delete-no, #department-delete-yes, #department-rename-no, #department-rename-yes{
+	background:url(../../_images/background/bg_yellow_50.png) repeat;
+	padding:2% 0%;
+}
+/* Bitis - page7.html */
+
+
+
+/* Baslangiç - page10.html */
+#morning-note-added, #morning-note-not-added {
+	background:url(../../_images/background/bg_black_200.png) repeat;
+	position:fixed;
+	height:100%;
+	width:100%;
+	z-index:999999;
+	overflow:auto;
+	top:0%;
+	left:0px;
+	padding:30% 0% 0% 0%;
+}
+
+.morning-note-part {
+	background:url(../../_images/background/bg_white_100.png) repeat;
+	width:90%;
+	margin:1% auto;
+	padding:2%;
+	overflow:auto;
+}
+
+#morning-note-added-no, #morning-note-added-yes, #morning-note-not-ok{
+	background:url(../../_images/background/bg_yellow_50.png) repeat;
+	padding:2% 0%;
+}
+/* Bitis - page7.html */
+
+
+
+
+#search-morning-notes-list{
+	float:left;
+	clear:both;
+	margin-top:1%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*#morning-note-content {
+	background:url(../../_images/background/bg_black_200.png) repeat;
+	position:absolute;
+	height:100%;
+	width:100%;
+	z-index:999999;
+	overflow:auto;
+	top:0%;
+	left:0px;
+	padding:10% 0% 0% 0%;
+}
+#morning-note{
+	width:90%;
+	margin:1% auto;
+}*/
+
+
+
+
+
+
+
+
+
+
+#cem{
+	background:url(_images/background/bg_black_200.png) repeat;
+	position:fixed;
+	z-index:999999;
+	overflow:auto;
+	top:2%;
+	left:1%;
+	padding:3% 0% 0% 0%;
+}
