@@ -396,9 +396,9 @@ function user_control(){
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.userLoginControl,
 		timeout: 260000,
-		data: {un:userPref.uName,
-				p:userPref.uPassword,
-				s:xmlsString.userLoginControl
+		data: {un:"mci",
+				p:"123456",
+				s:"user_login_control"
 			},
 		dataType: "xml"
 	})
