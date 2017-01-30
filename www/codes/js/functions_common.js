@@ -164,31 +164,6 @@ var xmlsString = {
 function on_start(){
 	alert("cem1");
 	//document.addEventListener('deviceready', onDeviceReady, false);
-	
-	
-}
-
-$(document).ready(function() {
-    // are we running in native app or in a browser?
-    window.isphone = false;
-    if(document.URL.indexOf("http://") === -1 
-        && document.URL.indexOf("https://") === -1) {
-        window.isphone = true;
-    }
-
-    if( window.isphone ) {
-        document.addEventListener("deviceready", onDeviceReady, false);
-    } else {
-        onDeviceReady();
-    }
-});
-
-function onDeviceReady() {
-    // do everything here.
-	alert("device ready");
-}
-
-function onDeviceReady2(){
 	alert("cem2");
 	find_page_number();
 	alert("cem3");
