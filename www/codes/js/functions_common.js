@@ -32,7 +32,7 @@ function write_titles_on_page()
 */
 
 
-
+$.support.cors=true;
 document.addEventListener("deviceready", onDeviceReady, false);
 
 // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
