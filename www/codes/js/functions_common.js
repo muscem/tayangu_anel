@@ -439,13 +439,13 @@ function user_control(){
 	})
 	.done(function(r){
 		var uc = $(r).find('result').text();
-		//alert(uc+"-"+userPref.uName+"-"+userPref.uPassword);
+		alert(uc+"-"+userPref.uName+"-"+userPref.uPassword);
 		if(uc==1){
 			var ur="s";
 			if(userPref.uRemember=="true") ur="y";
-			set_site_cookie(cookies.userName, userPref.uName, ur);
-			set_site_cookie(cookies.userPassword, userPref.uPassword, ur);
-			set_site_cookie(cookies.userRemember, userPref.uRemember, ur);
+			//set_site_cookie(cookies.userName, userPref.uName, ur);
+			//set_site_cookie(cookies.userPassword, userPref.uPassword, ur);
+			//set_site_cookie(cookies.userRemember, userPref.uRemember, ur);
 			if(pages.login==find_page_name()) open_page(pages.main,"");
 		}
 		else{
