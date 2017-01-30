@@ -36,7 +36,7 @@ function deneme(){
 var labels={
 	"1":{//login.html
 		"tr":{
-			"0":"An-El",
+			"0":"An-El 1.1",
 			"1":"Sabah toplantısı notları",
 			"2":"Kullanıcı Adı",
 			"3":"Şifre",
@@ -44,7 +44,7 @@ var labels={
 			"5":"Giriş"
 		},
 		"en":{
-			"0":"An-El",
+			"0":"An-El 1.1",
 			"1":"Morning meeting notes",
 			"2":"Username",
 			"3":"Password",
