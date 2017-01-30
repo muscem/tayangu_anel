@@ -404,7 +404,7 @@ function user_control(){
 	alert(siteUrlAdress+"/"+xmlsUrl.userLoginControl);
 	$.ajax({
 		async: false,		
-		type: "POST",
+		type: "GET",
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.userLoginControl,
 		timeout: 260000,
