@@ -31,38 +31,17 @@ function write_new_language_on_page()//Dil değişimi yapıldığında sayfa üz
 function write_titles_on_page()
 */
 
-var app = {
-    // Application Constructor
-    
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-		on_start();
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-		alert('Received Event: ' + id);
-        //console.log('Received Event: ' + id);
-    }
-};
 
 
+document.addEventListener("deviceready", onDeviceReady, false);
+
+// PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+//
+function onDeviceReady() {
+	// Now safe to use the PhoneGap API
+	alert("Device is ready");
+	on_start();
+}
 
 $( function() {
 });
@@ -421,7 +400,7 @@ function user_login(){
 
 //Her sayfanın başında kullanılacak
 function user_control(){	
-	
+	alert(siteUrlAdress+"/"+xmlsUrl.userLoginControl);
 	$.ajax({
 		async: false,		
 		type: "POST",
