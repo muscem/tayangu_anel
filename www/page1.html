@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="codes/css/jquery-ui.css">
 <link rel="stylesheet" href="codes/css/mycssframework.css">
 <link rel="stylesheet" href="codes/css/main.css">
-<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script src="codes/js/jquery.js"></script>
 <script src="codes/js/jquery-ui.js"></script>
 <script src="codes/js/languages.js" charset="utf-8"></script>
@@ -25,8 +24,8 @@ function on_start_this_page(){
 <div id="wrapper" class="unselectable">
 	
     <div id="header">
-        <div class="grid2-45 grid2h-10"></div>
-        <div class="grid2-7"><img id="language-flag" src="images/flag-tr.png" class="icon title-0 alt-0" title="Dil" alt="Dil" onClick="open_page(pages.settingLanguage, '', '')" /></div>
+        <div class="icon-space grid2-45 grid2h-10"></div>
+        <div class="icon-container"><img id="language-flag" src="images/flag-tr.png" class="icon title-0 alt-0" title="Dil" alt="Dil" onClick="open_page(pages.settingLanguage, '', '')" /></div>
     </div>
     
     
@@ -54,7 +53,7 @@ function on_start_this_page(){
         <div class="part-1">
             <input type="button" name="login" id="login" class="form-element-1 label-5" value="Giriş" onclick="user_login();" />
         </div>
-        
+        <div id="test"></div>
 	</div>
 </div>
 </body>

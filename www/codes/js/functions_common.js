@@ -158,12 +158,19 @@ function onDeviceReady() {
 	user_control();
 	write_new_language_on_page();
 	on_start_this_page();//Her sayfanın kendi başlangıç kodunun olduğu kod
+	var data
+	data="$(window).height()="+$(window).height()+"<br>";
+	data+="$(document).height()="+$(document).height()+"<br>";
+	data+="$(window).width()="+$(window).width()+"<br>";
+	data+="$(document).width()="+$(document).width()+"<br>";
+	
+	$("#test").html(data);
 }
 
 function on_start(){
 	//alert("cem1");
-/*	show_storaged_data();
-	find_page_number();
+/*	show_storaged_data();*/
+/*	find_page_number();
 	//alert("cem4");
 	get_user_prefs();
 	//alert("cem2");
@@ -172,8 +179,14 @@ function on_start(){
 	write_new_language_on_page();
 	//alert("cem4");
 	on_start_this_page();//Her sayfanın kendi başlangıç kodunun olduğu kod
-	//alert("cem5");*/
+	//alert("cem5");
+	var data
+	data="$(window).height()="+$(window).height()+"<br>";
+	data+="$(document).height()="+$(document).height()+"<br>";
+	data+="$(window).width()="+$(window).width()+"<br>";
+	data+="$(document).width()="+$(document).width()+"<br>";
 	
+	$("#test").html(data);*/
 }
 
 
