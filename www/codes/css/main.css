@@ -19,6 +19,7 @@ body{
 	
 }
 
+
 #wrapper{
 	margin:0px auto;
 	padding:0px;
@@ -41,6 +42,18 @@ body{
 	height:100%;
 	width:100%;
 	z-index:-999999;
+}
+
+.icon-container{
+	width:7%;
+	float:left;
+}
+@media screen and (max-width:768px) {
+	.icon-container{
+		width:10%;
+	}
+}
+.icon-space{
 }
 
 .icon{
