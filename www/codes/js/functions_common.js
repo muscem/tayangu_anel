@@ -40,7 +40,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 //
 function onDeviceReady() {
 	// Now safe to use the PhoneGap API
-	alert("Device is ready");
+	//alert("Device is ready");
 	//$.support.cors=true;
 	//on_start();
 	xmlDataSendType="GET";
@@ -428,7 +428,7 @@ function user_login(){
 	})
 	.done(function(r){
 		var uc = $(r).find('result').text();
-		alert("user_login"+"\n uc="+uc+"\n name="+uName+"\n pass="+uPassword)
+		//alert("user_login"+"\n uc="+uc+"\n name="+uName+"\n pass="+uPassword)
 		if(uc==1){
 			set_storaged_data(sData.userName, uName);
 			set_storaged_data(sData.userPassword, uPassword);
@@ -462,7 +462,7 @@ function user_control(){
 	})
 	.done(function(r){
 		var uc = $(r).find('result').text();
-		alert("user_control"+"\n uc="+uc+"\n pref Uname="+userPref.uName+"\n pref pass="+userPref.uPassword);
+		//alert("user_control"+"\n uc="+uc+"\n pref Uname="+userPref.uName+"\n pref pass="+userPref.uPassword);
 		if(uc==1){
 			var ur="s";
 			set_storaged_data(sData.userName, userPref.uName);
