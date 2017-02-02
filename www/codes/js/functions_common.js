@@ -174,7 +174,8 @@ function onDeviceReady() {
 	data+="$(document).width()="+$(document).width()+"<br>";
 	//data+="$(document).width()="+$(document).width()+"<br>";
 	alert("8");
-	$("#test").html(data);
+	alert(data);
+	//$("#test").html(data);
 	//$("#test").html(data);
 	alert("9");
 }
