@@ -162,6 +162,26 @@ function onDeviceReady() {
 	alert("3");
 	var data;
 	alert("4");
+	//data="$(window).height()="+$(window).height()+"<br>";
+	//data="$(window).height()="+$(window).height()+"<br>";
+	//alert("5");
+	//data+="$(document).height()="+$(document).height()+"<br>";
+	//data+="$(document).height()="+$(document).height()+"<br>";
+	//alert("6");
+	//data+="$(window).width()="+$(window).width()+"<br>";
+	//data+="$(window).width()="+$(window).width()+"<br>";
+	//alert("7");
+	//data+="$(document).width()="+$(document).width()+"<br>";
+	//data+="$(document).width()="+$(document).width()+"<br>";
+	//alert("8");
+	//alert(data);
+	//$("#test").html(data);
+	//$("#test").html(data);
+	//alert("9");
+}
+function show_dev(){
+	var data;
+	alert("4");
 	data="$(window).height()="+$(window).height()+"<br>";
 	//data="$(window).height()="+$(window).height()+"<br>";
 	alert("5");
@@ -175,11 +195,7 @@ function onDeviceReady() {
 	//data+="$(document).width()="+$(document).width()+"<br>";
 	alert("8");
 	alert(data);
-	//$("#test").html(data);
-	//$("#test").html(data);
-	alert("9");
 }
-
 function on_start(){
 	//alert("cem1");
 /*	show_storaged_data();*/
