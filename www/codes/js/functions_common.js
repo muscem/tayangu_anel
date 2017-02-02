@@ -2,7 +2,7 @@
  * Fonksiyonlarım
  *
  * Fonksiyon isimlerinde, kelimeler arasında alt çizgi kullan.
- * Bütün harfler küçük olsun. get_site_cookie gibi
+ * Bütün harfler küçük olsun. get_storaged_data gibi
  *
  * Değişken isimlerinde kelimeleri birleştir. İlk kelimenin baş harfi küçük,
  * diğerlerinin ki büyük olsun. Diğer harfler küçük olsun.
@@ -13,15 +13,15 @@
 
 /***************************** Fonksiyon listesi 
 function change_language()
-function delete_site_all_cookie()//Bütün çerezleri silen kod
-function delete_site_cookie(cName)//Belirli bir çerezi silen kod.
+function delete_storaged_all_data()//Bütün çerezleri silen kod
+function delete_storaged_data(sData)//Belirli bir çerezi silen kod.
 function find_page_name()
-function get_site_cookie(cName)//Belirli bir çerez degerini ögrenen kod
+function get_storaged_data(cName)//Belirli bir çerez degerini ögrenen kod
 function get_user_prefs()
 function on_start()
 function open_page(page, no)
 function redirect_page(page)
-function set_site_cookie(cName, cValue, eDays)//Belirli bir çereze değer atiyor
+function set_storaged_data(sName, sValue)//Belirli bir çereze değer atiyor
 function user_control()
 function user_login()
 function user_logout()
@@ -31,7 +31,8 @@ function write_new_language_on_page()//Dil değişimi yapıldığında sayfa üz
 function write_titles_on_page()
 */
 
-
+$( function() {
+});
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -39,18 +40,21 @@ document.addEventListener("deviceready", onDeviceReady, false);
 //
 function onDeviceReady() {
 	// Now safe to use the PhoneGap API
-	//alert("Device is ready");
-	$.support.cors=true;
-	on_start();
+	alert("Device is ready");
+	//$.support.cors=true;
+	//on_start();
+	xmlDataSendType="GET";
+	siteUrlAdress="http://www.tayangu.com.tr/anel";
 }
 
-$( function() {
-});
 
 var pageNo;
 //xml bağlantıları gibi gerçek siteyle bağlantılı adreserde kullanılacak.
-//var siteUrlAdress="http://localhost/uygulamalar/tayangu/an-el/1";
-var siteUrlAdress="http://www.tayangu.com.tr/anel";
+var siteUrlAdress="http://localhost/uygulamalar/tayangu/an-el/1";
+//var siteUrlAdress="http://www.tayangu.com.tr/anel";
+
+var xmlDataSendType="POST";//İnternet sitesinde POST, mobil uygulamalarda GET olacak.
+
 var messages = {
 	"tr" : {
 		"0" : "Kullanıcı adını ve şifreyi kontrol edip tekrar deneyin lütfen!",
@@ -68,12 +72,19 @@ var messages = {
 	}
 }
 
-var cookies={
+/*var cookies={
+	"userName":"un",
+	"userPassword":"up",
+	"userRemember":"ur",
+	"userLanguage":"ul"
+}*/
+var sData={
 	"userName":"un",
 	"userPassword":"up",
 	"userRemember":"ur",
 	"userLanguage":"ul"
 }
+
 //Çerezlerle ilgili olarak;
 //Her sayfa adının başına "back" kelimesi eklenerek (backsettings.html gibi) açılacak sayfanın geri dönüş tuşunda kullanılacak sayfa adresi (sadece sayfa adı; main.html) çerez olarak kaydedilecek
 
@@ -143,40 +154,47 @@ var xmlsString = {
 
 function on_start(){
 	//alert("cem1");
-	//document.addEventListener('deviceready', onDeviceReady, false);
-	//alert("cem2");
+	
 	find_page_number();
-	//alert("cem3");
-	get_user_prefs();
 	//alert("cem4");
+	get_user_prefs();
+	//alert("cem2");
 	user_control();
-	//alert("cem5");
+	//alert("cem3");
 	write_new_language_on_page();
-	//alert("cem6");
+	//alert("cem4");
 	on_start_this_page();//Her sayfanın kendi başlangıç kodunun olduğu kod
-	//alert("cem7");
+	//alert("cem5");
 }
 
+
+
 function get_user_prefs(){
-	if(get_site_cookie(cookies.userName)!="") userPref.uName=get_site_cookie(cookies.userName);
-	if(get_site_cookie(cookies.userPassword)!="") userPref.uPassword=get_site_cookie(cookies.userPassword);
-	if(get_site_cookie(cookies.userRemember)!="") userPref.uRemember=get_site_cookie(cookies.userRemember);
-	if(get_site_cookie(cookies.userLanguage)!="") userPref.lang=get_site_cookie(cookies.userLanguage);
+	if(get_storaged_data(sData.userName)!="") userPref.uName=get_storaged_data(sData.userName);
+	if(get_storaged_data(sData.userPassword)!="") userPref.uPassword=get_storaged_data(sData.userPassword);
+	if(get_storaged_data(sData.userRemember)!="") userPref.uRemember=get_storaged_data(sData.userRemember);
+	if(get_storaged_data(sData.userLanguage)!="") userPref.lang=get_storaged_data(sData.userLanguage);
 	
-	//alert(userPref.uName+"-"+userPref.uPassword+"-"+userPref.uRemember+"-"+userPref.lang+"\n"+get_site_cookie(cookies.userName)+"-"+get_site_cookie(cookies.userPassword)+"-"+get_site_cookie(cookies.userRemember)+"-"+get_site_cookie(cookies.userLanguage));
+	//alert(userPref.uName+"-"+userPref.uPassword+"-"+userPref.uRemember+"-"+userPref.lang+"\n"+get_storaged_data(sData.userName)+"-"+get_storaged_data(sData.userPassword)+"-"+get_storaged_data(sData.userRemember)+"-"+get_storaged_data(sData.userLanguage));
 }
 
 
 /* Baslangiç - Çerez islemleri ile ilgili */
+var storagedData = window.localStorage;
+//var value = storagedData.getItem(key); // Pass a key name to get its value.
+//storagedData.setItem(key, value) // Pass a key name and its value to add or update that key.
+//storagedData.removeItem(key) // Pass a key name to remove that key from storage.
+
 
 //Belirli bir çerezi silen kod.
-function delete_site_cookie(cName){
-	set_site_cookie(cName, "", "");
+//function delete_site_cookie(cName){
+function delete_storaged_data(sName){
+	storagedData.removeItem(sName)
 }
 
 //Kullanilmiyor.
 //Bütün çerezleri silen kod
-function delete_site_all_cookie(){	
+/*function delete_site_all_cookie(){	
 	var ca = document.cookie.split(';');
     for(var i = 0; i < ca.length; i++) {
         var c = ca[i];
@@ -185,12 +203,15 @@ function delete_site_all_cookie(){
         }
 		var c2 = c.split('=');
 		c2[0]=c2[0].trim();
-		set_site_cookie(c2[0], "", "");
+		set_storaged_data(c2[0], "");
     }
-}
+}*/
 
+function delete_storaged_all_data(){
+	storagedData.clear();
+}
 //Belirli bir çerez degerini ögrenen kod
-function get_site_cookie(cName){
+/*function get_site_cookie(cName){
     var name = cName + "=";
     var ca = document.cookie.split(';');
     for(var i = 0; i < ca.length; i++) {
@@ -203,13 +224,28 @@ function get_site_cookie(cName){
         }
     }
     return "";
+}*/
+function get_storaged_data(sName){
+	return storagedData.getItem(sName);
 }
+function show_storaged_data(){
+	var d;
+	d="";
+	for(var i=0, len=localStorage.length; i<len; i++) {
+    var key = localStorage.key(i);
+    var value = localStorage[key];
+	if (d!="") d+="\n";
+    d=d+key + " => " + value;
+	//delete_storaged_data(key);
+	}
 
+	alert(d);
+}
 //Belirli bir çereze değer atiyor
 //cValue; boş ise siliyor
 //eDays; y ise yıllık bitiş süresi (expires), yani 360 günlük süre belirleniyor
 //eDays; s ise oturumluk (session) atama yapılıyor. Bitiş süresi (expires) verilmiyor.
-function set_site_cookie(cName, cValue, eDays){
+/*function set_site_cookie(cName, cValue, eDays){
 	
 	var c=cName + "=" + cValue + "; ";
 	if (eDays=="") eDays="s";	//eDays boşsa oturumluk atama yapılacak. Yani bitiş süresi (expires) verilmeyecek.
@@ -224,6 +260,9 @@ function set_site_cookie(cName, cValue, eDays){
 	}
 	c = c + " path=/";
 	document.cookie = c;
+}*/
+function set_storaged_data(sName, sValue){
+	storagedData.setItem(sName, sValue)
 }
 
 /* Bitis - Çerez islemleri ile ilgili */
@@ -251,9 +290,9 @@ function open_page(p, no){
 //	}
 	
 	
-	//set_site_cookie("back"+p, find_page_name(), "y");
-	set_site_cookie("back"+p, backUrl, "y");
-	if(no!="") set_site_cookie(p, no, "y");
+	//set_storaged_data("back"+p, find_page_name(), "y");
+	set_storaged_data("back"+p, backUrl);
+	if(no!="") set_storaged_data(p, no);
 	redirect_page(p);
 }
 
@@ -270,10 +309,10 @@ function open_back_page(){
 //	alert("cem");
 	
 	var p;
-	p=get_site_cookie("back"+find_page_name());
+	p=get_storaged_data("back"+find_page_name());
 	redirect_page(p);
 //	alert(window.location.pathname+"-"+find_page_name());
-	//set_site_cookie("back"+p, backUrl, "y");
+	//set_storaged_data("back"+p, backUrl);
 }
 
 function redirect_page(u){
@@ -338,7 +377,7 @@ function write_alts_on_page(){
 
 function change_language(){
 	var lang=$("#"+elementsName.userLanguage).val();
-	set_site_cookie(cookies.userLanguage, lang);
+	set_storaged_data(sData.userLanguage, lang);
 	userPref.lang = lang;
 	write_labels_on_page();
 	write_titles_on_page();
@@ -354,9 +393,9 @@ function change_language(){
 
 
 function user_logout(){
-	set_site_cookie(cookies.userName, "", "");
-	set_site_cookie(cookies.userPassword, "", "");
-	set_site_cookie(cookies.userRemember, "", "");
+	set_storaged_data(sData.userName, "");
+	set_storaged_data(sData.userPassword, "");
+	set_storaged_data(sData.userRemember, "");
 	open_page(pages.login, "");
 }
 
@@ -369,7 +408,7 @@ function user_login(){
 	var uRemember=$("#"+elementsName.userRememeber).is(":checked");
 	$.ajax({
 		async: false,		
-		type: "GET",
+		type: xmlDataSendType,
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.userLoginControl,
 		timeout: 260000,
@@ -383,10 +422,9 @@ function user_login(){
 		var uc = $(r).find('result').text();
 		if(uc==1){
 			var ur="s";
-			if(uRemember=="true") ur="y";
-			set_site_cookie(cookies.userName, uName, ur);
-			set_site_cookie(cookies.userPassword, uPassword, ur);
-			set_site_cookie(cookies.userRemember, uRemember, ur);
+			set_storaged_data(sData.userName, uName);
+			set_storaged_data(sData.userPassword, uPassword);
+			set_storaged_data(sData.userRemember, uRemember);
 			if(pages.login==find_page_name()) open_page(pages.main,"");
 		}
 		else{
@@ -401,28 +439,27 @@ function user_login(){
 
 //Her sayfanın başında kullanılacak
 function user_control(){	
-	//alert(siteUrlAdress+"/"+xmlsUrl.userLoginControl);
+	
 	$.ajax({
 		async: false,		
-		type: "GET",
+		type: xmlDataSendType,
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.userLoginControl,
 		timeout: 260000,
-		data: {un:"mci",
-				p:"123456",
-				s:"user_login_control"
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:xmlsString.userLoginControl
 			},
 		dataType: "xml"
 	})
 	.done(function(r){
 		var uc = $(r).find('result').text();
-		//alert(uc+"-"+userPref.uName+"-"+userPref.uPassword+"-"+$(this).text());
+		//alert(uc+"-"+userPref.uName+"-"+userPref.uPassword);
 		if(uc==1){
 			var ur="s";
-			if(userPref.uRemember=="true") ur="y";
-			//set_site_cookie(cookies.userName, userPref.uName, ur);
-			//set_site_cookie(cookies.userPassword, userPref.uPassword, ur);
-			//set_site_cookie(cookies.userRemember, userPref.uRemember, ur);
+			set_storaged_data(sData.userName, userPref.uName);
+			set_storaged_data(sData.userPassword, userPref.uPassword);
+			set_storaged_data(sData.userRemember, userPref.uRemember);
 			if(pages.login==find_page_name()) open_page(pages.main,"");
 		}
 		else{

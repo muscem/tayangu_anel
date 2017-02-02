@@ -16,7 +16,7 @@
 <script>
 var noteId;
 function on_start_this_page(){
-	noteId=get_site_cookie(find_page_name());
+	noteId=get_storaged_data(find_page_name());
 	show_morning_note();
 	$("#edit-page-icon").attr("onClick","open_page('page11.html', '"+noteId+"', '');");
 }

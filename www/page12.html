@@ -89,34 +89,34 @@ $(window).scroll(function(){
         
         <div id="morning-notes-search">
             <div id="morning-notes-search-basic" class="grid-100">
-                <div class="grid2-50"><input type="text" name="aranacak" id="aranacak" onchange="stop_search();" class="form-element-2" /></div>
-                <div class="grid2-50"><input type="button" name="ara" id="ara" onclick="search_morning_note()" value="Ara" class="form-element-2" /></div>
+                <div class="grid2-50"><input type="text" name="aranacak" id="aranacak" onchange="stop_search();" class="form-element-1" /></div>
+                <div class="grid2-50"><input type="button" name="ara" id="ara" onclick="search_morning_note()" value="Ara" class="form-element-1" /></div>
             </div>
             
             <div id="morning-notes-search-advanced" class="grid-100 hide">
                 <form method="post" action="" id="morning_note_advanced_search_form">
                     <div class="grid-100 margin-1">
                         <div class="grid-30">No <img class="between-button" src="images/between-grey.png" onclick="change_between_display(this);" /></div>
-                        <div class="grid-30"><input type="text" name="no1" class="form-element-2" onchange="stop_search();" /></div>
-                        <div class="grid-40 hide"><input type="text" name="no2" class="form-element-2" onchange="stop_search();" /></div>
+                        <div class="grid-30"><input type="text" name="no1" class="form-element-1" onchange="stop_search();" /></div>
+                        <div class="grid-40 hide"><input type="text" name="no2" class="form-element-1" onchange="stop_search();" /></div>
                     </div>
                     
                     <div class="grid-100 margin-1">
                         <div class="grid-30">Başlangıç Tarihi <img class="between-button" src="images/between-grey.png" onclick="change_between_display(this);" /></div>
-                        <div class="grid-30"><input type="text" name="start1" class="form-element-2" onchange="stop_search();" /></div>
-                        <div class="grid-40 hide"><input type="text" name="start2" class="form-element-2" onchange="stop_search();" /></div>
+                        <div class="grid-30"><input type="text" name="start1" class="form-element-1" onchange="stop_search();" /></div>
+                        <div class="grid-40 hide"><input type="text" name="start2" class="form-element-1" onchange="stop_search();" /></div>
                     </div>
                     
                     <div class="grid-100 margin-1">
                         <div class="grid-30">Hedef Tarih <img class="between-button" src="images/between-grey.png" onclick="change_between_display(this);" /></div>
-                        <div class="grid-30"><input type="text" name="target1"  class="form-element-2" onchange="stop_search();" /></div>
-                        <div class="grid-40 hide"><input type="text" name="target2"  class="form-element-2" onchange="stop_search();" /></div>
+                        <div class="grid-30"><input type="text" name="target1"  class="form-element-1" onchange="stop_search();" /></div>
+                        <div class="grid-40 hide"><input type="text" name="target2"  class="form-element-1" onchange="stop_search();" /></div>
                     </div>
                     
                     <div class="grid-100 margin-1">
                         <div class="grid-30">Bitmiş</div>
                         <div class="grid-70">
-                            <select name="finished" class="form-element-2" onchange="stop_search();">
+                            <select name="finished" class="form-element-1" onchange="stop_search();">
                                 <option value="2">---</option>
                                 <option value="0">Sadece Bitmemişlerde</option>
                                 <option value="1">Sadece Bitmişlerde</option>
@@ -126,23 +126,23 @@ $(window).scroll(function(){
                     
                     <div class="grid-100 margin-1">
                         <div class="grid-30">Gecikme <img class="between-button" src="images/between-grey.png" onclick="change_between_display(this);" /></div>
-                        <div class="grid-30"><input type="text" name="delay1" class="form-element-2" onchange="stop_search();" /></div>
-                        <div class="grid-40 hide"><input type="text" name="delay2" class="form-element-2" onchange="stop_search();" /></div>
+                        <div class="grid-30"><input type="text" name="delay1" class="form-element-1" onchange="stop_search();" /></div>
+                        <div class="grid-40 hide"><input type="text" name="delay2" class="form-element-1" onchange="stop_search();" /></div>
                     </div>
                     
                     <div class="grid-100 margin-1">
                         <div class="grid-30">Başlık</div>
-                        <div class="grid-70"><input type="text" name="header"  class="form-element-2" onchange="stop_search();" /></div>
+                        <div class="grid-70"><input type="text" name="header"  class="form-element-1" onchange="stop_search();" /></div>
                     </div>
                     
                     <div class="grid-100 margin-1">
                         <div class="grid-30">Konu</div>
-                        <div class="grid-70"><textarea name="subject" class="form-element-2" onchange="stop_search();"></textarea></div>
+                        <div class="grid-70"><textarea name="subject" class="form-element-1" onchange="stop_search();"></textarea></div>
                     </div>
                     
                     <div class="grid-100 margin-1">
                         <div class="grid-30">Araştırma</div>
-                        <div class="grid-70"><textarea name="prosecution"  class="form-element-2" onchange="stop_search();"></textarea></div>
+                        <div class="grid-70"><textarea name="prosecution"  class="form-element-1" onchange="stop_search();"></textarea></div>
                     </div>
                     
                     <div class="grid-100 margin-1">
@@ -164,7 +164,7 @@ $(window).scroll(function(){
                     
                     <div class="grid-100 margin-1">
                         <div class="grid-30">Notlarım</div>
-                        <div class="grid-70"><textarea name="my-notes"  class="form-element-2" onchange="stop_search();"></textarea></div>
+                        <div class="grid-70"><textarea name="my-notes"  class="form-element-1" onchange="stop_search();"></textarea></div>
                     </div>
                     
                     <input type="button" name="ara" value="Ara" onclick="search_advanced_morning_note();" />

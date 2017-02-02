@@ -2,7 +2,7 @@
  * Fonksiyonlarım
  *
  * Fonksiyon isimlerinde, kelimeler arasında alt çizgi kullan.
- * Bütün harfler küçük olsun. get_site_cookie gibi
+ * Bütün harfler küçük olsun. get_storaged_data gibi
  *
  * Değişken isimlerinde kelimeleri birleştir. İlk kelimenin baş harfi küçük,
  * diğerlerinin ki büyük olsun. Diğer harfler küçük olsun.
@@ -13,7 +13,7 @@
 function deneme(){
 	//alert(window.location.pathname);
 	//alert($(".label-4").attr("type"));//.prop("tagName"));
-	alert(userPref.lang+"-"+cookies.userName);
+	alert(userPref.lang+"-"+sData.userName);
 }
 
 
@@ -36,7 +36,7 @@ function deneme(){
 var labels={
 	"1":{//login.html
 		"tr":{
-			"0":"An-El 1.1",
+			"0":"An-El",
 			"1":"Sabah toplantısı notları",
 			"2":"Kullanıcı Adı",
 			"3":"Şifre",
@@ -44,7 +44,7 @@ var labels={
 			"5":"Giriş"
 		},
 		"en":{
-			"0":"An-El 1.1",
+			"0":"An-El",
 			"1":"Morning meeting notes",
 			"2":"Username",
 			"3":"Password",

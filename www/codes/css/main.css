@@ -8,14 +8,13 @@ body{
 	margin:0px auto;
 	padding:0px;
 	width:100%;
-	font-size:2.5vw;
 	color:#FFF;
 	background-color:#00F;
+	font-size:100%;
 }
 
 @media screen and (max-width:768px) {
 	body{
-		font-size:3.0vw;
 	}
 	
 }
@@ -76,6 +75,7 @@ body{
 }
 
 .part-1{
+	font-size:1.2em;
 	width:95%;
 	margin:3% auto;
 	float:none;

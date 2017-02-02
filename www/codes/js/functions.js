@@ -2,7 +2,7 @@
  * Fonksiyonlarım
  *
  * Fonksiyon isimlerinde, kelimeler arasında alt çizgi kullan.
- * Bütün harfler küçük olsun. get_site_cookie gibi
+ * Bütün harfler küçük olsun. get_storaged_data gibi
  *
  * Değişken isimlerinde kelimeleri birleştir. İlk kelimenin baş harfi küçük,
  * diğerlerinin ki büyük olsun. Diğer harfler küçük olsun.
@@ -26,7 +26,7 @@ function change_language(){
 	//Dil değiştirme kodu. Dil ayarı değiştirildiğinde, çerezlere gerekli atamalar yapılıyor ve bulunulan sayfanın yazıları o dile çevriliyor. Bu kod settings.html ve setting-language.html sayfasında olacak genellikle.
 	
 	var lang=$("#"+elementsName.userLanguage).val();
-	set_site_cookie(cookies.userLanguage, lang, "y");
+	set_storaged_data(sData.userLanguage, lang);
 	userPref.lang=lang;
 	write_new_language_on_page();
 }
@@ -50,7 +50,7 @@ function change_settings(){
 function get_people_list(){
 	$.ajax({
 		async: false,		
-		type: "GET",
+		type: xmlDataSendType,
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
 		timeout: 260000,
@@ -183,7 +183,7 @@ $( function(){
 function change_person_status(){
 	$.ajax({
 		async: false,		
-		type: "GET",
+		type: xmlDataSendType,
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
 		timeout: 260000,
@@ -212,7 +212,7 @@ function change_person_status(){
 function change_person_delete(){
 	$.ajax({
 		async: false,		
-		type: "GET",
+		type: xmlDataSendType,
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
 		timeout: 260000,
@@ -243,7 +243,7 @@ function change_person_rename(){
 	if(personName!="" && personSurname!="" && personId!=""){
 		$.ajax({
 			async: false,		
-			type: "GET",
+			type: xmlDataSendType,
 			crossDomain: true,
 			url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
 			timeout: 260000,
@@ -280,7 +280,7 @@ function add_person_to_database(){
 	if(personName!="" && personSurname!=""){
 		$.ajax({
 			async: false,		
-			type: "GET",
+			type: xmlDataSendType,
 			crossDomain: true,
 			url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
 			timeout: 260000,
@@ -334,7 +334,7 @@ function add_person_to_database(){
 function get_department_list(){
 	$.ajax({
 		async: false,		
-		type: "GET",
+		type: xmlDataSendType,
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getDepartmentList,
 		timeout: 260000,
@@ -423,7 +423,7 @@ $( function(){
 function change_department_delete(){
 	$.ajax({
 		async: false,		
-		type: "GET",
+		type: xmlDataSendType,
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getDepartmentList,
 		timeout: 260000,
@@ -453,7 +453,7 @@ function change_department_rename(){
 	if(departmentName!="" && departmentId!=""){
 		$.ajax({
 			async: false,		
-			type: "GET",
+			type: xmlDataSendType,
 			crossDomain: true,
 			url: siteUrlAdress+"/"+xmlsUrl.getDepartmentList,
 			timeout: 260000,
@@ -488,7 +488,7 @@ function add_department_to_database(){
 	if(departmentName!=""){
 		$.ajax({
 			async: false,		
-			type: "GET",
+			type: xmlDataSendType,
 			crossDomain: true,
 			url: siteUrlAdress+"/"+xmlsUrl.getDepartmentList,
 			timeout: 260000,
@@ -536,7 +536,7 @@ function get_morning_notes_list(){
 	//$("#cem").html(siteUrlAdress+"/"+xmlsUrl.getMorningNotesList);
 	$.ajax({
 		async: false,		
-		type: "GET",
+		type: xmlDataSendType,
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getMorningNotesList,
 		timeout: 260000,
@@ -659,7 +659,7 @@ function get_morning_notes_list(){
 function addResponsiblePerson(){
 	$.ajax({
 		async: false,		
-		type: "GET",
+		type: xmlDataSendType,
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
 		timeout: 260000,
@@ -710,7 +710,7 @@ function deleteResponsiblePerson(e){
 function addResponsibleDepartment(){
 	$.ajax({
 		async: false,		
-		type: "GET",
+		type: xmlDataSendType,
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getDepartmentList,
 		timeout: 260000,
@@ -724,7 +724,7 @@ function addResponsibleDepartment(){
 		var id, name, data;
 		data="";
 		data='<div class="grid-100">';
-		data+='<select name="responsible-department[]"  class="form-element-2">';
+		data+='<select name="responsible-department[]"  class="form-element-1">';
 		data+='<option value="0">--</option>';
 		
 		$(r).find('result').each(function(index, element) {
@@ -755,7 +755,7 @@ function deleteResponsibleDepartment(e){
 function addTargetDate(){
 	var data;
 	data='<div class="grid-100">';
-	data+='<input type="text" name="target[]"  class="form-element-2" />';
+	data+='<input type="text" name="target[]"  class="form-element-1" />';
 	data+='<img class="minus-button" src="images/minus-red.png" onclick="deleteTargetDate(this);" />';
 	data+='</div>';
 	$("#target-date").append(data);
@@ -774,7 +774,7 @@ function submit_new_morning_note_form(){
 	d=frm.serialize()+"&un="+userPref.uName+"&p="+userPref.uPassword+"&s="+xmlsString.submitNewMorningNote;
     //frm.submit(function (e) {
         $.ajax({
-            type: "GET",
+            type: xmlDataSendType,
 			crossDomain: true,
             url: siteUrlAdress+"/"+xmlsUrl.submitNewMorningNote,
 			timeout: 260000,
@@ -820,11 +820,11 @@ $( function(){
 /* Başlangıç - page11.html */
 
 function get_morning_note(){
-	noteId=get_site_cookie(find_page_name());
+	noteId=get_storaged_data(find_page_name());
 	//alert(noteId);
 	$.ajax({
 		async: false,		
-		type: "GET",
+		type: xmlDataSendType,
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getMorningNote,
 		timeout: 260000,
@@ -857,7 +857,7 @@ function get_morning_note(){
 			$(this).find('tDate').each(function(index, element){
 				tDate=$(this).text();
 				data='<div class="grid-100">';
-				data+='<input type="text" name="target[]"  class="form-element-2" value="'+tDate+'" />';
+				data+='<input type="text" name="target[]"  class="form-element-1" value="'+tDate+'" />';
 				data+='<img class="minus-button" src="images/minus-red.png" onclick="deleteTargetDate(this);" />';
 				data+='</div>';
 				$("#note-target-date").append(data);
@@ -892,7 +892,7 @@ function submit_edit_morning_note_form(){
 	d=frm.serialize()+"&un="+userPref.uName+"&p="+userPref.uPassword+"&s="+xmlsString.submitEditMorningNote;
     //frm.submit(function (e) {
         $.ajax({
-            type: "GET",
+            type: xmlDataSendType,
 			crossDomain: true,
             url: siteUrlAdress+"/"+xmlsUrl.submitEditMorningNote,
 			timeout: 260000,
@@ -964,7 +964,7 @@ function get_search_morning_note(){
 	
 	$.ajax({
 		async: false,		
-		type: "GET",
+		type: xmlDataSendType,
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.searchMorningNote,
 		timeout: 260000,
@@ -1092,7 +1092,7 @@ function get_search_advanced_morning_note(){
 	d=frm.serialize()+"&un="+userPref.uName+"&p="+userPref.uPassword+"&s="+xmlsString.searchAdvancedMorningNote+"&fId="+firstNoteId+"&lId="+lastNoteId;
 	$.ajax({
 		async: false,		
-		type: "GET",
+		type: xmlDataSendType,
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.searchAdvancedMorningNote,
 		timeout: 260000,
@@ -1202,11 +1202,11 @@ function stop_search(){
 
 /* Başlangıç - page13.html */
 function show_morning_note(){
-	noteId=get_site_cookie(find_page_name());
+	noteId=get_storaged_data(find_page_name());
 	//alert(noteId);
 	$.ajax({
 		async: false,		
-		type: "GET",
+		type: xmlDataSendType,
 		crossDomain: true,
 		url: siteUrlAdress+"/"+xmlsUrl.getMorningNoteToShow,
 		timeout: 260000,
@@ -1305,7 +1305,7 @@ function show_morning_note(){
 
 
 /*function open_settings_page(){
-	set_site_cookie(cookies.settingsPageBack, find_page_name(), "y");
+	set_storaged_data(sData.settingsPageBack, find_page_name());
 	open_page(pages.settings, no);
 } */
 
@@ -1314,7 +1314,7 @@ function show_morning_note(){
 
 
 //var language;
-//language = get_site_cookie("language");
+//language = get_storaged_data("language");
 //alert(document.cookie);
 //alert("cem "+language+"-"+document.cookie);
 
@@ -1348,7 +1348,7 @@ function xml_login(username, password, toPage){
 	
 	$.ajax({
 		async: false,		
-		type: "GET",
+		type: xmlDataSendType,
 		crossDomain: true,
 		url: geturl,
 		timeout: 260000,
@@ -1362,8 +1362,8 @@ function xml_login(username, password, toPage){
 		var uc = $(r).find('result').text();
 		var page=window.location.pathname.split("/");
 		if(uc==1){
-			set_site_cookie(cookieUn, username);
-			set_site_cookie(cookiePw, password);
+			set_storaged_data(cookieUn, username);
+			set_storaged_data(cookiePw, password);
 			if(toPage!=""){
 				redirect_page(toPage);
 			}

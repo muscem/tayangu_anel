@@ -1,16 +1,11 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="format-detection" content="telephone=no" />
-<meta name="msapplication-tap-highlight" content="no" />
-<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-
 <title>Tayangu</title>
 <link rel="stylesheet" href="codes/css/jquery-ui.css">
 <link rel="stylesheet" href="codes/css/mycssframework.css">
 <link rel="stylesheet" href="codes/css/main.css">
-<script type="text/javascript" charset="utf-8" src="cordova.js"></script> 
 <script src="codes/js/jquery.js"></script>
 <script src="codes/js/jquery-ui.js"></script>
 <script src="codes/js/languages.js" charset="utf-8"></script>
@@ -18,22 +13,13 @@
 <script src="codes/js/functions.js" charset="utf-8"></script>
 <script type="text/javascript" src="codes/ckeditor/ckeditor.js"></script>
 <script>
-// Call onDeviceReady when PhoneGap is loaded.
-//
-// At this point, the document has loaded but phonegap-1.0.0.js has not.
-// When PhoneGap is loaded and talking with the native device,
-// it will call the event `deviceready`.
-// 
-
-
-
 function on_start_this_page(){
 	$("#language-flag").attr("src", "images/flag-"+userPref.lang+".png");
 }
 </script>
 </head>
 
-<body>
+<body onload="on_start();">
 <div id="background-logo"></div>
 <div id="wrapper" class="unselectable">
 	
@@ -51,21 +37,21 @@ function on_start_this_page(){
         
         <div class="part-1">
             <div class="grid-20 label-2">Kullanıcı Adı</div>
-            <div class="grid-80"><input type="text" name="username" id="username" class="form-element-2" /></div>
+            <div class="grid-80"><input type="text" name="username" id="username" class="form-element-1" /></div>
         </div>
         
         <div class="part-1">
             <div class="grid-20 label-3">Şifre</div>
-            <div class="grid-80"><input type="password" name="password" id="password" class="form-element-2" /></div>
+            <div class="grid-80"><input type="password" name="password" id="password" class="form-element-1" /></div>
         </div>
         
         <div class="part-1">
         	<span class="label-4">Hatırla</span>
-            <input type="checkbox" name="remember" id="remember" class="form-element-2" />
+            <input type="checkbox" name="remember" id="remember" class="form-element-1" />
         </div>
         
         <div class="part-1">
-            <input type="button" name="login" id="login" class="form-element-2 label-5" value="Giriş" onclick="user_login();" />
+            <input type="button" name="login" id="login" class="form-element-1 label-5" value="Giriş" onclick="user_login();" />
         </div>
         
 	</div>

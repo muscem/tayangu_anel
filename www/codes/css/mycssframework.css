@@ -604,13 +604,13 @@
 .margin-100{margin:100%;}
 
 
-.form-element-05{font-size:0.5vw;}
-.form-element-1{font-size:1vw;}
-.form-element-15{font-size:1.5vw;}
-.form-element-2{font-size:2vw;}
+.form-element-05{font-size:0.5em;}
+.form-element-1{font-size:1em;}
+.form-element-15{font-size:1.5em;}
+.form-element-2{font-size:2em;}
 @media screen and (max-width:768px) {
-	.form-element-05{font-size:1vw;}
-	.form-element-1{font-size:1.5vw;}
-	.form-element-15{font-size:2vw;}
-	.form-element-2{font-size:2.5vw;}
+	.form-element-05{font-size:1em;}
+	.form-element-1{font-size:1.5em;}
+	.form-element-15{font-size:2em;}
+	.form-element-2{font-size:2em;}
 }

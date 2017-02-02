@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="codes/css/jquery-ui.css">
 <link rel="stylesheet" href="codes/css/mycssframework.css">
 <link rel="stylesheet" href="codes/css/main.css">
-<script type="text/javascript" charset="utf-8" src="cordova.js"></script> 
 <script src="codes/js/jquery.js"></script>
 <script src="codes/js/jquery-ui.js"></script>
 <script src="codes/js/languages.js"></script>
@@ -20,7 +19,7 @@ function on_start_this_page(){
 </script>
 </head>
 
-<body onLoad="on_start();">
+<body onload="on_start();">
 <div id="background-logo"></div>
 <div id="wrapper" class="unselectable">
 	
@@ -36,7 +35,7 @@ function on_start_this_page(){
         <div class="part-1">
             <div class="grid-20 label-1">Dil</div>
             <div class="grid-80">
-            	<select name="user-language" id="user-language" class="form-element-2">
+            	<select name="user-language" id="user-language" class="form-element-1">
                     <option value="en">English</option>
                     <option value="tr">Türkçe</option>
                 </select>
@@ -45,7 +44,7 @@ function on_start_this_page(){
         
         
         <div class="part-1">
-            <input type="button" name="ok" id="ok" class="form-element-2 label-2" value="Tamam" onclick="change_language();" />
+            <input type="button" name="ok" id="ok" class="form-element-1 label-2" value="Tamam" onclick="change_language();" />
         </div>
         
 	</div>

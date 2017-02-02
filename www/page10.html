@@ -56,12 +56,12 @@ function on_start_this_page(){
             <form method="post" action="" id="new_morning_note_form">
                 <div class="grid-100 margin-1">
                     <div class="grid-30">No</div>
-                    <div class="grid-70"><input type="text" name="no"  class="form-element-2" /></div>
+                    <div class="grid-70"><input type="text" name="no"  class="form-element-1" /></div>
                 </div>
                 
                 <div class="grid-100 margin-1">
                     <div class="grid-30">Başlangıç Tarihi</div>
-                    <div class="grid-70"><input type="text" name="start" class="form-element-2" /></div>
+                    <div class="grid-70"><input type="text" name="start" class="form-element-1" /></div>
                 </div>
                 
                 <div class="grid-100 margin-1">
@@ -69,7 +69,7 @@ function on_start_this_page(){
                     <img class="minus-button" src="images/plus-green.png" onclick="addTargetDate();" /></div>
                     <div class="grid-70" id="target-date">
                         <div class="grid-100">
-                            <input type="text" name="target[]"  class="form-element-2" /><img class="minus-button" src="images/minus-red.png" onclick="deleteTargetDate(this);" />
+                            <input type="text" name="target[]"  class="form-element-1" /><img class="minus-button" src="images/minus-red.png" onclick="deleteTargetDate(this);" />
                         </div>
                      </div>
                 </div>
@@ -77,28 +77,28 @@ function on_start_this_page(){
                 <div class="grid-100 margin-1">
                     <div class="grid-30">Bitmiş</div>
                     <div class="grid-70">
-                        <input type="checkbox" name="finished"  class="form-element-2">
+                        <input type="checkbox" name="finished"  class="form-element-1">
                     </div>
                 </div>
                 
                 <div class="grid-100 margin-1">
                     <div class="grid-30">Gecikme</div>
-                    <div class="grid-70"><input type="text" name="delay" class="form-element-2" disabled="disabled" /></div>
+                    <div class="grid-70"><input type="text" name="delay" class="form-element-1" disabled="disabled" /></div>
                 </div>
                 
                 <div class="grid-100 margin-1">
                     <div class="grid-30">Başlık</div>
-                    <div class="grid-70"><input type="text" name="header"  class="form-element-2" /></div>
+                    <div class="grid-70"><input type="text" name="header"  class="form-element-1" /></div>
                 </div>
                 
                 <div class="grid-100 margin-1">
                     <div class="grid-30">Konu</div>
-                    <div class="grid-70"><textarea name="subject"  class="form-element-2"></textarea></div>
+                    <div class="grid-70"><textarea name="subject"  class="form-element-1"></textarea></div>
                 </div>
                 
                 <div class="grid-100 margin-1">
                     <div class="grid-30">Araştırma</div>
-                    <div class="grid-70"><textarea name="prosecution"  class="form-element-2"></textarea></div>
+                    <div class="grid-70"><textarea name="prosecution"  class="form-element-1"></textarea></div>
                 </div>
                 
                 <div class="grid-100 margin-1">
@@ -120,7 +120,7 @@ function on_start_this_page(){
                 
                 <div class="grid-100 margin-1">
                     <div class="grid-30">Notlarım</div>
-                    <div class="grid-70"><textarea name="my-notes"  class="form-element-2"></textarea></div>
+                    <div class="grid-70"><textarea name="my-notes"  class="form-element-1"></textarea></div>
                 </div>
                 
                 <input type="button" name="kaydet" value="Kaydet" onclick="submit_new_morning_note_form();" />
