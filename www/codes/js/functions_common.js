@@ -151,20 +151,27 @@ function onDeviceReady() {
 	//on_start();
 	xmlDataSendType="GET";
 	siteUrlAdress="http://www.tayangu.com.tr/anel";
-	
+	alert("1");
 	//show_storaged_data();
 	find_page_number();
 	get_user_prefs();
 	user_control();
 	write_new_language_on_page();
+	alert("2");
 	on_start_this_page();//Her sayfanın kendi başlangıç kodunun olduğu kod
-	var data
+	alert("3");
+	var data;
+	alert("4");
 	data="$(window).height()="+$(window).height()+"<br>";
+	alert("5");
 	data+="$(document).height()="+$(document).height()+"<br>";
+	alert("6");
 	data+="$(window).width()="+$(window).width()+"<br>";
+	alert("7");
 	data+="$(document).width()="+$(document).width()+"<br>";
-	
+	alert("8");
 	$("#test").html(data);
+	alert("9");
 }
 
 function on_start(){
@@ -180,7 +187,7 @@ function on_start(){
 	//alert("cem4");
 	on_start_this_page();//Her sayfanın kendi başlangıç kodunun olduğu kod
 	//alert("cem5");
-	var data
+	var data;
 	data="$(window).height()="+$(window).height()+"<br>";
 	data+="$(document).height()="+$(document).height()+"<br>";
 	data+="$(window).width()="+$(window).width()+"<br>";
