@@ -416,7 +416,7 @@ function user_logout(){
 
 //Sadece login sayfasında kullanılacak
 function user_login(){	
-	
+	alert("user_login"+"\n"+siteUrlAdress+"/"+xmlsUrl.userLoginControl+"\n pref Uname="+userPref.uName+"\n pref pass="+userPref.uPassword);
 	var uName=$("#"+elementsName.userName).val();
 	var uPassword=$("#"+elementsName.userPassword).val();
 	var uRemember=$("#"+elementsName.userRememeber).is(":checked");
@@ -453,7 +453,7 @@ function user_login(){
 
 //Her sayfanın başında kullanılacak
 function user_control(){	
-	
+	alert("user_control"+"\n"+siteUrlAdress+"/"+xmlsUrl.userLoginControl+"\n pref Uname="+userPref.uName+"\n pref pass="+userPref.uPassword);
 	$.ajax({
 		async: false,		
 		type: xmlDataSendType,
