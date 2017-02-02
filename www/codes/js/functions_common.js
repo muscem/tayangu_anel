@@ -162,7 +162,7 @@ function onDeviceReady() {
 
 function on_start(){
 	//alert("cem1");
-/*	show_storaged_data();*/
+/*	show_storaged_data();
 	find_page_number();
 	//alert("cem4");
 	get_user_prefs();
@@ -172,7 +172,7 @@ function on_start(){
 	write_new_language_on_page();
 	//alert("cem4");
 	on_start_this_page();//Her sayfanın kendi başlangıç kodunun olduğu kod
-	//alert("cem5");
+	//alert("cem5");*/
 	
 }
 
@@ -416,7 +416,7 @@ function user_logout(){
 
 //Sadece login sayfasında kullanılacak
 function user_login(){	
-	alert("user_login"+"\n"+siteUrlAdress+"/"+xmlsUrl.userLoginControl+"\n pref Uname="+userPref.uName+"\n pref pass="+userPref.uPassword);
+	//alert("user_login"+"\n"+siteUrlAdress+"/"+xmlsUrl.userLoginControl+"\n pref Uname="+userPref.uName+"\n pref pass="+userPref.uPassword);
 	var uName=$("#"+elementsName.userName).val();
 	var uPassword=$("#"+elementsName.userPassword).val();
 	var uRemember=$("#"+elementsName.userRememeber).is(":checked");
@@ -453,7 +453,7 @@ function user_login(){
 
 //Her sayfanın başında kullanılacak
 function user_control(){	
-	alert("user_control"+"\n"+siteUrlAdress+"/"+xmlsUrl.userLoginControl+"\n pref Uname="+userPref.uName+"\n pref pass="+userPref.uPassword);
+	//alert("user_control"+"\n"+siteUrlAdress+"/"+xmlsUrl.userLoginControl+"\n pref Uname="+userPref.uName+"\n pref pass="+userPref.uPassword);
 	$.ajax({
 		async: false,		
 		type: xmlDataSendType,
