@@ -154,7 +154,7 @@ var xmlsString = {
 
 function on_start(){
 	//alert("cem1");
-	
+	show_storaged_data();
 	find_page_number();
 	//alert("cem4");
 	get_user_prefs();
@@ -421,7 +421,6 @@ function user_login(){
 	.done(function(r){
 		var uc = $(r).find('result').text();
 		if(uc==1){
-			var ur="s";
 			set_storaged_data(sData.userName, uName);
 			set_storaged_data(sData.userPassword, uPassword);
 			set_storaged_data(sData.userRemember, uRemember);
