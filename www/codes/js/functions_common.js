@@ -182,7 +182,7 @@ function onDeviceReady() {
 function on_start(){
 	//alert("cem1");
 /*	show_storaged_data();*/
-	find_page_number();
+/*	find_page_number();
 	//alert("cem4");
 	get_user_prefs();
 	//alert("cem2");
@@ -198,7 +198,7 @@ function on_start(){
 	data+="$(window).width()="+$(window).width()+"<br>";
 	data+="$(document).width()="+$(document).width()+"<br>";
 	
-	$("#test").html(data);
+	$("#test").html(data);*/
 }
 
 
