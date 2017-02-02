@@ -534,6 +534,7 @@ function add_department_to_database(){
 
 function get_morning_notes_list(){
 	//$("#cem").html(siteUrlAdress+"/"+xmlsUrl.getMorningNotesList);
+	//alert(siteUrlAdress+"/"+xmlsUrl.getMorningNotesList);
 	$.ajax({
 		async: false,		
 		type: xmlDataSendType,

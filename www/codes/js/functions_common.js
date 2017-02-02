@@ -46,7 +46,7 @@ function onDeviceReady() {
 	xmlDataSendType="GET";
 	siteUrlAdress="http://www.tayangu.com.tr/anel";
 	
-	show_storaged_data();
+	//show_storaged_data();
 	find_page_number();
 	get_user_prefs();
 	user_control();
@@ -161,7 +161,7 @@ var xmlsString = {
 
 function on_start(){
 	//alert("cem1");
-/*	show_storaged_data();
+/*	show_storaged_data();*/
 	find_page_number();
 	//alert("cem4");
 	get_user_prefs();
@@ -172,16 +172,17 @@ function on_start(){
 	//alert("cem4");
 	on_start_this_page();//Her sayfanın kendi başlangıç kodunun olduğu kod
 	//alert("cem5");
-	*/
+	
 }
 
 
 
 function get_user_prefs(){
-	if(get_storaged_data(sData.userName)!="") userPref.uName=get_storaged_data(sData.userName);
-	if(get_storaged_data(sData.userPassword)!="") userPref.uPassword=get_storaged_data(sData.userPassword);
-	if(get_storaged_data(sData.userRemember)!="") userPref.uRemember=get_storaged_data(sData.userRemember);
-	if(get_storaged_data(sData.userLanguage)!="") userPref.lang=get_storaged_data(sData.userLanguage);
+	if(get_storaged_data(sData.userName)!="" && get_storaged_data(sData.userName)!=null) userPref.uName=get_storaged_data(sData.userName);
+	if(get_storaged_data(sData.userPassword)!="" && get_storaged_data(sData.userPassword)!=null) userPref.uPassword=get_storaged_data(sData.userPassword);
+	if(get_storaged_data(sData.userRemember)!="" && get_storaged_data(sData.userRemember)!=null) userPref.uRemember=get_storaged_data(sData.userRemember);
+	//alert(get_storaged_data(sData.userLanguage));
+	if(get_storaged_data(sData.userLanguage)!="" && get_storaged_data(sData.userLanguage)!=null) userPref.lang=get_storaged_data(sData.userLanguage);
 	
 	//alert(userPref.uName+"-"+userPref.uPassword+"-"+userPref.uRemember+"-"+userPref.lang+"\n"+get_storaged_data(sData.userName)+"-"+get_storaged_data(sData.userPassword)+"-"+get_storaged_data(sData.userRemember)+"-"+get_storaged_data(sData.userLanguage));
 }
@@ -337,9 +338,13 @@ function redirect_page(u){
 
 //Dil değişimi yapıldığında sayfa üzerindeki yazıların hepsinin dilini değiştiren kod
 function write_new_language_on_page(){
+	//alert("cem p1-"+userPref.lang);
 	write_labels_on_page();
+	//alert("cem p2");
 	write_titles_on_page();
+	//alert("cem p3");
 	write_alts_on_page();
+	//alert("cem p4");
 }
 
 
