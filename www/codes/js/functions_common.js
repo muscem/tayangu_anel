@@ -45,6 +45,13 @@ function onDeviceReady() {
 	//on_start();
 	xmlDataSendType="GET";
 	siteUrlAdress="http://www.tayangu.com.tr/anel";
+	
+	show_storaged_data();
+	find_page_number();
+	get_user_prefs();
+	user_control();
+	write_new_language_on_page();
+	on_start_this_page();//Her sayfanın kendi başlangıç kodunun olduğu kod
 }
 
 
@@ -154,7 +161,7 @@ var xmlsString = {
 
 function on_start(){
 	//alert("cem1");
-	show_storaged_data();
+/*	show_storaged_data();
 	find_page_number();
 	//alert("cem4");
 	get_user_prefs();
@@ -165,6 +172,7 @@ function on_start(){
 	//alert("cem4");
 	on_start_this_page();//Her sayfanın kendi başlangıç kodunun olduğu kod
 	//alert("cem5");
+	*/
 }
 
 
@@ -420,6 +428,7 @@ function user_login(){
 	})
 	.done(function(r){
 		var uc = $(r).find('result').text();
+		alert("user_login"+"\n uc="+uc+"\n name="+uName+"\n pass="+uPassword)
 		if(uc==1){
 			set_storaged_data(sData.userName, uName);
 			set_storaged_data(sData.userPassword, uPassword);
@@ -453,7 +462,7 @@ function user_control(){
 	})
 	.done(function(r){
 		var uc = $(r).find('result').text();
-		//alert(uc+"-"+userPref.uName+"-"+userPref.uPassword);
+		alert("user_control"+"\n uc="+uc+"\n pref Uname="+userPref.uName+"\n pref pass="+userPref.uPassword);
 		if(uc==1){
 			var ur="s";
 			set_storaged_data(sData.userName, userPref.uName);
