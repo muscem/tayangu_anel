@@ -163,26 +163,27 @@ function onDeviceReady() {
 	show_dev()
 }
 function show_dev(){
-	var data;
+	var d;
 	//alert("4");
-	data="$(window).height()="+$(window).height()+"<br>";
+	d="$(window).height()="+$(window).height()+"<br>";
 	//data="$(window).height()="+$(window).height()+"<br>";
 	//alert("5");
-	data+="$(document).height()="+$(document).height()+"<br>";
+	d+="$(document).height()="+$(document).height()+"<br>";
 	//data+="$(document).height()="+$(document).height()+"<br>";
 	//alert("6");
-	data+="$(window).width()="+$(window).width()+"<br>";
+	d+="$(window).width()="+$(window).width()+"<br>";
 	//data+="$(window).width()="+$(window).width()+"<br>";
 	//alert("7");
-	data+="$(document).width()="+$(document).width()+"<br>";
+	d+="$(document).width()="+$(document).width()+"<br>";
 	//data+="$(document).width()="+$(document).width()+"<br>";
 	//alert("8");
-	alert(data);
+	alert(d);
+	$("#test").html(d);
 }
 function on_start(){
 	//alert("cem1");
 /*	show_storaged_data();*/
-	find_page_number();
+/*	find_page_number();
 	//alert("cem4");
 	get_user_prefs();
 	//alert("cem2");
@@ -198,7 +199,7 @@ function on_start(){
 	data+="$(window).width()="+$(window).width()+"<br>";
 	data+="$(document).width()="+$(document).width()+"<br>";
 	
-	$("#test").html(data);
+	$("#test").html(data);*/
 }
 
 
