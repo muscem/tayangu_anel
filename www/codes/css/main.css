@@ -53,6 +53,11 @@ body{
 		width:10%;
 	}
 }
+@media screen and (max-width:400px) {
+	.icon-container{
+		width:12%;
+	}
+}
 .icon-space{
 }
 

@@ -151,55 +151,38 @@ function onDeviceReady() {
 	//on_start();
 	xmlDataSendType="GET";
 	siteUrlAdress="http://www.tayangu.com.tr/anel";
-	alert("1");
+	//alert("1");
 	//show_storaged_data();
 	find_page_number();
 	get_user_prefs();
 	user_control();
 	write_new_language_on_page();
-	alert("2");
+	//alert("2");
 	on_start_this_page();//Her sayfanın kendi başlangıç kodunun olduğu kod
 	alert("3");
-	var data;
-	alert("4");
-	//data="$(window).height()="+$(window).height()+"<br>";
-	//data="$(window).height()="+$(window).height()+"<br>";
-	//alert("5");
-	//data+="$(document).height()="+$(document).height()+"<br>";
-	//data+="$(document).height()="+$(document).height()+"<br>";
-	//alert("6");
-	//data+="$(window).width()="+$(window).width()+"<br>";
-	//data+="$(window).width()="+$(window).width()+"<br>";
-	//alert("7");
-	//data+="$(document).width()="+$(document).width()+"<br>";
-	//data+="$(document).width()="+$(document).width()+"<br>";
-	//alert("8");
-	//alert(data);
-	//$("#test").html(data);
-	//$("#test").html(data);
-	//alert("9");
+	show_dev()
 }
 function show_dev(){
 	var data;
-	alert("4");
+	//alert("4");
 	data="$(window).height()="+$(window).height()+"<br>";
 	//data="$(window).height()="+$(window).height()+"<br>";
-	alert("5");
+	//alert("5");
 	data+="$(document).height()="+$(document).height()+"<br>";
 	//data+="$(document).height()="+$(document).height()+"<br>";
-	alert("6");
+	//alert("6");
 	data+="$(window).width()="+$(window).width()+"<br>";
 	//data+="$(window).width()="+$(window).width()+"<br>";
-	alert("7");
+	//alert("7");
 	data+="$(document).width()="+$(document).width()+"<br>";
 	//data+="$(document).width()="+$(document).width()+"<br>";
-	alert("8");
+	//alert("8");
 	alert(data);
 }
 function on_start(){
 	//alert("cem1");
 /*	show_storaged_data();*/
-/*	find_page_number();
+	find_page_number();
 	//alert("cem4");
 	get_user_prefs();
 	//alert("cem2");
@@ -215,7 +198,7 @@ function on_start(){
 	data+="$(window).width()="+$(window).width()+"<br>";
 	data+="$(document).width()="+$(document).width()+"<br>";
 	
-	$("#test").html(data);*/
+	$("#test").html(data);
 }
 
 
