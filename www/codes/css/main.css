@@ -121,7 +121,7 @@ body{
 
 .part-2{
 	background:url(../../images/background/bg_yellow_50.png) repeat;
-	width:95%;
+	width:90%;
 	margin:3% auto;
 	float:none;
 	clear:both;
@@ -302,6 +302,7 @@ body{
 	float:left;
 	clear:both;
 	margin-top:1%;
+	width:100%;
 }
 
 
