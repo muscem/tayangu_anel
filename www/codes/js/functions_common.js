@@ -39,8 +39,11 @@ $( function() {
 
 var pageNo;
 //xml bağlantıları gibi gerçek siteyle bağlantılı adreserde kullanılacak.
-var siteUrlAdress="http://localhost/uygulamalar/tayangu/an-el/1";
+//var siteUrlAdress="http://localhost/uygulamalar/tayangu/an-el/1";
+var siteUrlAdress="http://localhost/my-apps/tayangu/an-el/1";
 //var siteUrlAdress="http://www.tayangu.com.tr/anel";
+//var xmlDataSendAddressAdd="";
+var xmlDataSendAddressAdd="mobile/";
 
 var xmlDataSendType="POST";//İnternet sitesinde POST, mobil uygulamalarda GET olacak.
 
@@ -67,7 +70,7 @@ var messages = {
 	"userRemember":"ur",
 	"userLanguage":"ul"
 }*/
-var sData={
+var sData={//Kaydedilen verilerin adları. Mesela kullanıcı adı ur ismiyle kaydedilecek
 	"userName":"un",
 	"userPassword":"up",
 	"userRemember":"ur",
@@ -107,7 +110,22 @@ var elementsName={
 	"morningNoteContent":"morning-note-content"
 }
 
+
 var xmlsUrl = {
+	"userLoginControl":"xmls/"+xmlDataSendAddressAdd+"xml_login_control.php",
+	"getPeopleList":"xmls/"+xmlDataSendAddressAdd+"xml_people_list.php",
+	"getDepartmentList":"xmls/"+xmlDataSendAddressAdd+"xml_department_list.php",
+	"getMorningNotesList":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php",
+	"submitNewMorningNote":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php",
+	"getMorningNote":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php",
+	"submitEditMorningNote":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php",
+	"searchMorningNote":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php",
+	"searchAdvancedMorningNote":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php",
+	"getMorningNoteToShow":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php"
+}
+
+
+/*var xmlsUrl = {
 	"userLoginControl":"xmls/xml_login_control.php",
 	"getPeopleList":"xmls/xml_people_list.php",
 	"getDepartmentList":"xmls/xml_department_list.php",
@@ -118,7 +136,19 @@ var xmlsUrl = {
 	"searchMorningNote":"xmls/xml_morning_notes.php",
 	"searchAdvancedMorningNote":"xmls/xml_morning_notes.php",
 	"getMorningNoteToShow":"xmls/xml_morning_notes.php"
-}
+}*/
+/*var xmlsUrl = {
+	"userLoginControl":"xmls/mobile/xml_login_control.php",
+	"getPeopleList":"xmls/mobile/xml_people_list.php",
+	"getDepartmentList":"xmls/mobile/xml_department_list.php",
+	"getMorningNotesList":"xmls/mobile/xml_morning_notes.php",
+	"submitNewMorningNote":"xmls/mobile/xml_morning_notes.php",
+	"getMorningNote":"xmls/mobile/xml_morning_notes.php",
+	"submitEditMorningNote":"xmls/mobile/xml_morning_notes.php",
+	"searchMorningNote":"xmls/mobile/xml_morning_notes.php",
+	"searchAdvancedMorningNote":"xmls/mobile/xml_morning_notes.php",
+	"getMorningNoteToShow":"xmls/mobile/xml_morning_notes.php"
+}*/
 
 var xmlsString = {
 	"userLoginControl":"user_login_control",
@@ -151,6 +181,7 @@ function onDeviceReady() {
 	//on_start();
 	xmlDataSendType="GET";
 	siteUrlAdress="http://www.tayangu.com.tr/anel";
+	//xmlDataSendAddressAdd="xmls/mobile/";
 	//alert("1");
 	//show_storaged_data();
 	find_page_number();
@@ -159,10 +190,12 @@ function onDeviceReady() {
 	write_new_language_on_page();
 	//alert("2");
 	on_start_this_page();//Her sayfanın kendi başlangıç kodunun olduğu kod
-	alert("3");
-	show_dev()
+	//alert("3");
+	/*show_dev();*/
 }
-function show_dev(){
+
+
+/*function show_dev(){
 	var d;
 	//alert("4");
 	d="$(window).height()="+$(window).height()+"<br>";
@@ -179,11 +212,14 @@ function show_dev(){
 	//alert("8");
 	alert(d);
 	$("#test").html(d);
-}
+}*/
+
+
+
 function on_start(){
 	//alert("cem1");
 /*	show_storaged_data();*/
-/*	find_page_number();
+	find_page_number();
 	//alert("cem4");
 	get_user_prefs();
 	//alert("cem2");
@@ -193,7 +229,7 @@ function on_start(){
 	//alert("cem4");
 	on_start_this_page();//Her sayfanın kendi başlangıç kodunun olduğu kod
 	//alert("cem5");
-	var data;
+/*	var data;
 	data="$(window).height()="+$(window).height()+"<br>";
 	data+="$(document).height()="+$(document).height()+"<br>";
 	data+="$(window).width()="+$(window).width()+"<br>";
@@ -205,11 +241,23 @@ function on_start(){
 
 
 function get_user_prefs(){
-	if(get_storaged_data(sData.userName)!="" && get_storaged_data(sData.userName)!=null) userPref.uName=get_storaged_data(sData.userName);
-	if(get_storaged_data(sData.userPassword)!="" && get_storaged_data(sData.userPassword)!=null) userPref.uPassword=get_storaged_data(sData.userPassword);
+	
+	
 	if(get_storaged_data(sData.userRemember)!="" && get_storaged_data(sData.userRemember)!=null) userPref.uRemember=get_storaged_data(sData.userRemember);
-	//alert(get_storaged_data(sData.userLanguage));
+	if(userPref.uRemember!=""){
+		var uRDate1 = new Date();
+		var uRDate2 = new Date(userPref.uRemember);
+		if(uRDate2-uRDate1>0){
+			if(get_storaged_data(sData.userName)!="" && get_storaged_data(sData.userName)!=null) userPref.uName=get_storaged_data(sData.userName);
+			if(get_storaged_data(sData.userPassword)!="" && get_storaged_data(sData.userPassword)!=null) userPref.uPassword=get_storaged_data(sData.userPassword);
+			
+		}
+	}
+	
 	if(get_storaged_data(sData.userLanguage)!="" && get_storaged_data(sData.userLanguage)!=null) userPref.lang=get_storaged_data(sData.userLanguage);
+	
+	//alert(get_storaged_data(sData.userLanguage));
+	
 	
 	//alert(userPref.uName+"-"+userPref.uPassword+"-"+userPref.uRemember+"-"+userPref.lang+"\n"+get_storaged_data(sData.userName)+"-"+get_storaged_data(sData.userPassword)+"-"+get_storaged_data(sData.userRemember)+"-"+get_storaged_data(sData.userLanguage));
 }
@@ -372,13 +420,13 @@ function write_new_language_on_page(){
 	//alert("cem p3");
 	write_alts_on_page();
 	//alert("cem p4");
+	write_options_on_page();
 }
 
 
 function write_labels_on_page(){
 	if(pageNo in labels){
 		for(var i=0;i<Object.keys(labels[pageNo][userPref.lang]).length;i++){
-			
 			if($(".label-"+i).prop("tagName")=="INPUT"){
 				if($(".label-"+i).attr("type")=="button"){
 					$(".label-"+i).val(labels[pageNo][userPref.lang][i]);
@@ -397,7 +445,7 @@ function write_labels_on_page(){
 
 
 function write_titles_on_page(){
-	if(pageNo in labels){
+	if(pageNo in titles){
 		for(var i=0;i<Object.keys(titles[pageNo][userPref.lang]).length;i++){
 			$(".title-"+i).attr("title", titles[pageNo][userPref.lang][i]);
 		}
@@ -406,9 +454,19 @@ function write_titles_on_page(){
 
 
 function write_alts_on_page(){
-	if(pageNo in labels){
+	if(pageNo in alts){
 		for(var i=0;i<Object.keys(alts[pageNo][userPref.lang]).length;i++){
 			$(".alt-"+i).attr("alt", alts[pageNo][userPref.lang][i]);
+		}
+	}
+}
+
+function write_options_on_page(){
+	if(pageNo in selectOptions){
+		for(var i=0;i<Object.keys(selectOptions[pageNo][userPref.lang]).length;i++){
+			for(var j=0;j<Object.keys(selectOptions[pageNo][userPref.lang][i]).length;j++){
+				$(".sOption-"+i+" option[value='"+j+"']").text(selectOptions[pageNo][userPref.lang][i][j]);
+			}
 		}
 	}
 }
@@ -446,6 +504,16 @@ function user_login(){
 	var uName=$("#"+elementsName.userName).val();
 	var uPassword=$("#"+elementsName.userPassword).val();
 	var uRemember=$("#"+elementsName.userRememeber).is(":checked");
+	if($("#"+elementsName.userRememeber).is(":checked")){
+		var uRDate1 = new Date();
+		var uRDate2 = new Date(uRDate1.getTime()+(100*366*24*60*60*1000));//Yüz yıl
+		uRemember=uRDate2;
+	}
+	else{
+		var uRDate1 = new Date();
+		var uRDate2 = new Date(uRDate1.getTime()+(24*60*60*1000));//Bir gün
+		uRemember=uRDate2;
+	}
 	$.ajax({
 		async: false,		
 		type: xmlDataSendType,
@@ -496,10 +564,21 @@ function user_control(){
 		var uc = $(r).find('result').text();
 		//alert("user_control"+"\n uc="+uc+"\n pref Uname="+userPref.uName+"\n pref pass="+userPref.uPassword);
 		if(uc==1){
-			var ur="s";
-			set_storaged_data(sData.userName, userPref.uName);
-			set_storaged_data(sData.userPassword, userPref.uPassword);
-			set_storaged_data(sData.userRemember, userPref.uRemember);
+			var uRDate1 = new Date();
+			var uRDate2 = new Date(userPref.uRemember);
+			if(userPref.uRemember=="" || uRDate2-uRDate1<(24*60*60*1000)){//Bir gün
+				var uRDate3 = new Date(uRDate1.getTime()+(24*60*60*1000));//Bir gün
+				userPref.uRemember=uRDate3;
+				set_storaged_data(sData.userRemember, userPref.uRemember);
+			}
+			else if(uRDate2-uRDate1>(24*60*60*1000)){//Bir gün
+				var uRDate4 = new Date(uRDate1.getTime()+(100*366*24*60*60*1000));//Yüz yıl
+				userPref.uRemember=uRDate4;
+				set_storaged_data(sData.userRemember, userPref.uRemember);
+			}
+			//set_storaged_data(sData.userName, userPref.uName);
+			//set_storaged_data(sData.userPassword, userPref.uPassword);
+			//set_storaged_data(sData.userRemember, userPref.uRemember);
 			if(pages.login==find_page_name()) open_page(pages.main,"");
 		}
 		else{

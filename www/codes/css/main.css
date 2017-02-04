@@ -44,18 +44,36 @@ body{
 	z-index:-999999;
 }
 
-.icon-container{
+.icon-container-l{
 	width:7%;
 	float:left;
 }
+.icon-container-l-2{
+	width:10%;
+	float:left;
+}
+.icon-container-r{
+	width:7%;
+	float:right;
+}
+.icon-container-r-2{
+	width:10%;
+	float:right;
+}
 @media screen and (max-width:768px) {
-	.icon-container{
+	.icon-container-l, .icon-container-r{
 		width:10%;
+	}
+	.icon-container-l-2, .icon-container-r-2 {
+		width:4%;
 	}
 }
 @media screen and (max-width:400px) {
-	.icon-container{
+	.icon-container-l, .icon-container-r{
 		width:12%;
+	}
+	.icon-container-l-2, .icon-container-r-2 {
+		width:9%;
 	}
 }
 .icon-space{
@@ -111,6 +129,9 @@ body{
 	font-size:1.5em;
 	padding:3%;
 }
+.part-3{
+	font-size:1.3em;
+}
 
 /*.part-3{
 	background:url(../../images/background/bg_black_200.png) repeat;
@@ -123,15 +144,24 @@ body{
 	padding:3%;
 }*/
 
-.person{
-	margin:3% 0px 0 px 1%;
+.person, .department {
+	margin:1% 0px 0 px 1%;
 	float:left;
+	font-size:1.5em;
 }
 
 @media screen and (max-width:768px) {
-
+	.person, .department {
+		margin:2% 0px 0 px 1%;
+		font-size:1.4em;
+	}
 }
-
+@media screen and (max-width:400px) {
+	.person, .department {
+		margin:3% 0px 0 px 1%;
+		font-size:1em;
+	}
+}
 
 
 

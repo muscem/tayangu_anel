@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="codes/css/jquery-ui.css">
 <link rel="stylesheet" href="codes/css/mycssframework.css">
 <link rel="stylesheet" href="codes/css/main.css">
+<script type="text/javascript" src="cordova.js"></script>
 <script src="codes/js/jquery.js"></script>
 <script src="codes/js/jquery-ui.js"></script>
 <script src="codes/js/languages.js"></script>
@@ -24,12 +25,10 @@ function on_start_this_page(){
 <div id="wrapper" class="unselectable">
 	
     <div id="header">
-    	<div class="grid2-7"><img src="images/arrow-left.png" class="icon title-0 alt-0" title="Geri" onClick="open_page(pages.login, '', '')" /></div>
-        <div class="grid2-93 grid2h-10"></div>
+    	<div class="icon-container-l"><img src="images/arrow-left.png" class="icon title-0 alt-0" title="Geri" onClick="open_page(pages.login, '', '')" /></div>
     </div>
     
     <div id="content">
-    
         <div class="heading-1 label-0">Ayarlar</div>
         
         <div class="part-1">
@@ -46,10 +45,6 @@ function on_start_this_page(){
         <div class="part-1">
             <input type="button" name="ok" id="ok" class="form-element-1 label-2" value="Tamam" onclick="change_language();" />
         </div>
-        <div class="part-1">
-            <input type="button" name="login" id="login" class="form-element-1 label-5" value="Göster" onclick="show_dev();" />
-        </div>
-        <div id="test"></div>
 	</div>
 </div>
 </body>

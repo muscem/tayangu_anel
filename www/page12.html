@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="codes/css/jquery-ui.css">
 <link rel="stylesheet" href="codes/css/mycssframework.css">
 <link rel="stylesheet" href="codes/css/main.css">
-<script type="text/javascript" charset="utf-8" src="cordova.js"></script> 
+<script type="text/javascript" src="cordova.js"></script>
 <script src="codes/js/jquery.js"></script>
 <script src="codes/js/jquery-ui.js"></script>
 <script src="codes/js/languages.js"></script>
@@ -74,50 +74,75 @@ $(window).scroll(function(){
 	
     <div id="header">
     	
-        <div class="grid2-7"><img src="images/arrow-left.png" class="icon title-0 alt-0" title="Geri" alt="Geri" onClick="open_page('page8.html', '', '')" /></div>
+        <div class="icon-container-l"><img src="images/arrow-left.png" class="icon title-0 alt-0" title="Geri" alt="Geri" onClick="open_page('page8.html', '', '')" /></div>
         
-        <div class="grid2-7"><img src="images/home.png" class="icon title-1 alt-1" title="Ana Sayfa" alt="Ana Sayfa" onClick="open_page(pages.main, '', '')" /></div>
+        <div class="icon-container-l margin-left-5"><img src="images/home.png" class="icon title-1 alt-1" title="Ana Sayfa" alt="Ana Sayfa" onClick="open_page(pages.main, '', '')" /></div>
         
-        <div class="grid2-78 grid2h-10"></div>
-        
-        <div class="grid2-7"><img src="images/search-advanced.png" class="icon title-2 alt-2" title="Gelişmiş Arama" alt="Gelişmiş Arama" onClick="change_search_mode(this);" /></div>
+        <div class="icon-container-r"><img src="images/search-advanced.png" class="icon title-2 alt-2" title="Basit - Gelişmiş Arama" alt="Basit - Gelişmiş Arama" onClick="change_search_mode(this);" /></div>
         
     </div>
     
     <div id="content">
         
-        <div class="heading-2 label-0">Sabah Toplantısı Notları Listesi</div>
+        <div class="heading-2 label-0">Sabah Toplantısı Notu Arama</div>
         
         <div id="morning-notes-search">
             <div id="morning-notes-search-basic" class="grid-100">
                 <div class="grid2-50"><input type="text" name="aranacak" id="aranacak" onchange="stop_search();" class="form-element-1" /></div>
-                <div class="grid2-50"><input type="button" name="ara" id="ara" onclick="search_morning_note()" value="Ara" class="form-element-1" /></div>
+                <div class="grid2-50"><input type="button" name="ara" id="ara" onclick="search_morning_note()" value="Ara" class="form-element-1 label-1" /></div>
             </div>
             
             <div id="morning-notes-search-advanced" class="grid-100 hide">
                 <form method="post" action="" id="morning_note_advanced_search_form">
                     <div class="grid-100 margin-1">
-                        <div class="grid-30">No <img class="between-button" src="images/between-grey.png" onclick="change_between_display(this);" /></div>
-                        <div class="grid-30"><input type="text" name="no1" class="form-element-1" onchange="stop_search();" /></div>
-                        <div class="grid-40 hide"><input type="text" name="no2" class="form-element-1" onchange="stop_search();" /></div>
+                        <div class="grid-40">
+                        	<span class="label-2 left part-3">No</span>
+                            <div class="icon-container-l-2 margin-left-3">
+                        		<img class="icon" src="images/between-grey.png" onclick="change_between_display(this);" />
+                            </div>
+                        </div>
+                        <div class="grid-30">
+                        	<input type="text" name="no1" class="form-element-1" onchange="stop_search();" />
+                        </div>
+                        <div class="grid-30 hide">
+                        	<input type="text" name="no2" class="form-element-1" onchange="stop_search();" />
+                        </div>
                     </div>
                     
                     <div class="grid-100 margin-1">
-                        <div class="grid-30">Başlangıç Tarihi <img class="between-button" src="images/between-grey.png" onclick="change_between_display(this);" /></div>
-                        <div class="grid-30"><input type="text" name="start1" class="form-element-1" onchange="stop_search();" /></div>
-                        <div class="grid-40 hide"><input type="text" name="start2" class="form-element-1" onchange="stop_search();" /></div>
+                        <div class="grid-40">
+                        <span class="label-3 left part-3">Başlangıç Tarihi</span>
+                            <div class="icon-container-l-2 margin-left-3">
+                            	<img class="between-button" src="images/between-grey.png" onclick="change_between_display(this);" />
+                         	</div>
+                        </div>
+                        <div class="grid-30">
+                        	<input type="text" name="start1" class="form-element-1" onchange="stop_search();" />
+                        </div>
+                        <div class="grid-30 hide">
+                        	<input type="text" name="start2" class="form-element-1" onchange="stop_search();" />
+                        </div>
                     </div>
                     
                     <div class="grid-100 margin-1">
-                        <div class="grid-30">Hedef Tarih <img class="between-button" src="images/between-grey.png" onclick="change_between_display(this);" /></div>
-                        <div class="grid-30"><input type="text" name="target1"  class="form-element-1" onchange="stop_search();" /></div>
-                        <div class="grid-40 hide"><input type="text" name="target2"  class="form-element-1" onchange="stop_search();" /></div>
+                        <div class="grid-40">
+                        	<span class="label-4 left part-3">Hedef Tarih</span>
+                            <div class="icon-container-l-2 margin-left-3">
+                            	<img class="icon" src="images/between-grey.png" onclick="change_between_display(this);" />
+                            </div>
+                        </div>
+                        <div class="grid-30">
+                        	<input type="text" name="target1"  class="form-element-1" onchange="stop_search();" />
+                        </div>
+                        <div class="grid-30 hide">
+                        	<input type="text" name="target2"  class="form-element-1" onchange="stop_search();" />
+                        </div>
                     </div>
                     
                     <div class="grid-100 margin-1">
-                        <div class="grid-30">Bitmiş</div>
-                        <div class="grid-70">
-                            <select name="finished" class="form-element-1" onchange="stop_search();">
+                        <div class="grid-40 label-5 part-3">Bitmiş</div>
+                        <div class="grid-60">
+                            <select name="finished" class="form-element-1 sOption-0" onchange="stop_search();">
                                 <option value="2">---</option>
                                 <option value="0">Sadece Bitmemişlerde</option>
                                 <option value="1">Sadece Bitmişlerde</option>
@@ -126,49 +151,72 @@ $(window).scroll(function(){
                     </div>
                     
                     <div class="grid-100 margin-1">
-                        <div class="grid-30">Gecikme <img class="between-button" src="images/between-grey.png" onclick="change_between_display(this);" /></div>
-                        <div class="grid-30"><input type="text" name="delay1" class="form-element-1" onchange="stop_search();" /></div>
-                        <div class="grid-40 hide"><input type="text" name="delay2" class="form-element-1" onchange="stop_search();" /></div>
-                    </div>
-                    
-                    <div class="grid-100 margin-1">
-                        <div class="grid-30">Başlık</div>
-                        <div class="grid-70"><input type="text" name="header"  class="form-element-1" onchange="stop_search();" /></div>
-                    </div>
-                    
-                    <div class="grid-100 margin-1">
-                        <div class="grid-30">Konu</div>
-                        <div class="grid-70"><textarea name="subject" class="form-element-1" onchange="stop_search();"></textarea></div>
-                    </div>
-                    
-                    <div class="grid-100 margin-1">
-                        <div class="grid-30">Araştırma</div>
-                        <div class="grid-70"><textarea name="prosecution"  class="form-element-1" onchange="stop_search();"></textarea></div>
-                    </div>
-                    
-                    <div class="grid-100 margin-1">
-                        <div class="grid-30">Sorumlu Birim
-                            <img class="minus-button" src="images/plus-green.png" onclick="addResponsibleDepartment();" />
+                        <div class="grid-40">
+                        	<span class="label-6 left part-3">Gecikme</span>
+                        	<div class="icon-container-l-2 margin-left-3">
+                            	<img class="between-button" src="images/between-grey.png" onclick="change_between_display(this);" />
+                            </div>
                         </div>
-                        <div class="grid-70" id="resp-dep">
+                        <div class="grid-30">
+                        	<input type="text" name="delay1" class="form-element-1" onchange="stop_search();" />
+                        </div>
+                        <div class="grid-30 hide">
+                        	<input type="text" name="delay2" class="form-element-1" onchange="stop_search();" />
                         </div>
                     </div>
                     
                     <div class="grid-100 margin-1">
-                        <div class="grid-30">Sorumlu Kişi
-                            <img class="minus-button" src="images/plus-green.png" onclick="addResponsiblePerson();" />
+                        <div class="grid-40 label-7 part-3">Başlık</div>
+                        <div class="grid-60">
+                        	<input type="text" name="header" class="form-element-1" onchange="stop_search();" />
                         </div>
-                        <div class="grid-70" id="resp-pers">
+                    </div>
+                    
+                    <div class="grid-100 margin-1">
+                        <div class="grid-40 label-8 part-3">Konu</div>
+                        <div class="grid-60">
+                        	<textarea name="subject" class="form-element-1" onchange="stop_search();"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="grid-100 margin-1">
+                        <div class="grid-40 label-9 part-3">Araştırma</div>
+                        <div class="grid-60">
+                        	<textarea name="prosecution"  class="form-element-1" onchange="stop_search();"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="grid-100 margin-1">
+                        <div class="grid-40">
+                        	<span class="label-10 left part-3">Sorumlu Birim</span>
+                            <div class="icon-container-l-2 margin-left-3">
+	                            <img class="icon" src="images/plus-green.png" onclick="add_responsible_department();" />
+                            </div>
+                        </div>
+                        <div class="grid-60" id="resp-dep">
+                        </div>
+                    </div>
+                    
+                    <div class="grid-100 margin-1">
+                        <div class="grid-40">
+	                        <span class="label-11 left part-3">Sorumlu Kişi</span>
+    	                    <div class="icon-container-l-2 margin-left-3">
+        	                    <img class="icon" src="images/plus-green.png" onclick="add_responsible_person();" />
+                            </div>
+                        </div>
+                        <div class="grid-60" id="resp-pers">
                             
                         </div>
                     </div>
                     
-                    <div class="grid-100 margin-1">
-                        <div class="grid-30">Notlarım</div>
-                        <div class="grid-70"><textarea name="my-notes"  class="form-element-1" onchange="stop_search();"></textarea></div>
+                    <div class="grid-100 margin-1 part-3">
+                        <div class="grid-40 label-12">Notlarım</div>
+                        <div class="grid-60">
+                        	<textarea name="my-notes"  class="form-element-1" onchange="stop_search();"></textarea>
+                        </div>
                     </div>
                     
-                    <input type="button" name="ara" value="Ara" onclick="search_advanced_morning_note();" />
+                    <input type="button" name="ara" value="Ara" onclick="search_advanced_morning_note();" class="form-element-1 label-13" />
                     </form>
             </div>
             

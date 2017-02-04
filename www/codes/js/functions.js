@@ -61,6 +61,7 @@ function get_people_list(){
 		dataType: "xml"
 	})
 	.done(function(r){
+		
 		var id, name, surname, working, data;
 		data="";
 		$(r).find('result').each(function(index, element) {
@@ -72,7 +73,7 @@ function get_people_list(){
 			data+='<div class="part-2">';
 			
 			
-			data+='<div class="grid2-7 margin-2 person-status-icon">';
+			data+='<div class="icon-container-l margin-2 person-status-icon">';
 			data+='<img class="icon"';
 			if(working==1){
 				 data+=' src="images/working.png"';
@@ -83,8 +84,8 @@ function get_people_list(){
 			data+=' />';
 			data+='</div>';
 			
-			data+='<div class="grid2-7 margin-2 person-delete-icon"><img class="icon" src="images/delete.png" /></div>';
-			data+='<div class="grid2-7 margin-2 person-rename-icon"><img class="icon" src="images/rename.png" /></div>';
+			data+='<div class="icon-container-l margin-2 person-delete-icon"><img class="icon" src="images/delete.png" /></div>';
+			data+='<div class="icon-container-l margin-2 person-rename-icon"><img class="icon" src="images/rename.png" /></div>';
 			
 			data+='<div class="person margin-2">'+name+' '+surname+'</div>';
 			
@@ -99,7 +100,6 @@ function get_people_list(){
 			
         });
 		$("#"+elementsName.peopleList).html(data);
-		
 	})
 	.fail(function(){
 		if(pages.login!=find_page_name()) open_page(pages.login,"");
@@ -352,8 +352,8 @@ function get_department_list(){
 			name=$(this).find('name').text();
 			
 			data+='<div class="part-2">';
-			data+='<div class="grid2-7 margin-2 department-delete-icon"><img class="icon" src="images/delete.png" /></div>';
-			data+='<div class="grid2-7 margin-2 department-rename-icon"><img class="icon" src="images/rename.png" /></div>';
+			data+='<div class="icon-container-l margin-2 department-delete-icon"><img class="icon" src="images/delete.png" /></div>';
+			data+='<div class="icon-container-l margin-2 department-rename-icon"><img class="icon" src="images/rename.png" /></div>';
 			data+='<div class="department margin-2">'+name+'</div>';
 			data+='<div class="department-id hide">'+id+'</div>';
 			data+='<div class="department-name hide">'+name+'</div>';
@@ -657,7 +657,7 @@ function get_morning_notes_list(){
 
 /* Başlangıç - page10.html */
 
-function addResponsiblePerson(){
+function add_responsible_person(){
 	$.ajax({
 		async: false,		
 		type: xmlDataSendType,
@@ -674,7 +674,7 @@ function addResponsiblePerson(){
 		var id, name, surname, working, data;
 		data="";
 		data='<div class="grid-100">';
-		data+='<select name="responsible-person[]"  class="form-element-2">';
+		data+='<select name="responsible-person[]" class="form-element-1 left">';
 		data+='<option value="0">--</option>';
 		
 		$(r).find('result').each(function(index, element) {
@@ -688,7 +688,9 @@ function addResponsiblePerson(){
 			}
         });
 		data+='</select>';
-		data+='<img class="minus-button" src="images/minus-red.png" onclick="deleteResponsiblePerson(this);" />';
+		data+='<div class="icon-container-l-2 margin-left-3">';
+		data+='<img class="icon" src="images/minus-red.png" onclick="delete_responsible_person(this);" />';
+		data+='</div>';
 		data+='</div>';
 		$("#resp-pers").append(data);
 		
@@ -701,14 +703,14 @@ function addResponsiblePerson(){
 }
 
 
-function deleteResponsiblePerson(e){
-	$(e).parent().remove();
+function delete_responsible_person(e){
+	$(e).parent().parent().remove();
 	stop_search();//home12.html için gerekli
 }
 
 
 
-function addResponsibleDepartment(){
+function add_responsible_department(){
 	$.ajax({
 		async: false,		
 		type: xmlDataSendType,
@@ -725,7 +727,7 @@ function addResponsibleDepartment(){
 		var id, name, data;
 		data="";
 		data='<div class="grid-100">';
-		data+='<select name="responsible-department[]"  class="form-element-1">';
+		data+='<select name="responsible-department[]" class="form-element-1 left">';
 		data+='<option value="0">--</option>';
 		
 		$(r).find('result').each(function(index, element) {
@@ -734,7 +736,9 @@ function addResponsibleDepartment(){
 			data+='<option value="'+id+'">'+name+'</option>\';';
         });
 		data+='</select>';
-		data+='<img class="minus-button" src="images/minus-red.png" onclick="deleteResponsibleDepartment(this);" />';
+		data+='<div class="icon-container-l-2 margin-left-3">';
+		data+='<img class="icon" src="images/minus-red.png" onclick="delete_responsible_department(this);" />';
+		data+='</div>';
 		data+='</div>';
 		$("#resp-dep").append(data);
 		
@@ -747,24 +751,26 @@ function addResponsibleDepartment(){
 }
 
 
-function deleteResponsibleDepartment(e){
-	$(e).parent().remove();
+function delete_responsible_department(e){
+	$(e).parent().parent().remove();
 	stop_search();//home12.html için gerekli
 }
 
 
-function addTargetDate(){
+function add_target_date(){
 	var data;
 	data='<div class="grid-100">';
-	data+='<input type="text" name="target[]"  class="form-element-1" />';
-	data+='<img class="minus-button" src="images/minus-red.png" onclick="deleteTargetDate(this);" />';
+	data+='<input type="text" name="target[]"  class="form-element-1 left" />';
+	data+='<div class="icon-container-l-2 margin-left-3">';
+	data+='<img class="icon" src="images/minus-red.png" onclick="delete_target_date(this);" />';
+	data+='</div>';
 	data+='</div>';
 	$("#target-date").append(data);
 	stop_search();//home12.html için gerekli
 }
 
-function deleteTargetDate(e){
-	$(e).parent().remove();
+function delete_target_date(e){
+	$(e).parent().parent().remove();
 	stop_search();//home12.html için gerekli
 }
 
@@ -823,6 +829,7 @@ $( function(){
 function get_morning_note(){
 	noteId=get_storaged_data(find_page_name());
 	//alert(noteId);
+	//alert("cem");
 	$.ajax({
 		async: false,		
 		type: xmlDataSendType,
@@ -840,6 +847,7 @@ function get_morning_note(){
 		var data, person, dep;
 		data="";
 		$(r).find('result').each(function(index, element) {
+			
             $("#note-id").val($(this).find('id').text());
 			$("#note-no").val($(this).find('no').text());
 			$("#note-start").val($(this).find('sDate').text());
@@ -856,25 +864,30 @@ function get_morning_note(){
 			
 			
 			$(this).find('tDate').each(function(index, element){
-				tDate=$(this).text();
+				
+				tDate=$(this).text();				
 				data='<div class="grid-100">';
-				data+='<input type="text" name="target[]"  class="form-element-1" value="'+tDate+'" />';
-				data+='<img class="minus-button" src="images/minus-red.png" onclick="deleteTargetDate(this);" />';
-				data+='</div>';
+                data+='<input type="text" name="target[]"  class="form-element-1 left" value="'+tDate+'" />';
+                data+='<div class="icon-container-l-2 margin-left-3">';
+                data+='<img class="icon" src="images/minus-red.png" onclick="delete_target_date(this);" />';
+                data+='</div>';
+                data+='</div>';
+						
+						
 				$("#note-target-date").append(data);
 	
 			});
 			
 			$(this).find('person').each(function(index, element){
 				person=$(this).text();
-				addResponsiblePerson();
+				add_responsible_person();
 				//alert(person+"-"+$("#resp-pers select").val());
 				$("#resp-pers select").last().val(person);
 			});
 			
 			$(this).find('department').each(function(index, element){
 				dep=$(this).text();
-				addResponsibleDepartment();
+				add_responsible_department();
 				//alert(dep);
 				$("#resp-dep select").last().val(dep);
 			});
@@ -926,11 +939,11 @@ function submit_edit_morning_note_form(){
 function change_between_display(e){
 	if($(e).attr("src")=="images/between-grey.png"){
 		$(e).attr("src","images/between-white.png");
-		$(e).parent().parent().find("div").last().removeClass("hide");
+		$(e).parent().parent().parent().find("div").last().removeClass("hide");
 	}
 	else{
 		$(e).attr("src","images/between-grey.png");
-		$(e).parent().parent().find("div").last().addClass("hide");
+		$(e).parent().parent().parent().find("div").last().addClass("hide");
 	}
 	stop_search();
 }
@@ -1087,7 +1100,7 @@ function search_advanced_morning_note(){
 }
 
 function get_search_advanced_morning_note(){
-	
+	//alert("cem1");
 	var frm = $('#morning_note_advanced_search_form');
 	var d;
 	d=frm.serialize()+"&un="+userPref.uName+"&p="+userPref.uPassword+"&s="+xmlsString.searchAdvancedMorningNote+"&fId="+firstNoteId+"&lId="+lastNoteId;
@@ -1104,7 +1117,9 @@ function get_search_advanced_morning_note(){
 		//var id, name, data;
 		var tDate, subject, myNote, i;
 		data="";
+		//alert("cem2");
 		$(r).find('result').each(function(index, element) {
+			//alert($(this).text());
 			if(firstNoteId==0){
 				firstNoteId=$(this).find('id').text();
 				lastNoteId=firstNoteId;
@@ -1226,7 +1241,7 @@ function show_morning_note(){
 			data+='<div class="part-1">';
 			
 			data+='<div class="grid-100">';
-			data+='<div class="grid2-30"';
+			data+='<div class="grid2-20"';
 			data+=' onclick="open_page(\'page11.html\',\''+$(this).find('id').text()+'\')"';
 			data+='>'+$(this).find('no').text()+'</div>';
 			
@@ -1237,6 +1252,7 @@ function show_morning_note(){
 			data+='<div class="grid-100 grid2h-20"></div>';
 			
 			data+='<div class="grid-100">';
+			data+='<div class="grid2-20 grid2h-30">'+$(this).find('delay').text()+'</div>';
 			data+='<div class="grid2-40">'+$(this).find('sDate').text()+'</div>';
 			
 			tDate="";
@@ -1245,7 +1261,6 @@ function show_morning_note(){
 				tDate+=$(this).text();
 			});
 			data+='<div class="grid2-40">'+tDate+'</div>';
-			data+='<div class="grid2-20">'+$(this).find('delay').text()+'</div>';
 			data+='</div>';
 			
 			data+='<div class="grid-100 grid2h-20"></div>';
