@@ -40,10 +40,10 @@ $( function() {
 var pageNo;
 //xml bağlantıları gibi gerçek siteyle bağlantılı adreserde kullanılacak.
 //var siteUrlAdress="http://localhost/uygulamalar/tayangu/an-el/1";
-var siteUrlAdress="http://localhost/my-apps/tayangu/an-el/1";
-//var siteUrlAdress="http://www.tayangu.com.tr/anel";
-var xmlDataSendAddressAdd="";
-//var xmlDataSendAddressAdd="mobile/";
+//var siteUrlAdress="http://localhost/my-apps/tayangu/an-el/1";
+var siteUrlAdress="http://www.tayangu.com.tr/anel";
+//var xmlDataSendAddressAdd="";
+var xmlDataSendAddressAdd="mobile/";
 
 var xmlDataSendType="POST";//İnternet sitesinde POST, mobil uygulamalarda GET olacak.
 
