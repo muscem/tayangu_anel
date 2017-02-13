@@ -7,11 +7,12 @@
 <link rel="stylesheet" href="codes/css/mycssframework.css">
 <link rel="stylesheet" href="codes/css/main.css">
 <script type="text/javascript" src="cordova.js"></script>
-<script src="codes/js/jquery.js"></script>
-<script src="codes/js/jquery-ui.js"></script>
-<script src="codes/js/languages.js"></script>
-<script src="codes/js/functions_common.js"></script>
-<script src="codes/js/functions.js"></script>
+<script type="text/javascript" src="codes/js/jquery.js"></script>
+<script type="text/javascript" src="codes/js/jquery-ui.js"></script>
+<script type="text/javascript" src="codes/js/jquery-ui-i18n.js"></script>
+<script type="text/javascript" src="codes/js/languages.js"></script>
+<script type="text/javascript" src="codes/js/functions_common.js"></script>
+<script type="text/javascript" src="codes/js/functions.js"></script>
 <script type="text/javascript" src="codes/ckeditor/ckeditor.js"></script>
 
 <script>
@@ -22,11 +23,17 @@ getNotes=0;
 noteCount=1;
 searchMode="";
 wScrollTop=0;
+filterOn=0;
 function on_start_this_page(){
 //		get_morning_notes_list();
 //		while($(window).height() >= $(document).height()*0.95){
 //			on_start_this_page();
 //		}	
+	$( ".date-picker" ).datepicker( $.datepicker.regional[ "tr" ] );
+	$( ".date-picker" ).datepicker({
+	  showOtherMonths: true,
+	  selectOtherMonths: true
+	});
 }
 
 function windows_size_check_after_search(){
@@ -70,7 +77,7 @@ $(window).scroll(function(){
 <body onload="on_start();">
 <div id="background-logo"></div>
 
-<div id="wrapper" class="unselectable">
+<div id="wrapper" class="unselectable hide">
 	
     <div id="header">
     	
@@ -78,9 +85,76 @@ $(window).scroll(function(){
         
         <div class="icon-container-l margin-left-5"><img src="images/home.png" class="icon title-1 alt-1" title="Ana Sayfa" alt="Ana Sayfa" onClick="open_page(pages.main, '', '')" /></div>
         
-        <div class="icon-container-r"><img src="images/search-advanced.png" class="icon title-2 alt-2" title="Basit - Gelişmiş Arama" alt="Basit - Gelişmiş Arama" onClick="change_search_mode(this);" /></div>
+        <div class="icon-container-r"><img src="images/search-advanced.png" class="icon title-14 alt-14" title="Basit - Gelişmiş Arama" alt="Basit - Gelişmiş Arama" onClick="change_search_mode(this);" /></div>
         
+        <div class="icon-container-r margin-right-5"><img src="images/arrow-up.png" class="icon title-2 alt-2" title="Artan Şeklinde Sırala" alt="Azalan Şeklinde Sırala" onClick="sort_notes('asc', elementsName.searchMorningNotesList)" /></div>
+        
+        <div class="icon-container-r margin-right-5"><img src="images/arrow-down.png" class="icon title-3 alt-3" title="Azalan Şeklinde Sırala" alt="Azalan Şeklinde Sırala" onClick="sort_notes('desc', elementsName.searchMorningNotesList)" /></div>
+        
+        <div class="icon-container-r margin-right-5"><img src="images/filter.png" class="icon title-4 alt-4" title="Filtrele" alt="Filtrele" onClick="show_hide_filter_menu()" /></div>
+              
     </div>
+    
+    
+    
+    <div id="filter">
+    
+        <div class="icon-container-l-3">
+			<img src="images/number.png" class="icon2 title-5 alt-5" title="Numara" alt="Numara"/>
+    		<input id="filter-number" size="10" onkeyup="filter_notes(elementsName.searchMorningNotesList);" class="form-element-1"/>
+        </div>
+        
+        <div class="icon-container-l-3">
+            <img src="images/start.png" class="icon2 title-6 alt-6" title="Başlangıç" alt="Başlangıç"/>
+            <input id="filter-start" size="10" onkeyup="filter_notes(elementsName.searchMorningNotesList);" class="form-element-1"/>
+        </div>
+        
+        <div class="icon-container-l-3">
+            <img src="images/target.png" class="icon2 title-7 alt-7" title="Hedef" alt="Hedef"/>
+            <input id="filter-target" size="10" onkeyup="filter_notes(elementsName.searchMorningNotesList);" class="form-element-1"/>
+        </div>
+        
+        <div class="icon-container-l-3">
+            <img src="images/working.png" class="icon2 title-8 alt-8" title="Kişi" alt="Kişi"/>
+            <input id="filter-person" size="10" onkeyup="filter_notes(elementsName.searchMorningNotesList);" class="form-element-1"/>
+        </div>
+        
+        <div class="icon-container-l-3">
+            <img src="images/departments.png" class="icon2 title-9 alt-9" title="Bölüm" alt="Bölüm"/>
+            <input id="filter-department" size="10" onkeyup="filter_notes(elementsName.searchMorningNotesList);" class="form-element-1"/>
+        </div>
+        
+        <div class="icon-container-l-3">
+            <img src="images/delay.png" class="icon2 title-10 alt-10" title="Gecikme" alt="Gecikme"/>
+            <input id="filter-delay" size="10" onkeyup="filter_notes(elementsName.searchMorningNotesList);" class="form-element-1"/>
+        </div>
+        
+        
+        <div class="icon-container-l-3">
+            <img src="images/finished.png" class="icon2 title-11 alt-1" title="Bitiş" alt="Bitiş"/>
+            <select id="filter-finished" onchange="filter_notes(elementsName.searchMorningNotesList);" class="form-element-1">
+            <option value="-1">---</option>
+            <option value="0">Bitmiş</option>
+            <option value="1">Bitmemiş</option>
+            </select>
+        </div>
+        
+        
+        <div class="icon-container-l-3">
+            <img src="images/favorite.png" class="icon2 title-12 alt-12" title="Favori" alt="Favori"/>
+            <select id="filter-favorite" onchange="filter_notes(elementsName.searchMorningNotesList);" class="form-element-1">
+            <option value="-1">---</option>
+            <option value="0">Favori</option>
+            <option value="1">Favori değil</option>
+            </select>
+        </div>
+        
+        <div class="icon-container-l-4">
+        	<img src="images/ok_not.png" class="icon3 title-13 alt-13" title="Filtreyi Temizle" alt="Filtreyi Temizle" onclick="clear_filter_box(elementsName.searchMorningNotesList);"/>
+        </div>
+    
+    </div>
+    
     
     <div id="content">
         
@@ -117,10 +191,10 @@ $(window).scroll(function(){
                          	</div>
                         </div>
                         <div class="grid-30">
-                        	<input type="text" name="start1" class="form-element-1" onchange="stop_search();" />
+                        	<input type="text" name="start1" class="form-element-1 date-picker" onchange="stop_search();" />
                         </div>
                         <div class="grid-30 hide">
-                        	<input type="text" name="start2" class="form-element-1" onchange="stop_search();" />
+                        	<input type="text" name="start2" class="form-element-1 date-picker" onchange="stop_search();" />
                         </div>
                     </div>
                     
@@ -132,10 +206,10 @@ $(window).scroll(function(){
                             </div>
                         </div>
                         <div class="grid-30">
-                        	<input type="text" name="target1"  class="form-element-1" onchange="stop_search();" />
+                        	<input type="text" name="target1"  class="form-element-1 date-picker" onchange="stop_search();" />
                         </div>
                         <div class="grid-30 hide">
-                        	<input type="text" name="target2"  class="form-element-1" onchange="stop_search();" />
+                        	<input type="text" name="target2"  class="form-element-1 date-picker" onchange="stop_search();" />
                         </div>
                     </div>
                     
@@ -175,17 +249,10 @@ $(window).scroll(function(){
                     <div class="grid-100 margin-1">
                         <div class="grid-40 label-8 part-3">Konu</div>
                         <div class="grid-60">
-                        	<textarea name="subject" class="form-element-1" onchange="stop_search();"></textarea>
+                        	<textarea name="subject" class="form-element-1" style="width:100%; height:6em" onchange="stop_search();"></textarea>
                         </div>
                     </div>
-                    
-                    <div class="grid-100 margin-1">
-                        <div class="grid-40 label-9 part-3">Araştırma</div>
-                        <div class="grid-60">
-                        	<textarea name="prosecution"  class="form-element-1" onchange="stop_search();"></textarea>
-                        </div>
-                    </div>
-                    
+                             
                     <div class="grid-100 margin-1">
                         <div class="grid-40">
                         	<span class="label-10 left part-3">Sorumlu Birim</span>
@@ -209,10 +276,17 @@ $(window).scroll(function(){
                         </div>
                     </div>
                     
+                    <div class="grid-100 margin-1">
+                        <div class="grid-40 label-9 part-3">Araştırma</div>
+                        <div class="grid-60">
+                        	<textarea name="prosecution"  class="form-element-1" style="width:100%; height:6em" onchange="stop_search();"></textarea>
+                        </div>
+                    </div>
+                    
                     <div class="grid-100 margin-1 part-3">
                         <div class="grid-40 label-12">Notlarım</div>
                         <div class="grid-60">
-                        	<textarea name="my-notes"  class="form-element-1" onchange="stop_search();"></textarea>
+                        	<textarea name="my-notes"  class="form-element-1" style="width:100%; height:6em" onchange="stop_search();"></textarea>
                         </div>
                     </div>
                     

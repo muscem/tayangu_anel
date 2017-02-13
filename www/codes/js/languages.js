@@ -179,13 +179,17 @@ var labels={
 			"0":"Sabah Toplantısı Notları",
 			"1":"Yeni Not Ekleme",
 			"2":"Not Arama",
-			"3":"Not Listesi"
+			"3":"Not Listesi",
+			"4":"Favori Not Listesi",
+			"5":"İstatistikler"
 		},
 		"en":{
 			"0":"Morning Meeting Notes",
 			"1":"New Note Additon",
 			"2":"Search Note",
-			"3":"Notes List"
+			"3":"Notes List",
+			"4":"Favorite Note List",
+			"5":"Statistics"
 		}
 	},
 	"9":{//morning-notes-list.html
@@ -332,10 +336,12 @@ var labels={
 var titles={
 	"1":{//login.html
 		"tr":{
-			"0":"Dil"
+			"0":"Dil",
+			"1":"Yenile"
 		},
 		"en":{
 			"0":"Language",
+			"1":"Refresh"
 		}
 	},
 	"2":{//setting-language.html
@@ -407,11 +413,35 @@ var titles={
 	"9":{//list-of-morning-meeting-notes.html
 		"tr":{
 			"0":"Geri",
-			"1":"Ana Sayfa"		
+			"1":"Ana Sayfa",
+			"2":"Artan Şeklinde Sırala",
+			"3":"Azalan Şeklinde Sırala",
+			"4":"Filtrele",
+			"5":"Numara",
+			"6":"Başlangıç",
+			"7":"Hedef",
+			"8":"Kişi",
+			"9":"Bölüm",
+			"10":"Gecikme",
+			"11":"Bitiş",
+			"12":"Favori",
+			"13":"Filtreyi Temizle"
 		},
 		"en":{
 			"0":"Back",
-			"1":"Home Page"
+			"1":"Home Page",
+			"2":"Sort by Ascending",
+			"3":"Sort by Descending",
+			"4":"Filter",
+			"5":"Number",
+			"6":"Start",
+			"7":"Target",
+			"8":"Person",
+			"9":"Department",
+			"10":"Delay",
+			"11":"Finished",
+			"12":"Favorite",
+			"13":"Clear Filter"
 		}
 	},
 	"10":{//new-morning-notes-adding.html
@@ -438,12 +468,36 @@ var titles={
 		"tr":{
 			"0":"Geri",
 			"1":"Ana Sayfa",
-			"2":"Basit - Gelişmiş Arama"	
+			"2":"Artan Şeklinde Sırala",
+			"3":"Azalan Şeklinde Sırala",
+			"4":"Filtrele",
+			"5":"Numara",
+			"6":"Başlangıç",
+			"7":"Hedef",
+			"8":"Kişi",
+			"9":"Bölüm",
+			"10":"Gecikme",
+			"11":"Bitiş",
+			"12":"Favori",
+			"13":"Filtreyi Temizle",
+			"14":"Basit - Gelişmiş Arama"	
 		},
 		"en":{
 			"0":"Back",
 			"1":"Home Page",
-			"2":"Simple - Advanced Search"
+			"2":"Sort by Ascending",
+			"3":"Sort by Descending",
+			"4":"Filter",
+			"5":"Number",
+			"6":"Start",
+			"7":"Target",
+			"8":"Person",
+			"9":"Department",
+			"10":"Delay",
+			"11":"Finished",
+			"12":"Favorite",
+			"13":"Clear Filter",
+			"14":"Simple - Advanced Search",
 		}
 	},
 	"13":{//morning-meting-note.html
@@ -463,10 +517,12 @@ var titles={
 var alts={
 	"1":{//login.html
 		"tr":{
-			"0":"Dil"
+			"0":"Dil",
+			"1":"Yenile"
 		},
 		"en":{
-			"0":"Language"
+			"0":"Language",
+			"1":"Refresh"
 		}
 	},
 	"2":{//setting-language.html

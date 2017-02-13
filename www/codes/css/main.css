@@ -35,14 +35,32 @@ body{
 	width:100%;
 	overflow:auto;
 }
+#filter{
+	background:url(../../images/background/bg_black_160.png) repeat;
+	padding:0px;
+	margin:0px;
+	width:100%;
+	overflow:auto;
+	height:0px;
+	/*display:none;*/
+}
 
 #background-logo{
 	position:fixed;
-	background:url(../../images/background-logo.jpg) no-repeat top center;
+	background:url(../../images/loading.gif) no-repeat top center;
+	/*background:url(../../images/background-logo.jpg) no-repeat top center;*/
 	height:100%;
 	width:100%;
 	z-index:-999999;
 }
+#loading{
+	position:fixed;
+	
+	height:100%;
+	width:100%;
+	z-index:-99999;
+}
+
 
 .icon-container-l{
 	width:7%;
@@ -50,6 +68,14 @@ body{
 }
 .icon-container-l-2{
 	width:10%;
+	float:left;
+}
+.icon-container-l-3{
+	width:19%;
+	float:left;
+}
+.icon-container-l-4{
+	width:5%;
 	float:left;
 }
 .icon-container-r{
@@ -67,6 +93,9 @@ body{
 	.icon-container-l-2, .icon-container-r-2 {
 		width:4%;
 	}
+	.icon-container-l-3{
+		width:30%;
+	}
 }
 @media screen and (max-width:400px) {
 	.icon-container-l, .icon-container-r{
@@ -74,6 +103,9 @@ body{
 	}
 	.icon-container-l-2, .icon-container-r-2 {
 		width:9%;
+	}
+	.icon-container-l-3{
+		width:50%;
 	}
 }
 .icon-space{
@@ -83,7 +115,31 @@ body{
 	width:80%;
 	padding:10%;
 }
-
+.icon2{
+	width:15%;
+}
+.icon3{
+	width:50%;
+}
+.icon4{
+	width:100%;
+}
+@media screen and (max-width:768px) {
+	.icon2{
+		width:9%;
+	}
+	.icon3{
+		width:60%;
+	}
+}
+@media screen and (max-width:400px) {
+	.icon2{
+		width:10%;
+	}
+	.icon3{
+		width:100%;
+	}
+}
 .heading-1{
 	font-size:3em;
 	font-weight:bolder;
@@ -99,7 +155,13 @@ body{
 	margin: 3% auto;
 	text-align:center;
 }
-
+.heading-3{
+	font-size:2em;
+	font-weight:bolder;
+	width:90%;
+	margin: 3% auto;
+	text-align:center;
+}
 #content{
 	background:url(../../images/background/bg_black_100.png) repeat;
 	width:85%;
@@ -132,7 +194,52 @@ body{
 .part-3{
 	font-size:1.3em;
 }
+.part-4{
+	font-size:0.7em;
+}
+.part-5{
+	font-size:0.6em;
+}
+.part-yellow{
+	color:#FF0;
+}
+@media screen and (max-width:768px) {
+	.heading-3{
+		font-size:1.5em;
+	}
+	.part-4{
+		font-size:0.6em;
+	}
+	.part-5{
+		font-size:0.5em;
+	}
+}
+@media screen and (max-width:400px) {
+	.heading-3{
+		font-size:1em;
+	}
+	.part-4{
+		font-size:0.5em;
+	}
+	.part-5{
+		font-size:0.4em;
+	}
+}
 
+
+.part-no{
+	font-size:1em;
+}
+.part-sDate, .part-tDate, .part-delay, .part-person, .part-department{
+	font-size:0.5em;
+	margin-left:2%
+}
+.part-header, .part-subject, .part-prosecution, .part-no2{
+	font-size:0.7em;
+}
+.part-unvisible{
+	/*display:none;*/
+}
 /*.part-3{
 	background:url(../../images/background/bg_black_200.png) repeat;
 	width:95%;
@@ -289,11 +396,24 @@ body{
 	overflow:auto;
 }
 
-#morning-note-added-no, #morning-note-added-yes, #morning-note-not-ok{
+#morning-note-added-no, #morning-note-added-yes, #morning-note-not-added-ok{
 	background:url(../../images/background/bg_yellow_50.png) repeat;
 	padding:2% 0%;
 }
-/* Bitis - page7.html */
+/* Bitis - page10.html */
+
+
+
+
+/* Baslangiç - page11.html */
+
+#morning-note-editted-no, #morning-note-editted-yes, #morning-note-not-editted-ok{
+	background:url(../../images/background/bg_yellow_50.png) repeat;
+	padding:2% 0%;
+}
+/* Bitis - page11.html */
+
+
 
 
 

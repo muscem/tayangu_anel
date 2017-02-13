@@ -16,6 +16,7 @@
 
 <script>
 function on_start_this_page(){
+	get_all_statistics();
 }
 </script>
 </head>
@@ -27,23 +28,20 @@ function on_start_this_page(){
 	
     <div id="header">
     	
-        <div class="icon-container-l"><img src="images/arrow-left.png" class="icon title-0 alt-0" title="Geri" alt="Geri" onClick="open_page(pages.main, '', '')" /></div>
+        <div class="icon-container-l"><img src="images/arrow-left.png" class="icon title-0 alt-0" title="Geri" alt="Geri" onClick="open_page('page8.html', '', '')" /></div>
         
     </div>
     
     <div id="content">  
         
-        <div class="heading-2 label-0">Sabah Toplantısı Notları</div>
+        <div class="heading-3 label-0">Sabah Toplantısı Notları İstatistikleri</div>
         
-        <div class="part-2 label-1" onclick="open_page('page10.html', '')">Yeni Not Ekle</div>
-        
-        <div class="part-2 label-2" onclick="open_page('page12.html', '')">Not Ara</div>
-        
-        <div class="part-2 label-3" onclick="open_page('page9.html', '')">Not Listesi</div>
-        
-        <div class="part-2 label-5" onclick="open_page('page14.html', '')">Favori Not Listesi</div>
-        <div class="part-2 label-6" onclick="open_page('page15.html', '')">İstatistikler</div>
+        <div id="morning-notes-statistics">
+    
+    	</div>
+    
     </div>
+    
     
 </div>
 </body>

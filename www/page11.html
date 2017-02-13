@@ -7,11 +7,12 @@
 <link rel="stylesheet" href="codes/css/mycssframework.css">
 <link rel="stylesheet" href="codes/css/main.css">
 <script type="text/javascript" src="cordova.js"></script>
-<script src="codes/js/jquery.js"></script>
-<script src="codes/js/jquery-ui.js"></script>
-<script src="codes/js/languages.js"></script>
-<script src="codes/js/functions_common.js"></script>
-<script src="codes/js/functions.js"></script>
+<script type="text/javascript" src="codes/js/jquery.js"></script>
+<script type="text/javascript" src="codes/js/jquery-ui.js"></script>
+<script type="text/javascript" src="codes/js/jquery-ui-i18n.js"></script>
+<script type="text/javascript" src="codes/js/languages.js"></script>
+<script type="text/javascript" src="codes/js/functions_common.js"></script>
+<script type="text/javascript" src="codes/js/functions.js"></script>
 <script type="text/javascript" src="codes/ckeditor/ckeditor.js"></script>
 
 <script>
@@ -22,6 +23,11 @@ function on_start_this_page(){
 	//addResponsibleDepartment();
 	//alert("cem1");
 	get_morning_note();
+	$( ".date-picker" ).datepicker( $.datepicker.regional[ "tr" ] );
+	$( ".date-picker" ).datepicker({
+	  showOtherMonths: true,
+	  selectOtherMonths: true
+	});
 }
 </script>
 </head>
@@ -29,9 +35,7 @@ function on_start_this_page(){
 <body onload="on_start();">
 <div id="background-logo"></div>
 
-
-
-<div id="wrapper" class="unselectable">
+<div id="wrapper" class="unselectable hide">
 	
     <div id="header">
     	
@@ -47,7 +51,7 @@ function on_start_this_page(){
         <div id="department-list">
         
         
-            <form method="post" action="" id="edit_morning_note_form">
+            <form method="post" action="" name="edit_morning_note_form" id="edit_morning_note_form">
             <div class="grid-100 margin-1">
                 <div class="grid-40 label-1 part-3">No</div>
                 <div class="grid-60"><input type="text" name="note-no" id="note-no" class="form-element-1" />
@@ -56,7 +60,7 @@ function on_start_this_page(){
             
             <div class="grid-100 margin-1">
                 <div class="grid-40 label-2 part-3">Başlangıç Tarihi</div>
-                <div class="grid-60"><input type="text" name="note-start" id="note-start" class="form-element-1" /></div>
+                <div class="grid-60"><input type="text" name="note-start" id="note-start" class="form-element-1 date-picker" /></div>
             </div>
             
             <div class="grid-100 margin-1">
@@ -66,7 +70,7 @@ function on_start_this_page(){
                         <img class="icon" src="images/plus-green.png" onclick="add_target_date();" />
                     </div>
                 </div>
-                <div class="grid-40" id="note-target-date">
+                <div class="grid-40" id="target-date">
                 </div>
             </div>
             

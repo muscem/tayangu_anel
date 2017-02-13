@@ -42,8 +42,8 @@ var pageNo;
 //var siteUrlAdress="http://localhost/uygulamalar/tayangu/an-el/1";
 var siteUrlAdress="http://localhost/my-apps/tayangu/an-el/1";
 //var siteUrlAdress="http://www.tayangu.com.tr/anel";
-//var xmlDataSendAddressAdd="";
-var xmlDataSendAddressAdd="mobile/";
+var xmlDataSendAddressAdd="";
+//var xmlDataSendAddressAdd="mobile/";
 
 var xmlDataSendType="POST";//İnternet sitesinde POST, mobil uygulamalarda GET olacak.
 
@@ -53,14 +53,16 @@ var messages = {
 		"1" : "Sunucuyla ilgili bir sorun olustu. Lütfen sonra tekrar deneyin!",
 		"2" : "Sunucuyla ilgili bir sorun olustu. Lütfen sonra tekrar deneyin!",
 		"3" : "Ad ve soyad kısımlarını doldurun lütfen!",
-		"4" : "Bu kişi kayıtlı zaten!"
+		"4" : "Bu kişi kayıtlı zaten!",
+		"5" : "İsteğiniz yerine getirilemedi. Daha sonra tekrar deyin. Sorun devam ederse yöneticiye bildirin lütfen!"
 	},
 	"en" : {
 		"0" : "Please check username and password then try again!",
 		"1" : "There is a server problem. Please try again later.",
 		"2" : "There is a server problem. Please try again later.",
 		"3" : "Please, fill the name and surname boxes!",
-		"4" : "This person is already saved!" 
+		"4" : "This person is already saved!",
+		"5" : "This jub is not completed. Try again later. If problem will continue, report to administrator please!"
 	}
 }
 
@@ -107,7 +109,9 @@ var elementsName={
 	"morningNotesList":"morning-notes-list",
 	"searchMorningNotesList":"search-morning-notes-list",
 	"morningNote":"morning-note",
-	"morningNoteContent":"morning-note-content"
+	"morningNoteContent":"morning-note-content",
+	"favoriteMorningNotesList":"favorite-morning-notes-list",
+	"morningNotesStatistics":"morning-notes-statistics"
 }
 
 
@@ -121,34 +125,13 @@ var xmlsUrl = {
 	"submitEditMorningNote":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php",
 	"searchMorningNote":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php",
 	"searchAdvancedMorningNote":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php",
-	"getMorningNoteToShow":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php"
+	"getMorningNoteToShow":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php",
+	"updateMorningNoteFavorite":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php",
+	"getFavoriteMorningNotesList":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php",
+	"getMorningNotesStatistics":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes_statistics.php"
 }
 
 
-/*var xmlsUrl = {
-	"userLoginControl":"xmls/xml_login_control.php",
-	"getPeopleList":"xmls/xml_people_list.php",
-	"getDepartmentList":"xmls/xml_department_list.php",
-	"getMorningNotesList":"xmls/xml_morning_notes.php",
-	"submitNewMorningNote":"xmls/xml_morning_notes.php",
-	"getMorningNote":"xmls/xml_morning_notes.php",
-	"submitEditMorningNote":"xmls/xml_morning_notes.php",
-	"searchMorningNote":"xmls/xml_morning_notes.php",
-	"searchAdvancedMorningNote":"xmls/xml_morning_notes.php",
-	"getMorningNoteToShow":"xmls/xml_morning_notes.php"
-}*/
-/*var xmlsUrl = {
-	"userLoginControl":"xmls/mobile/xml_login_control.php",
-	"getPeopleList":"xmls/mobile/xml_people_list.php",
-	"getDepartmentList":"xmls/mobile/xml_department_list.php",
-	"getMorningNotesList":"xmls/mobile/xml_morning_notes.php",
-	"submitNewMorningNote":"xmls/mobile/xml_morning_notes.php",
-	"getMorningNote":"xmls/mobile/xml_morning_notes.php",
-	"submitEditMorningNote":"xmls/mobile/xml_morning_notes.php",
-	"searchMorningNote":"xmls/mobile/xml_morning_notes.php",
-	"searchAdvancedMorningNote":"xmls/mobile/xml_morning_notes.php",
-	"getMorningNoteToShow":"xmls/mobile/xml_morning_notes.php"
-}*/
 
 var xmlsString = {
 	"userLoginControl":"user_login_control",
@@ -167,7 +150,9 @@ var xmlsString = {
 	"submitEditMorningNote":"submit-edit-morning-note",
 	"searchMorningNote":"search-morning-note",
 	"searchAdvancedMorningNote":"search-advanced-morning-note",
-	"getMorningNoteToShow":"get-morning-note-to-show"
+	"getMorningNoteToShow":"get-morning-note-to-show",
+	"updateMorningNoteFavorite":"update-morning-note-favorite",
+	"getFavoriteMorningNotesList":"get-favorite-morning-notes-list"
 }
 
 
@@ -178,66 +163,58 @@ function onDeviceReady() {
 	// Now safe to use the PhoneGap API
 	//alert("Device is ready");
 	//$.support.cors=true;
-	//on_start();
+
+	
 	xmlDataSendType="GET";
 	siteUrlAdress="http://www.tayangu.com.tr/anel";
-	//alert("1");
 	//show_storaged_data();
+	
+	
+/*
 	find_page_number();
 	get_user_prefs();
 	user_control();
 	write_new_language_on_page();
-	//alert("2");
 	on_start_this_page();//Her sayfanın kendi başlangıç kodunun olduğu kod
-	//alert("3");
-	/*show_dev();*/
+	
+*/
+
+
+	startAllPagesWithThis();
+	
 }
 
 
-/*function show_dev(){
-	var d;
-	//alert("4");
-	d="$(window).height()="+$(window).height()+"<br>";
-	//data="$(window).height()="+$(window).height()+"<br>";
-	//alert("5");
-	d+="$(document).height()="+$(document).height()+"<br>";
-	//data+="$(document).height()="+$(document).height()+"<br>";
-	//alert("6");
-	d+="$(window).width()="+$(window).width()+"<br>";
-	//data+="$(window).width()="+$(window).width()+"<br>";
-	//alert("7");
-	d+="$(document).width()="+$(document).width()+"<br>";
-	//data+="$(document).width()="+$(document).width()+"<br>";
-	//alert("8");
-	alert(d);
-	$("#test").html(d);
-}*/
 
 
+function startAllPagesWithThis(){
+	find_page_number();
+	get_user_prefs();
+	user_control();
+	write_new_language_on_page();
+	if($("#wrapper").hasClass("hide")){
+		$("#wrapper").removeClass("hide");
+		$("#background-logo").css("background","url(images/background-logo.jpg) no-repeat top center");
+	}
+	on_start_this_page();
+}
 
 function on_start(){
-	//alert("cem1");
 /*	show_storaged_data();*/
 
-/*	find_page_number();
-	//alert("cem4");
+	//startAllPagesWithThis();
+	
+	
+/*
+	find_page_number();
 	get_user_prefs();
-	//alert("cem2");
 	user_control();
-	//alert("cem3");
 	write_new_language_on_page();
-	//alert("cem4");
 	on_start_this_page();//Her sayfanın kendi başlangıç kodunun olduğu kod
+	
 */	
 	
-	//alert("cem5");
-/*	var data;
-	data="$(window).height()="+$(window).height()+"<br>";
-	data+="$(document).height()="+$(document).height()+"<br>";
-	data+="$(window).width()="+$(window).width()+"<br>";
-	data+="$(document).width()="+$(document).width()+"<br>";
-	
-	$("#test").html(data);*/
+
 }
 
 

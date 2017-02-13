@@ -7,12 +7,14 @@
 <link rel="stylesheet" href="codes/css/mycssframework.css">
 <link rel="stylesheet" href="codes/css/main.css">
 <script type="text/javascript" src="cordova.js"></script>
-<script src="codes/js/jquery.js"></script>
-<script src="codes/js/jquery-ui.js"></script>
-<script src="codes/js/languages.js"></script>
-<script src="codes/js/functions_common.js"></script>
-<script src="codes/js/functions.js"></script>
+<script type="text/javascript" src="codes/js/jquery.js"></script>
+<script type="text/javascript" src="codes/js/jquery-ui.js"></script>
+<script type="text/javascript" src="codes/js/jquery-ui-i18n.js"></script>
+<script type="text/javascript" src="codes/js/languages.js"></script>
+<script type="text/javascript" src="codes/js/functions_common.js"></script>
+<script type="text/javascript" src="codes/js/functions.js"></script>
 <script type="text/javascript" src="codes/ckeditor/ckeditor.js"></script>
+
 
 <script>
 //var personId, personStatus, personName, personSurname;
@@ -20,6 +22,11 @@ function on_start_this_page(){
 	//get_department_list();
 	add_responsible_person();
 	add_responsible_department();
+	$( ".date-picker" ).datepicker( $.datepicker.regional[ "tr" ] );
+	$( ".date-picker" ).datepicker({
+	  showOtherMonths: true,
+	  selectOtherMonths: true
+	});
 }
 </script>
 </head>
@@ -27,9 +34,7 @@ function on_start_this_page(){
 <body onload="on_start();">
 <div id="background-logo"></div>
 
-
-
-<div id="wrapper" class="unselectable">
+<div id="wrapper" class="unselectable hide">
 	
     <div id="header">
         <div class="icon-container-l"><img src="images/arrow-left.png" class="icon title-0 alt-0" title="Geri" alt="Geri" onClick="open_page('page8.html', '', '')" /></div>
@@ -52,7 +57,7 @@ function on_start_this_page(){
                 
                 <div class="grid-100 margin-1">
                     <div class="grid-40 label-2 part-3">Başlangıç Tarihi</div>
-                    <div class="grid-60"><input type="text" name="start" class="form-element-1" /></div>
+                    <div class="grid-60"><input type="text" name="start" class="form-element-1 date-picker" /></div>
                 </div>
                 
                 <div class="grid-100 margin-1">
@@ -64,7 +69,7 @@ function on_start_this_page(){
                     </div>
                     <div class="grid-40" id="target-date">
                         <div class="grid-100">
-                            <input type="text" name="target[]"  class="form-element-1 left" />
+                            <input type="text" name="target[]"  class="form-element-1 left date-picker" />
                             <div class="icon-container-l-2 margin-left-3">
                             	<img class="icon" src="images/minus-red.png" onclick="delete_target_date(this);" />
                             </div>
@@ -91,12 +96,7 @@ function on_start_this_page(){
                 
                 <div class="grid-100 margin-1">
                     <div class="grid-40 label-7 part-3">Konu</div>
-                    <div class="grid-60"><textarea name="subject"  class="form-element-1"></textarea></div>
-                </div>
-                
-                <div class="grid-100 margin-1">
-                    <div class="grid-40 label-8 part-3">Araştırma</div>
-                    <div class="grid-60"><textarea name="prosecution"  class="form-element-1"></textarea></div>
+                    <div class="grid-60"><textarea name="subject" class="form-element-1" style="width:100%; height:6em" ></textarea></div>
                 </div>
                 
                 <div class="grid-100 margin-1">
@@ -123,8 +123,13 @@ function on_start_this_page(){
                 </div>
                 
                 <div class="grid-100 margin-1">
+                    <div class="grid-40 label-8 part-3">Araştırma</div>
+                    <div class="grid-60"><textarea name="prosecution" class="form-element-1" style="width:100%; height:6em"></textarea></div>
+                </div>
+                
+                <div class="grid-100 margin-1">
                     <div class="grid-40 label-11 part-3">Notlarım</div>
-                    <div class="grid-60"><textarea name="my-notes"  class="form-element-1"></textarea></div>
+                    <div class="grid-60"><textarea name="my-notes" class="form-element-1" style="width:100%; height:6em"></textarea></div>
                 </div>
                 
                 <input type="button" name="kaydet" value="Kaydet" onclick="submit_new_morning_note_form();" class="form-element-1 label-12" />
