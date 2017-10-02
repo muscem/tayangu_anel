@@ -43,8 +43,8 @@ var pageNo;
 //var siteUrlAdress="http://localhost/uygulamalar/tayangu/an-el/1";
 //var siteUrlAdress="http://localhost/my-apps/tayangu/an-el/1";
 var siteUrlAdress="http://www.tayangu.com.tr/anel";
-var xmlDataSendAddressAdd="";
-//var xmlDataSendAddressAdd="mobile/";
+//var xmlDataSendAddressAdd="";
+var xmlDataSendAddressAdd="mobile/";
 
 var xmlDataSendType="GET";//İnternet sitesinde POST, mobil uygulamalarda GET olacak.
 
