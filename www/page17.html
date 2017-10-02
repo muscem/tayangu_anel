@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Tayangu</title>
+<link rel="stylesheet" href="codes/css/jquery-ui.css">
+<link rel="stylesheet" href="codes/css/mycssframework.css">
+<link rel="stylesheet" href="codes/css/main.css">
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="codes/js/jquery.js"></script>
+<script type="text/javascript" src="codes/js/jquery-ui.js"></script>
+<script type="text/javascript" src="codes/js/jquery-ui-i18n.js"></script>
+<script type="text/javascript" src="codes/js/languages.js"></script>
+<script type="text/javascript" src="codes/js/functions_common.js"></script>
+<script type="text/javascript" src="codes/js/functions.js"></script>
+
+<script>
+//var personId, personStatus, personName, personSurname;
+function on_start_this_page(){
+	add_proposal_person();
+	add_proposal_person_department();
+	add_kaizen_responsible_group();
+	add_kaizen_type();
+	
+	add_proposal_refree();
+	$(".proposal-refree-select:last option:contains('Ergun ÇELİK')").attr("selected", true);
+	add_proposal_refree();
+	$(".proposal-refree-select:last option:contains('İsa UYSAL')").attr("selected", true);
+	add_proposal_refree();
+	$(".proposal-refree-select:last option:contains('Murathan ARSLAN')").attr("selected", true);
+	add_proposal_refree();
+	$(".proposal-refree-select:last option:contains('Yağmur ÖZCAN')").attr("selected", true);
+	add_proposal_refree();
+	$(".proposal-refree-select:last option:contains('Yalçın ÖDEL')").attr("selected", true);
+	sum_refree_points();//Point kısmına 0 yazsın diye
+	$(".date-picker").datepicker( $.datepicker.regional[ "tr" ] );
+	$(".date-picker").datepicker({
+	  showOtherMonths: true,
+	  selectOtherMonths: true
+	});
+}
+</script>
+</head>
+
+<body onload="on_start();">
+<div id="background-logo"></div>
+
+<div id="wrapper" class="unselectable hide">
+	
+    <div id="header">
+        <div class="icon-container-l"><img src="images/arrow-left.png" class="icon title-0 alt-0" title="Geri" alt="Geri" onClick="open_page('page16.html', '', '')" /></div>
+        
+        <div class="icon-container-l margin-left-5"><img src="images/home.png" class="icon title-1 alt-1" title="Ana Sayfa" alt="Ana Sayfa" onClick="open_page(pages.main, '', '')" /></div>
+    </div>
+    
+    <div id="content">
+        
+        <div class="heading-2 label-0">Yeni Kaizen Önerisi Ekleme</div>
+        
+        <div id="morning_note-list">
+        
+        
+            <form method="post" action="" id="new_kaizen_form" name="new_kaizen_form">
+                <div class="grid-100 margin-1">
+                    <div class="grid-40 label-1 part-3">No</div>
+                    <div class="grid-60"><input type="text" name="no"  class="form-element-1" /></div>
+                </div>
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-40 label-2 part-3">Tarih</div>
+                    <div class="grid-60"><input type="text" name="date" class="form-element-1 date-picker" /></div>
+                </div>
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-40 label-2 part-3">Bitiş</div>
+                    <div class="grid-60"><input type="text" name="finished" class="form-element-1 date-picker" /></div>
+                </div>
+                
+                                
+                <div class="grid-100 margin-1">
+                    <div class="grid-40 label-7 part-3">Öneri (Sorun)</div>
+                    <div class="grid-60"><textarea name="proposal-problem" class="form-element-1" style="width:100%; height:6em" ></textarea></div>
+                </div>
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-40 label-8 part-3">Öneri (Çözüm)</div>
+                    <div class="grid-60"><textarea name="proposal-solution" class="form-element-1" style="width:100%; height:6em"></textarea></div>
+                </div>
+                
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-40">
+                        <span class="label-10 left part-3">Öneriyi Yapan</span>
+                        <!--<div class="icon-container-l-2 margin-left-3">
+                        	<img class="icon" src="images/plus-green.png" onclick="add_proposal_person();" />
+                        </div>-->
+                    </div>
+                    <div class="grid-40" id="prop-pers">
+                        
+                    </div>
+                </div>
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-40">
+                        <span class="label-9 left part-3">Bölüm</span>
+                        <!--<div class="icon-container-l-2 margin-left-3">
+	                        <img class="icon" src="images/plus-green.png" onclick="add_proposal_person_department();" />
+                        </div>-->
+                    </div>
+                    <div class="grid-40" id="prop-resp-dep">
+                    </div>
+                </div>
+                
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-40">
+                        <span class="label-10 left part-3">Sorumlu Grup</span>
+                        <!--<div class="icon-container-l-2 margin-left-3">
+                        	<img class="icon" src="images/plus-green.png" onclick="add_kaizen_responsible_person();" />
+                        </div>-->
+                    </div>
+                    <div class="grid-40" id="kaizen-resp-group">
+                        
+                    </div>
+                </div>
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-40">
+                        <span class="label-10 left part-3">Kaizen Türü</span>
+                        <!--<div class="icon-container-l-2 margin-left-3">
+                        	<img class="icon" src="images/plus-green.png" onclick="add_kaizen_responsible_person();" />
+                        </div>-->
+                    </div>
+                    <div class="grid-40" id="kaizen-type-container">
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-40 label-8 part-3">Onay</div>
+                    <div class="grid-60"><select name="approval" id="approval" class="form-element-1" onclick="changeRefreeApproval();">
+                    	<option value="0">---</option>
+                        <option value="1">Onaylanmış</option>
+                        <option value="2">Red Edilmiş</option>
+                    </select>
+                	</div>
+                </div>
+                
+                
+                
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-40">
+                        <span class="label-10 left part-3">Hakemler</span>
+                        <div class="icon-container-l-2 margin-left-3">
+                        	<img class="icon" src="images/plus-green.png" onclick="add_proposal_refree();" />
+                        </div>
+                    </div>
+                    <div class="grid-40" id="kaizen-refrees">
+                        
+                    </div>
+                </div>
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-40 label-8 part-3">Puan</div>
+                    <div class="grid-60"><input type="text" name="point" id="point" class="form-element-1" disabled="disabled" /></div>
+                </div>
+                
+                <div class="grid-100 margin-1">
+                    <div class="grid-40 label-11 part-3">Notlarım</div>
+                    <div class="grid-60"><textarea name="my-note" class="form-element-1" style="width:100%; height:6em"></textarea></div>
+                </div>
+                
+                <input type="button" name="kaydet" value="Kaydet" onclick="submit_new_kaizen_form();" class="form-element-1 label-12" />
+            </form>
+
+
+
+        </div>
+        
+    </div>
+    
+</div>
+
+
+<div id="kaizen-added" class="hide">
+    <div class="kaizen-part label-13">Kaizen önerisi başarıyla kaydedildi.</div>
+    
+    <div class="kaizen-part label-14">Yeni bir kaizen önerisi girmek ister misiniz?</div>
+    
+    <div class="kaizen-part">
+        <div id="kaizen-added-yes" class="grid2-40 center label-15">Evet</div>
+        <div id="kaizen-added-no" class="grid2-40 center label-16 margin-left-20">Hayır</div>
+    </div>
+</div>
+
+<div id="kaizen-not-added" class="hide">
+    <div class="kaizen-part label-17">Bir sorun oluştu ve kaizen önerisi kaydedilemedi.</div>
+    
+    <div class="kaizen-part">
+        <div id="kaizen-not-added-ok" class="grid2-60 center label-18 margin-left-20">Tamam</div>
+    </div>
+</div>
+
+
+</body>
+</html>

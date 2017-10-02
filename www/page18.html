@@ -16,10 +16,10 @@
 
 <script>
 var firstNoteId, lastNoteId, getNotes, noteCount, searchMode, wScrollTop;
-firstNoteId=0;
-lastNoteId=0;
-getNotes=0;
-noteCount=1;
+firstKaizenId=0;
+lastKaizenId=0;
+getKaizens=0;
+kaizenCount=1;
 searchMode="";
 wScrollTop=0;
 filterOn=0;
@@ -27,7 +27,15 @@ function on_start_this_page(){
 //		get_morning_notes_list();
 //		while($(window).height() >= $(document).height()*0.95){
 //			on_start_this_page();
-//		}	
+//		}
+
+
+	add_kaizen_type();
+	
+	add_proposal_person();
+	add_proposal_person_department();
+	add_kaizen_responsible_group('0');
+		
 	$( ".date-picker" ).datepicker( $.datepicker.regional[ "tr" ] );
 	$( ".date-picker" ).datepicker({
 	  showOtherMonths: true,
@@ -36,15 +44,15 @@ function on_start_this_page(){
 }
 
 function windows_size_check_after_search(){
-	if(getNotes==0) {
+	if(getKaizens==0) {
 		while($(window).height() >= $(document).height()*0.95){
 			if(searchMode=="basic"){
-					getNotes=1;
-					get_search_morning_note();
+					getKaizens=1;
+					get_search_kaizen();
 			}
 			else if(searchMode=="advanced"){
-				getNotes=1;
-				get_search_advanced_morning_note();
+				getKaizens=1;
+				get_search_advanced_kaizen();
 	
 			}
 		}
@@ -54,14 +62,14 @@ function windows_size_check_after_search(){
 $(window).scroll(function(){
 	if(wScrollTop<$(window).scrollTop()){
 		if($(window).scrollTop() + $(window).height() > $(document).height()*0.9){
-			if(getNotes==0) {
+			if(getKaizens==0) {
 				if(searchMode=="basic"){
-					getNotes=1;
-					get_search_morning_note();
+					getKaizens=1;
+					get_search_kaizen();
 				}
 				else if(searchMode=="advanced"){
-					getNotes=1;
-					get_search_advanced_morning_note();
+					getKaizens=1;
+					get_search_advanced_kaizen();
 				}
 			}
 		}
@@ -80,7 +88,7 @@ $(window).scroll(function(){
 	
     <div id="header">
     	
-        <div class="icon-container-l"><img src="images/arrow-left.png" class="icon title-0 alt-0" title="Geri" alt="Geri" onClick="open_page('page8.html', '', '')" /></div>
+        <div class="icon-container-l"><img src="images/arrow-left.png" class="icon title-0 alt-0" title="Geri" alt="Geri" onClick="open_page('page16.html', '', '')" /></div>
         
         <div class="icon-container-l margin-left-5"><img src="images/home.png" class="icon title-1 alt-1" title="Ana Sayfa" alt="Ana Sayfa" onClick="open_page(pages.main, '', '')" /></div>
         
@@ -100,48 +108,58 @@ $(window).scroll(function(){
     
         <div class="icon-container-l-3">
 			<img src="images/number.png" class="icon2 title-5 alt-5" title="Numara" alt="Numara"/>
-    		<input id="filter-number" size="10" onkeyup="filter_notes(elementsName.searchMorningNotesList);" class="form-element-1"/>
+    		<input id="filter-number" size="10" onkeyup="filter_kaizens(elementsName.searchKaizensList);" class="form-element-1"/>
         </div>
         
         <div class="icon-container-l-3">
-            <img src="images/start.png" class="icon2 title-6 alt-6" title="Başlangıç" alt="Başlangıç"/>
-            <input id="filter-start" size="10" onkeyup="filter_notes(elementsName.searchMorningNotesList);" class="form-element-1"/>
+            <img src="images/start.png" class="icon2 title-6 alt-6" title="Tarih" alt="Tarih"/>
+            <input id="filter-date" size="10" onkeyup="filter_kaizens(elementsName.searchKaizensList);" class="form-element-1"/>
         </div>
         
         <div class="icon-container-l-3">
-            <img src="images/target.png" class="icon2 title-7 alt-7" title="Hedef" alt="Hedef"/>
-            <input id="filter-target" size="10" onkeyup="filter_notes(elementsName.searchMorningNotesList);" class="form-element-1"/>
+            <img src="images/working.png" class="icon2 title-8 alt-8" title="Problem Önerisi" alt="Problem Önerisi"/>
+            <input id="filter-problem" size="10" onkeyup="filter_kaizens(elementsName.searchKaizensList);" class="form-element-1"/>
+        </div>
+        
+        <div class="icon-container-l-3">
+            <img src="images/working.png" class="icon2 title-8 alt-8" title="Çözüm Önerisi" alt="Çözüm Önerisi"/>
+            <input id="filter-solution" size="10" onkeyup="filter_kaizens(elementsName.searchKaizensList);" class="form-element-1"/>
         </div>
         
         <div class="icon-container-l-3">
             <img src="images/working.png" class="icon2 title-8 alt-8" title="Kişi" alt="Kişi"/>
-            <input id="filter-person" size="10" onkeyup="filter_notes(elementsName.searchMorningNotesList);" class="form-element-1"/>
+            <input id="filter-person" size="10" onkeyup="filter_kaizens(elementsName.searchKaizensList);" class="form-element-1"/>
         </div>
         
         <div class="icon-container-l-3">
             <img src="images/departments.png" class="icon2 title-9 alt-9" title="Bölüm" alt="Bölüm"/>
-            <input id="filter-department" size="10" onkeyup="filter_notes(elementsName.searchMorningNotesList);" class="form-element-1"/>
+            <input id="filter-department" size="10" onkeyup="filter_kaizens(elementsName.searchKaizensList);" class="form-element-1"/>
         </div>
         
         <div class="icon-container-l-3">
-            <img src="images/delay.png" class="icon2 title-10 alt-10" title="Gecikme" alt="Gecikme"/>
-            <input id="filter-delay" size="10" onkeyup="filter_notes(elementsName.searchMorningNotesList);" class="form-element-1"/>
+            <img src="images/departments.png" class="icon2 title-9 alt-9" title="Grup" alt="Grup"/>
+            <input id="filter-group" size="10" onkeyup="filter_kaizens(elementsName.searchKaizensList);" class="form-element-1"/>
         </div>
         
+        <div class="icon-container-l-3">
+            <img src="images/departments.png" class="icon2 title-9 alt-9" title="Kaizen Türü" alt="Kaizen Türü"/>
+            <input id="filter-kaizen-type" size="10" onkeyup="filter_kaizens(elementsName.searchKaizensList);" class="form-element-1"/>
+        </div>
         
         <div class="icon-container-l-3">
-            <img src="images/finished.png" class="icon2 title-11 alt-1" title="Bitiş" alt="Bitiş"/>
-            <select id="filter-finished" onchange="filter_notes(elementsName.searchMorningNotesList);" class="form-element-1">
+            <img src="images/finished.png" class="icon2 title-11 alt-1" title="Onay" alt="Onay"/>
+            <select id="filter-approval" onchange="filter_kaizens(elementsName.searchKaizensList);" class="form-element-1">
             <option value="-1">---</option>
-            <option value="0">Bitmiş</option>
-            <option value="1">Bitmemiş</option>
+            <option value="0">Beklemede</option>
+            <option value="1">Onaylanmış</option>
+            <option value="2">Red Edilmiş</option>
             </select>
         </div>
         
         
         <div class="icon-container-l-3">
             <img src="images/favorite.png" class="icon2 title-12 alt-12" title="Favori" alt="Favori"/>
-            <select id="filter-favorite" onchange="filter_notes(elementsName.searchMorningNotesList);" class="form-element-1">
+            <select id="filter-favorite" onchange="filter_kaizens(elementsName.searchKaizensList);" class="form-element-1">
             <option value="-1">---</option>
             <option value="0">Favori</option>
             <option value="1">Favori değil</option>
@@ -149,7 +167,7 @@ $(window).scroll(function(){
         </div>
         
         <div class="icon-container-l-4">
-        	<img src="images/ok_not.png" class="icon3 title-13 alt-13" title="Filtreyi Temizle" alt="Filtreyi Temizle" onclick="clear_filter_box(elementsName.searchMorningNotesList);"/>
+        	<img src="images/ok_not.png" class="icon3 title-13 alt-13" title="Filtreyi Temizle" alt="Filtreyi Temizle" onclick="clear_filter_kaizen_box(elementsName.searchKaizensList);"/>
         </div>
     
     </div>
@@ -157,12 +175,12 @@ $(window).scroll(function(){
     
     <div id="content">
         
-        <div class="heading-2 label-0">Sabah Toplantısı Notu Arama</div>
+        <div class="heading-2 label-0">Kaizen Önerisi Arama</div>
         
         <div id="morning-notes-search">
             <div id="morning-notes-search-basic" class="grid-100">
                 <div class="grid2-50"><input type="text" name="aranacak" id="aranacak" onchange="stop_search();" class="form-element-1" /></div>
-                <div class="grid2-50"><input type="button" name="ara" id="ara" onclick="search_morning_note()" value="Ara" class="form-element-1 label-1" /></div>
+                <div class="grid2-50"><input type="button" name="ara" id="ara" onclick="search_kaizen()" value="Ara" class="form-element-1 label-1" /></div>
             </div>
             
             <div id="morning-notes-search-advanced" class="grid-100 hide">
@@ -184,7 +202,7 @@ $(window).scroll(function(){
                     
                     <div class="grid-100 margin-1">
                         <div class="grid-40">
-                        <span class="label-3 left part-3">Başlangıç Tarihi</span>
+                        <span class="label-3 left part-3">Tarih</span>
                             <div class="icon-container-l-2 margin-left-3">
                             	<img class="icon" src="images/between-grey.png" onclick="change_between_display(this);" />
                          	</div>
@@ -197,105 +215,115 @@ $(window).scroll(function(){
                         </div>
                     </div>
                     
-                    <div class="grid-100 margin-1">
-                        <div class="grid-40">
-                        	<span class="label-4 left part-3">Hedef Tarih</span>
-                            <div class="icon-container-l-2 margin-left-3">
-                            	<img class="icon" src="images/between-grey.png" onclick="change_between_display(this);" />
-                            </div>
-                        </div>
-                        <div class="grid-30">
-                        	<input type="text" name="target1"  class="form-element-1 date-picker" onchange="stop_search();" />
-                        </div>
-                        <div class="grid-30 hide">
-                        	<input type="text" name="target2"  class="form-element-1 date-picker" onchange="stop_search();" />
-                        </div>
-                    </div>
                     
                     <div class="grid-100 margin-1">
-                        <div class="grid-40 label-5 part-3">Bitmiş</div>
+                        <div class="grid-40 label-8 part-3">Öneri (sorun)</div>
                         <div class="grid-60">
-                            <select name="finished" class="form-element-1 sOption-0" onchange="stop_search();">
-                                <option value="2">---</option>
-                                <option value="0">Sadece Bitmemişlerde</option>
-                                <option value="1">Sadece Bitmişlerde</option>
-                            </select>
+                        	<textarea name="proposal-problem" class="form-element-1" style="width:100%; height:6em" onchange="stop_search();"></textarea>
                         </div>
                     </div>
                     
                     <div class="grid-100 margin-1">
-                        <div class="grid-40">
-                        	<span class="label-6 left part-3">Gecikme</span>
-                        	<div class="icon-container-l-2 margin-left-3">
-                            	<img class="icon" src="images/between-grey.png" onclick="change_between_display(this);" />
-                            </div>
-                        </div>
-                        <div class="grid-30">
-                        	<input type="text" name="delay1" class="form-element-1" onchange="stop_search();" />
-                        </div>
-                        <div class="grid-30 hide">
-                        	<input type="text" name="delay2" class="form-element-1" onchange="stop_search();" />
-                        </div>
-                    </div>
-                    
-                    <div class="grid-100 margin-1">
-                        <div class="grid-40 label-7 part-3">Başlık</div>
+                        <div class="grid-40 label-8 part-3">Öneri (Çözüm)</div>
                         <div class="grid-60">
-                        	<input type="text" name="header" class="form-element-1" onchange="stop_search();" />
+                        	<textarea name="proposal-solution" class="form-element-1" style="width:100%; height:6em" onchange="stop_search();"></textarea>
                         </div>
                     </div>
                     
-                    <div class="grid-100 margin-1">
-                        <div class="grid-40 label-8 part-3">Konu</div>
-                        <div class="grid-60">
-                        	<textarea name="subject" class="form-element-1" style="width:100%; height:6em" onchange="stop_search();"></textarea>
-                        </div>
-                    </div>
-                             
-                    <div class="grid-100 margin-1">
-                        <div class="grid-40">
-                        	<span class="label-10 left part-3">Sorumlu Birim</span>
-                            <div class="icon-container-l-2 margin-left-3">
-	                            <img class="icon" src="images/plus-green.png" onclick="add_responsible_department();" />
-                            </div>
-                        </div>
-                        <div class="grid-60" id="resp-dep">
-                        </div>
-                    </div>
+                    
                     
                     <div class="grid-100 margin-1">
                         <div class="grid-40">
-	                        <span class="label-11 left part-3">Sorumlu Kişi</span>
-    	                    <div class="icon-container-l-2 margin-left-3">
-        	                    <img class="icon" src="images/plus-green.png" onclick="add_responsible_person();" />
-                            </div>
+	                        <span class="label-11 left part-3">Öneriyi Yapan</span>
                         </div>
-                        <div class="grid-60" id="resp-pers">
+                        <div class="grid-60" id="prop-pers">
                             
                         </div>
                     </div>
                     
                     <div class="grid-100 margin-1">
-                        <div class="grid-40 label-9 part-3">Araştırma</div>
-                        <div class="grid-60">
-                        	<textarea name="prosecution"  class="form-element-1" style="width:100%; height:6em" onchange="stop_search();"></textarea>
+                        <div class="grid-40">
+                        	<span class="label-10 left part-3">Bölüm</span>
+                        </div>
+                        <div class="grid-60" id="prop-resp-dep">
                         </div>
                     </div>
                     
-                    <div class="grid-100 margin-1 part-3">
-                        <div class="grid-40 label-12">Notlarım</div>
-                        <div class="grid-60">
-                        	<textarea name="my-notes"  class="form-element-1" style="width:100%; height:6em" onchange="stop_search();"></textarea>
+                    
+                    <div class="grid-100 margin-1">
+                        <div class="grid-40">
+                        	<span class="label-10 left part-3">Sorumlu Grup</span>
+                        </div>
+                        <div class="grid-60" id="kaizen-resp-group">
                         </div>
                     </div>
                     
-                    <input type="button" name="ara" value="Ara" onclick="search_advanced_morning_note();" class="form-element-1 label-13" />
+                    <div class="grid-100 margin-1">
+                        <div class="grid-40">
+                        	<span class="label-10 left part-3">Kaizen Türü</span>
+                        </div>
+                        <div class="grid-60" id="kaizen-type-container">
+                        </div>
+                    </div>
+                    
+                    <div class="grid-100 margin-1">
+                        <div class="grid-40">
+                        	<span class="label-10 left part-3">Onay</span>
+                        </div>
+                        <div class="grid-60">
+                            <select name="approval" id="approval" class="form-element-1">
+                                <option value="-1">---</option>
+                                <option value="0">Henüz Değerlendirilmemiş</option>
+                                <option value="1">Onaylanmış</option>
+                                <option value="2">Red Edilmiş</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="grid-100 margin-1">
+                        <div class="grid-40">
+                        	<span class="label-10 left part-3">Hakemler</span>
+                            <div class="icon-container-l-2 margin-left-3">
+                                <img class="icon" src="images/plus-green.png" onclick="add_proposal_refree_for_search();" />
+                            </div>
+                        </div>
+                        <div class="grid-40" id="kaizen-refrees">
+                        
+                    	</div>
+                    </div>
+                    
+                    <div class="grid-100 margin-1">
+                        <div class="grid-40">
+                        	<span class="label-2 left part-3">Puan</span>
+                            <div class="icon-container-l-2 margin-left-3">
+                        		<img class="icon" src="images/between-grey.png" onclick="change_between_display(this);" />
+                            </div>
+                        </div>
+                        <div class="grid-30">
+                        	<input type="text" name="point1" class="form-element-1" onchange="stop_search();" />
+                        </div>
+                        <div class="grid-30 hide">
+                        	<input type="text" name="point2" class="form-element-1" onchange="stop_search();" />
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="grid-100 margin-1">
+                        <div class="grid-40 label-8 part-3">Notlarım</div>
+                        <div class="grid-60">
+                        	<textarea name="my-notes" class="form-element-1" style="width:100%; height:6em" onchange="stop_search();"></textarea>
+                        </div>
+                    </div>
+                    
+                    
+                    <input type="button" name="ara" value="Ara" onclick="search_advanced_kaizen();" class="form-element-1 label-13" />
             	</form>
             </div>
             
         </div>
         
-        <div id="search-morning-notes-list"></div>
+        <div id="search-kaizens-list"></div>
         
     </div>
     

@@ -800,7 +800,7 @@ function add_department_to_database(){
 			async: false,		
 			type: xmlDataSendType,
 			crossDomain: true,
-			url: siteUrlAdress+"/"+xmlsUrl.getDepartmentList,
+			url: siteUrlAdress+"/"+xmlsUrl.addDepartment,
 			timeout: 260000,
 			data: {un:userPref.uName,
 					p:userPref.uPassword,
@@ -906,7 +906,8 @@ function get_morning_notes_list(){
 			
 			
 			data+='<div class="grid-100" onclick="show_hide_part_unvisible(this);"><hr /></div>';
-			data+='<div class="grid-100 part-subject" onclick="show_hide_part_unvisible(this);">'+$(this).find('subject').text()+'</div>';
+			//alert(rnTobr($(this).find('subject').text())+"-"+$(this).find('subject').text());
+			data+='<div class="grid-100 part-subject" onclick="show_hide_part_unvisible(this);">'+rnTobr($(this).find('subject').text())+'</div>';
 			
 			
 			data+='<div class="grid-100 part-unvisible hide" onclick="show_hide_part_unvisible(this);">';
@@ -915,12 +916,12 @@ function get_morning_notes_list(){
 			
 			if($(this).find('prosecution').text().trim()!=""){
 				data+='<div class="grid-100"><hr /></div>';
-				data+='<div class="grid-100 part-prosecution">'+$(this).find('prosecution').text()+'</div>';
+				data+='<div class="grid-100 part-prosecution">'+rnTobr($(this).find('prosecution').text())+'</div>';
 			}
 			
 			if($(this).find('myNote').text().trim()!=""){
 				data+='<div class="grid-100"><hr /></div>';
-				data+='<div class="grid-100">'+$(this).find('myNote').text()+'</div>';
+				data+='<div class="grid-100">'+rnTobr($(this).find('myNote').text())+'</div>';
 			}
 			
 			data+='<div class="grid-100"><hr /></div>';
@@ -1138,7 +1139,7 @@ function submit_new_morning_note_form(){
 					$("#morning-note-added").removeClass("hide");
 				}
 				else{
-					$("#morning-note-not-dded").removeClass("hide");
+					$("#morning-note-not-added").removeClass("hide");
 				}
 			})
 			
@@ -1242,6 +1243,8 @@ function submit_edit_morning_note_form(){
 	var frm = $('#edit_morning_note_form');
 	var d;
 	d=frm.serialize()+"&un="+userPref.uName+"&p="+userPref.uPassword+"&s="+xmlsString.submitEditMorningNote;
+	//alert(d);
+	//return false;
 	$.ajax({
 		type: xmlDataSendType,
 		crossDomain: true,
@@ -1256,7 +1259,7 @@ function submit_edit_morning_note_form(){
 					$("#morning-note-added").removeClass("hide");
 				}
 				else{
-					$("#morning-note-not-dded").removeClass("hide");
+					$("#morning-note-not-added").removeClass("hide");
 				}
 			})
 			
@@ -1322,7 +1325,7 @@ function search_morning_note(){
 
 function get_search_morning_note(){
 	var search_keyword=$("#aranacak").val();
-	
+	//alert("cem\r\ncem");
 	$.ajax({
 		async: false,		
 		type: xmlDataSendType,
@@ -1384,8 +1387,8 @@ function get_search_morning_note(){
 			
 			
 			data+='<div class="grid-100" onclick="show_hide_part_unvisible(this);"><hr /></div>';
-			data+='<div class="grid-100 part-subject" onclick="show_hide_part_unvisible(this);">'+$(this).find('subject').text()+'</div>';
-			
+			data+='<div class="grid-100 part-subject" onclick="show_hide_part_unvisible(this);">'+rnTobr($(this).find('subject').text())+'</div>';
+			//alert(rnTobr($(this).find('subject').html())+"-"+$(this).find('subject').html());
 			
 			data+='<div class="grid-100 part-unvisible hide" onclick="show_hide_part_unvisible(this);">';
 			
@@ -1393,18 +1396,18 @@ function get_search_morning_note(){
 			
 			if($(this).find('prosecution').text().trim()!=""){
 				data+='<div class="grid-100"><hr /></div>';
-				data+='<div class="grid-100 part-prosecution">'+$(this).find('prosecution').text()+'</div>';
+				data+='<div class="grid-100 part-prosecution">'+rnTobr($(this).find('prosecution').text())+'</div>';
 			}
 			
 			if($(this).find('myNote').text().trim()!=""){
 				data+='<div class="grid-100"><hr /></div>';
-				data+='<div class="grid-100">'+$(this).find('myNote').text()+'</div>';
+				data+='<div class="grid-100">'+rnTobr($(this).find('myNote').text())+'</div>';
 			}
 			
 			data+='<div class="grid-100"><hr /></div>';
 			
 			data+='<div class="grid-100">';
-			data+='<div class="grid2-40 part-sDate">'+$(this).find('sDate').text()+'</div>';
+			data+='<div class="grid2-40 part-sDate">'+rnTobr($(this).find('sDate').text())+'</div>';
 			tDate="";
 			i=0;
 			$(this).find('tDate').each(function(index, element){
@@ -1485,7 +1488,6 @@ function search_advanced_morning_note(){
 }
 
 function get_search_advanced_morning_note(){
-	//alert("cem1");
 	var frm = $('#morning_note_advanced_search_form');
 	var d;
 	d=frm.serialize()+"&un="+userPref.uName+"&p="+userPref.uPassword+"&s="+xmlsString.searchAdvancedMorningNote+"&fId="+firstNoteId+"&lId="+lastNoteId;
@@ -1542,7 +1544,7 @@ function get_search_advanced_morning_note(){
 			
 			
 			data+='<div class="grid-100" onclick="show_hide_part_unvisible(this);"><hr /></div>';
-			data+='<div class="grid-100 part-subject" onclick="show_hide_part_unvisible(this);">'+$(this).find('subject').text()+'</div>';
+			data+='<div class="grid-100 part-subject" onclick="show_hide_part_unvisible(this);">'+rnTobr($(this).find('subject').text())+'</div>';
 			
 			
 			data+='<div class="grid-100 part-unvisible hide" onclick="show_hide_part_unvisible(this);">';
@@ -1551,12 +1553,12 @@ function get_search_advanced_morning_note(){
 			
 			if($(this).find('prosecution').text().trim()!=""){
 				data+='<div class="grid-100"><hr /></div>';
-				data+='<div class="grid-100 part-prosecution">'+$(this).find('prosecution').text()+'</div>';
+				data+='<div class="grid-100 part-prosecution">'+rnTobr($(this).find('prosecution').text())+'</div>';
 			}
 			
 			if($(this).find('myNote').text().trim()!=""){
 				data+='<div class="grid-100"><hr /></div>';
-				data+='<div class="grid-100">'+$(this).find('myNote').text()+'</div>';
+				data+='<div class="grid-100">'+rnTobr($(this).find('myNote').text())+'</div>';
 			}
 			
 			data+='<div class="grid-100"><hr /></div>';
@@ -1701,7 +1703,7 @@ function show_morning_note(){
 			
 			
 			data+='<div class="grid-100" onclick="show_hide_part_unvisible(this);"><hr /></div>';
-			data+='<div class="grid-100 part-subject" onclick="show_hide_part_unvisible(this);">'+$(this).find('subject').text()+'</div>';
+			data+='<div class="grid-100 part-subject" onclick="show_hide_part_unvisible(this);">'+rnTobr($(this).find('subject').text())+'</div>';
 			
 			
 			data+='<div class="grid-100 part-unvisible hide" onclick="show_hide_part_unvisible(this);">';
@@ -1710,12 +1712,12 @@ function show_morning_note(){
 			
 			if($(this).find('prosecution').text().trim()!=""){
 				data+='<div class="grid-100"><hr /></div>';
-				data+='<div class="grid-100 part-prosecution">'+$(this).find('prosecution').text()+'</div>';
+				data+='<div class="grid-100 part-prosecution">'+rnTobr($(this).find('prosecution').text())+'</div>';
 			}
 			
 			if($(this).find('myNote').text().trim()!=""){
 				data+='<div class="grid-100"><hr /></div>';
-				data+='<div class="grid-100">'+$(this).find('myNote').text()+'</div>';
+				data+='<div class="grid-100">'+rnTobr($(this).find('myNote').text())+'</div>';
 			}
 			
 			data+='<div class="grid-100"><hr /></div>';
@@ -1842,7 +1844,7 @@ function get_favorite_morning_notes_list(){
 			
 			
 			data+='<div class="grid-100" onclick="show_hide_part_unvisible(this);"><hr /></div>';
-			data+='<div class="grid-100 part-subject" onclick="show_hide_part_unvisible(this);">'+$(this).find('subject').text()+'</div>';
+			data+='<div class="grid-100 part-subject" onclick="show_hide_part_unvisible(this);">'+rnTobr($(this).find('subject').text())+'</div>';
 			
 			
 			data+='<div class="grid-100 part-unvisible hide" onclick="show_hide_part_unvisible(this);">';
@@ -1851,12 +1853,12 @@ function get_favorite_morning_notes_list(){
 			
 			if($(this).find('prosecution').text().trim()!=""){
 				data+='<div class="grid-100"><hr /></div>';
-				data+='<div class="grid-100 part-prosecution">'+$(this).find('prosecution').text()+'</div>';
+				data+='<div class="grid-100 part-prosecution">'+rnTobr($(this).find('prosecution').text())+'</div>';
 			}
 			
 			if($(this).find('myNote').text().trim()!=""){
 				data+='<div class="grid-100"><hr /></div>';
-				data+='<div class="grid-100">'+$(this).find('myNote').text()+'</div>';
+				data+='<div class="grid-100">'+rnTobr($(this).find('myNote').text())+'</div>';
 			}
 			
 			data+='<div class="grid-100"><hr /></div>';
@@ -2361,6 +2363,2299 @@ function get_statistics9(){
 }
 
 /* Bitiş - page15.html */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Başlangıç - page17.html */
+function add_kaizen_type(){
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.listKaizenTypes,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:xmlsString.listKaizenTypes
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var id, name, data;
+		data="";
+		data='<div class="grid-100">';
+		data+='<select name="kaizen-type" id="kaizen-type" class="form-element-1 left">';
+		data+='<option value="0">--</option>';
+		$(r).find('result').each(function(index, element) {
+            id=$(this).find('id').text();
+			name=$(this).find('name').text();
+			data+='<option value="'+id+'">'+name+'</option>\';';
+        });
+		data+='</select>';
+		data+='<div class="icon-container-l-2 margin-left-3">';
+		data+='</div>';
+		data+='</div>';
+		$("#kaizen-type-container").append(data);
+		
+	})
+	.fail(function(){
+		if(pages.login!=find_page_name()) open_page(pages.login,"");
+		alert(messages[userPref.lang][2]);
+	});
+	stop_search();//home12.html için gerekli
+}
+
+
+function add_proposal_person(){
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:xmlsString.getPeopleList
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var id, name, surname, working, data;
+		data="";
+		data='<div class="grid-100">';
+		data+='<select name="proposal-person" id="proposal-person" class="form-element-1 left">';
+		data+='<option value="0">--</option>';
+		
+		$(r).find('result').each(function(index, element) {
+            id=$(this).find('id').text();
+			name=$(this).find('name').text();
+			surname=$(this).find('surname').text();
+			working=$(this).find('working').text();
+			
+			if(working==1){
+				data+='<option value="'+id+'">'+name+' '+surname+'</option>\';';
+			}
+        });
+		data+='</select>';
+		data+='<div class="icon-container-l-2 margin-left-3">';
+		//data+='<img class="icon" src="images/minus-red.png" onclick="delete_proposal_person(this);" />';
+		data+='</div>';
+		data+='</div>';
+		$("#prop-pers").append(data);
+		
+	})
+	.fail(function(){
+		if(pages.login!=find_page_name()) open_page(pages.login,"");
+		alert(messages[userPref.lang][2]);
+	});
+	stop_search();//home12.html için gerekli
+}
+
+
+function delete_proposal_person(e){
+	$(e).parent().parent().remove();
+	stop_search();//home12.html için gerekli
+}
+
+
+function add_kaizen_responsible_group(gNo){
+	if(gNo=="") gNo=0;
+	
+	$.ajax({
+		async: false,
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.listKaizenGroups,
+		timeout: 260000,
+		data: {un:userPref.uName,
+			   p:userPref.uPassword,
+			   s:xmlsString.listKaizenGroups,
+			   gno: gNo
+		},
+		success: function (r) {
+			
+			var kgName;
+			var kgNo;
+			var data;
+			data="";
+			data='<select name="kaizen-responsible-group" id="kaizen-responsible-group" class="form-element-1 left">';
+			data+='<option value="0" style="font-weight:bold">---</option>';
+			$(r).find('group').each(function(index, element) {
+				
+				
+				$(this).find('group_name').each(function(index, element) {
+					kgName=$(this).text();
+				});
+				
+				$(this).find('group_id').each(function(index, element) {
+					kgNo=$(this).text();
+				});
+				data+='<option value="'+kgNo+'" style="font-weight:bold">'+kgName+'</option>';
+				
+				
+				$(this).find('person').each(function(index, element) {
+					data+='<option value="" disabled="disabled">'+$(this).text()+'</option>';
+				});
+				data+='<option value="" disabled="disabled"></option>'; 
+			});
+			
+			data+='</select>';
+			
+			$("#kaizen-resp-group").append(data);
+
+		}
+	});
+}
+
+
+function delete_kaizen_responsible_person(e){
+	$(e).parent().parent().remove();
+	stop_search();//home12.html için gerekli
+}
+
+
+function add_proposal_person_department(){
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getDepartmentList,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:xmlsString.getDepartmentList
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var id, name, data;
+		data="";
+		data='<div class="grid-100">';
+		data+='<select name="proposal-person-department" id="proposal-person-department" class="form-element-1 left">';
+		data+='<option value="0">--</option>';
+		
+		$(r).find('result').each(function(index, element) {
+            id=$(this).find('id').text();
+			name=$(this).find('name').text();
+			data+='<option value="'+id+'">'+name+'</option>\';';
+        });
+		data+='</select>';
+		data+='<div class="icon-container-l-2 margin-left-3">';
+		//data+='<img class="icon" src="images/minus-red.png" onclick="delete_proposal_person_department(this);" />';
+		data+='</div>';
+		data+='</div>';
+		$("#prop-resp-dep").append(data);
+		
+	})
+	.fail(function(){
+		if(pages.login!=find_page_name()) open_page(pages.login,"");
+		alert(messages[userPref.lang][2]);
+	});
+	stop_search();//home12.html için gerekli
+}
+
+
+function delete_proposal_person_department(e){
+	$(e).parent().parent().remove();
+	stop_search();//home12.html için gerekli
+}
+
+
+function add_proposal_refree(){
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:xmlsString.getPeopleList
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var id, name, surname, working, data;
+		data="";
+		data='<div class="grid-100">';
+		
+		<!--proposal-refree-->
+		data+='<select name="proposal-refree[]" class="form-element-1 left proposal-refree-select">';
+		data+='<option value="0">--</option>';
+		
+		$(r).find('result').each(function(index, element) {
+            id=$(this).find('id').text();
+			name=$(this).find('name').text();
+			surname=$(this).find('surname').text();
+			working=$(this).find('working').text();
+			
+			if(working==1){
+				data+='<option value="'+id+'">'+name+' '+surname+'</option>\';';
+			}
+        });
+		data+='</select>';
+		
+		<!--proposal-refree-point-->
+		data+='<select name="proposal-refree-point[]" class="form-element-1 left proposal-refree-point" onchange="sum_refree_points()">';
+		data+='<option value="-1">--</option>';
+		data+='<option value="0">0</option>';
+		data+='<option value="1">1</option>';
+		data+='<option value="2">2</option>';
+		data+='<option value="3">3</option>';
+		data+='<option value="4">4</option>';
+		data+='</select>';
+		
+		<!--proposal-refree-approval-->
+		data+='<select name="proposal-refree-approval[]" id="refree-approval" class="form-element-1 left refree-approval">';
+        data+='<option value="0">---</option>';
+        data+='<option value="1">Onay</option>';
+        data+='<option value="2">Red</option>';
+        data+='</select>';
+		
+		data+='<div class="icon-container-l-2 margin-left-3">';
+		data+='<img class="icon" src="images/minus-red.png" onclick="delete_proposal_refree(this);" />';
+		data+='</div>';
+		data+='</div>';
+		$("#kaizen-refrees").append(data);
+		
+	})
+	.fail(function(){
+		if(pages.login!=find_page_name()) open_page(pages.login,"");
+		alert(messages[userPref.lang][2]);
+	});
+	stop_search();//home12.html için gerekli
+}
+
+function sum_refree_points(){
+	var sum;
+	sum=0;
+	var ref_count;
+	ref_count=0;
+	$(".proposal-refree-point").each(function(index, element) {
+        if($(this).val()>-1){
+			ref_count++;
+			sum+=$(this).val()*1;
+		}
+    });
+	if(ref_count==0){
+		$("#point").val("0");
+	}
+	else{
+		$("#point").val(Math.round(sum*1/(ref_count*1)));
+	}
+	
+	
+}
+
+function delete_proposal_refree(e){
+	$(e).parent().parent().remove();
+	stop_search();//home12.html için gerekli
+	sum_refree_points();
+}
+
+
+
+
+
+function submit_new_kaizen_form(){
+	
+	var frm = $('#new_kaizen_form');
+	var d;
+	d=frm.serialize()+"&un="+userPref.uName+"&p="+userPref.uPassword+"&s="+xmlsString.submitNewKaizenForm;
+	
+	$.ajax({
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.submitNewKaizenForm,
+		timeout: 260000,
+		data: d,
+		success: function (r) {
+			//alert($(r).find('sql').text());
+			$(r).find('result').each(function(index, element) {
+				if($(this).text()=="1"){
+					$("#kaizen-added").removeClass("hide");
+				}
+				else{
+					$("#kaizen-not-dded").removeClass("hide");
+				}
+			})
+		}
+	});
+
+	e.preventDefault();
+}
+
+
+$( function(){	
+	$(document).on("click","#kaizen-added-yes", function(){
+		//alert("cem");
+		open_page("page17.html","");
+	});
+	$(document).on("click","#kaizen-added-no", function(){
+		open_page("page16.html","");
+	});
+	$(document).on("click","#kaizen-not-added-ok", function(){
+		$("#kaizen-not-added").addClass("hide");
+	});
+	
+});
+/* Bitiş - page17.html */
+
+
+
+/* Başlangıç - page18.html */
+
+function add_proposal_refree_for_search(){
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:xmlsString.getPeopleList
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var id, name, surname, working, data;
+		data="";
+		data='<div class="grid-100">';
+		
+		<!--proposal-refree-->
+		data+='<select name="proposal-refree[]" class="form-element-1 left proposal-refree-select">';
+		data+='<option value="0">--</option>';
+		
+		$(r).find('result').each(function(index, element) {
+            id=$(this).find('id').text();
+			name=$(this).find('name').text();
+			surname=$(this).find('surname').text();
+			working=$(this).find('working').text();
+			
+			if(working==1){
+				data+='<option value="'+id+'">'+name+' '+surname+'</option>\';';
+			}
+        });
+		data+='</select>';
+		
+		<!--proposal-refree-point-->
+		data+='<select name="proposal-refree-point[]" class="form-element-1 left proposal-refree-point" onchange="sum_refree_points()">';
+		data+='<option value="-2">--</option>';
+		data+='<option value="-1">Değerlendirmemiş</option>';
+		data+='<option value="0">0</option>';
+		data+='<option value="1">1</option>';
+		data+='<option value="2">2</option>';
+		data+='<option value="3">3</option>';
+		data+='<option value="4">4</option>';
+		data+='</select>';
+		
+		<!--proposal-refree-approval-->
+		data+='<select name="proposal-refree-approval[]" id="refree-approval" class="form-element-1 left">';
+        data+='<option value="-1">---</option>';
+		data+='<option value="0">Değerlendirmemiş</option>';
+        data+='<option value="1">Onay</option>';
+        data+='<option value="2">Red</option>';
+        data+='</select>';
+		
+		data+='<div class="icon-container-l-2 margin-left-3">';
+		data+='<img class="icon" src="images/minus-red.png" onclick="delete_proposal_refree(this);" />';
+		data+='</div>';
+		data+='</div>';
+		$("#kaizen-refrees").append(data);
+		
+	})
+	.fail(function(){
+		if(pages.login!=find_page_name()) open_page(pages.login,"");
+		alert(messages[userPref.lang][2]);
+	});
+	stop_search();//home12.html için gerekli
+}
+
+function search_kaizen(){
+	firstKaizenId=0;
+	lastKaizenId=0;
+	KaizenCount=1;
+	searchMode="basic";
+	$("#"+elementsName.searchKaizensList).html("");
+	get_search_kaizen()
+}
+
+function get_search_kaizen(){
+	var search_keyword=$("#aranacak").val();
+	
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.searchKaizens,
+		timeout: 260000,
+		data: {
+			un:userPref.uName,
+			p:userPref.uPassword,
+			s:xmlsString.searchKaizens,
+			sk:search_keyword,
+			fId:firstKaizenId,
+			lId:lastKaizenId
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var data;
+		data="";
+		data=prepareKaizenHtmlCode(r);
+		
+		data=$("#"+elementsName.searchKaizensList).html()+data;
+		$("#"+elementsName.searchKaizensList).html(data);
+		filter_notes(elementsName.searchKaizensList);
+		getNotes=0;
+		
+		if($(r).find('result').text()!="" && 
+		($(window).scrollTop()+$(window).height()*1 >= $(document).height()*1)){
+			
+			get_search_kaizen();
+		}
+		
+		
+	})
+	.fail(function(){
+		//if(pages.login!=find_page_name()) open_page(pages.login,"");
+		alert(messages[userPref.lang][2]);
+		getNotes=0;
+	});
+	
+}
+
+function search_advanced_kaizen(){
+	firstKaizenId=0;
+	lastKaizenId=0;
+	KaizenCount=1;
+	searchMode="advanced";
+	$("#"+elementsName.searchKaizensList).html("");
+	get_search_advanced_kaizen();
+}
+
+function get_search_advanced_kaizen(){
+	var frm = $('#morning_note_advanced_search_form');
+	var d;
+	
+	d=frm.serialize()+"&un="+userPref.uName+"&p="+userPref.uPassword+"&s="+xmlsString.searchAdvancedKaizens+"&fId="+firstKaizenId+"&lId="+lastKaizenId;
+	//alert(d);
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.searchAdvancedKaizens,
+		timeout: 260000,
+		data: d,
+		dataType: "xml"
+	})
+	.done(function(r){
+		var data;
+		data="";
+		
+		data=prepareKaizenHtmlCode(r);
+		data=$("#"+elementsName.searchKaizensList).html()+data;
+		$("#"+elementsName.searchKaizensList).html(data);
+		filter_notes(elementsName.searchKaizensList);
+		getNotes=0;
+
+		if($(r).find('result').text()!="" && 
+		($(window).scrollTop()+$(window).height()*1 >= $(document).height()*1)){
+			
+			get_search_advanced_kaizen();
+		}
+		
+		
+	})
+	.fail(function(){
+		//if(pages.login!=find_page_name()) open_page(pages.login,"");
+		alert(messages[userPref.lang][2]);
+		getNotes=0;
+	});
+}
+
+
+
+function stop_search_kaizen(){
+	if(find_page_name()=="page12.html"){
+		searchMode="";
+	}
+}
+/* Bitiş - page18.html */
+
+
+
+
+
+/* Başlangıç - page19.html */
+function filter_kaizens(list_id){
+	
+	if(filterOn==1){
+		var filterKaizen;//Kaizenin filtrelenmiş olup olmadığını tutan değişken
+		//Başlangıç değeri 1. Eğer filtre uygulanmışsa ve notun ilgili değeri filtrede yoksa (gösterilmeyecekse) değeri 0 olacak. Gösterilmesi isteniyorsa (filtre değerinde varsa) değeri 2 olacak. Sonuç olarak bu değer 1 veya 2 ise not gösterilecek.
+		
+		var filterVal;//İlgili filtre bölümüne (no, start, target vs.) olarak girilen değer(ler)
+		var filterPart;//Notun filtre bölümü ile ilgili kısmının (no, start, target vs.) değeri
+		
+		$("#"+list_id).children("div").each(function(){
+			filterKaizen=1;
+			
+			filterVal=$("#filter-number").val().trim().split(",");
+			filterPart=$(this).find(".part-kaizen-no").html();
+			for(var i=0;i<filterVal.length;i++){
+				filterVal[i]=filterVal[i].trim();
+				if(filterVal[i]!=""){
+					filterControl=1;
+					if(filterPart.indexOf(filterVal[i])>-1){
+						filterKaizen=2;
+					}
+					else if(filterPart.indexOf(filterVal[i])==-1 && filterKaizen==1 && i==filterVal.length-1){
+						filterKaizen=0;
+					};
+				};
+			};
+			
+			
+			
+			filterVal=$("#filter-date").val().trim().split(",");
+			filterPart=$(this).find(".part-kaizen-proposal-date").html();
+			for(var i=0;i<filterVal.length;i++){
+				filterVal[i]=filterVal[i].trim();
+				if(filterVal[i]!=""){
+					filterControl=1;
+					
+					if(filterPart.indexOf(filterVal[i])>-1){
+						filterKaizen=2;
+					}
+					else if(filterPart.indexOf(filterVal[i])==-1 && filterKaizen==1 && i==filterVal.length-1){
+						filterKaizen=0;
+					};
+				};
+			};
+			
+			filterVal=$("#filter-problem").val().trim().split(",");
+			filterPart=$(this).find(".part-kaizen-problem").html();			
+			for(var i=0;i<filterVal.length;i++){
+				filterVal[i]=filterVal[i].trim();
+				if(filterVal[i]!=""){
+					filterControl=1;
+					if(filterPart.indexOf(filterVal[i])>-1){
+						filterKaizen=2;
+					}
+					else if(filterPart.indexOf(filterVal[i])==-1 && filterKaizen==1 && i==filterVal.length-1){
+						filterKaizen=0;
+					};
+				};
+			};
+			
+			filterVal=$("#filter-solution").val().trim().split(",");
+			filterPart=$(this).find(".part-kaizen-solution").html();
+			for(var i=0;i<filterVal.length;i++){
+				filterVal[i]=filterVal[i].trim();
+				if(filterVal[i]!=""){
+					filterControl=1;
+					if(filterPart.indexOf(filterVal[i])>-1){
+						filterKaizen=2;
+					}
+					else if(filterPart.indexOf(filterVal[i])==-1 && filterKaizen==1 && i==filterVal.length-1){
+						filterKaizen=0;
+					};
+				};
+			};
+			
+			
+			filterVal=$("#filter-person").val().trim().split(",");
+			filterPart=$(this).find(".part-kaizen-person").html().toLowerCase();
+			for(var i=0;i<filterVal.length;i++){
+				filterVal[i]=filterVal[i].toLowerCase().trim();
+				if(filterVal[i]!=""){
+					filterControl=1;
+					if(filterPart.indexOf(filterVal[i])>-1){
+						filterKaizen=2;
+					}
+					else if(filterPart.indexOf(filterVal[i])==-1 && filterKaizen==1 && i==filterVal.length-1){
+						filterKaizen=0;
+					};
+				};
+			};
+			
+			
+			
+			filterVal=$("#filter-department").val().trim().split(",");
+			filterPart=$(this).find(".part-kaizen-department").html().toLowerCase();
+			for(var i=0;i<filterVal.length;i++){
+				filterVal[i]=filterVal[i].toLowerCase().trim();
+				if(filterVal[i]!=""){
+					filterControl=1;
+					if(filterPart.indexOf(filterVal[i])>-1){
+						filterKaizen=2;
+					}
+					else if(filterPart.indexOf(filterVal[i])==-1 && filterKaizen==1 && i==filterVal.length-1){
+						filterKaizen=0;
+					};
+				};
+			};
+			
+			filterVal=$("#filter-kaizen-type").val().trim().split(",");
+			filterPart=$(this).find(".part-kaizen-type").html().toLowerCase();
+			for(var i=0;i<filterVal.length;i++){
+				filterVal[i]=filterVal[i].toLowerCase().trim();
+				if(filterVal[i]!=""){
+					filterControl=1;
+					if(filterPart.indexOf(filterVal[i])>-1){
+						filterKaizen=2;
+					}
+					else if(filterPart.indexOf(filterVal[i])==-1 && filterKaizen==1 && i==filterVal.length-1){
+						filterKaizen=0;
+					};
+				};
+			};
+			
+			
+			filterVal=$("#filter-group").val().trim().split(",");
+			filterPart=$(this).find(".part-kaizen-group-name").html();
+			for(var i=0;i<filterVal.length;i++){
+				filterVal[i]=filterVal[i].trim();
+				if(filterVal[i]!=""){
+					filterControl=1;
+					if(filterPart.indexOf(filterVal[i])>-1){
+						filterKaizen=2;
+					}
+					else if(filterPart.indexOf(filterVal[i])==-1 && filterKaizen==1 && i==filterVal.length-1){
+						filterKaizen=0;
+					};
+				};
+			};
+			
+			
+			filterVal=$("#filter-approval").val();
+			filterPart=$(this).find(".part-kaizen-approval").html().toLowerCase().trim();
+			if(filterVal==0){
+				if(filterPart!=""){
+					filterKaizen=2;
+				}
+				else{
+					filterKaizen=0;
+				}
+			}
+			else if(filterVal==1){
+				if(filterPart==""){
+					filterKaizen=2;
+				}
+				else{
+					filterKaizen=0;
+				}
+			}
+			
+			
+			filterVal=$("#filter-approval").val();
+			filterPart=$(this).find(".part-kaizen-approval").html().toLowerCase().trim();
+			if(filterVal==0){
+				if(filterPart.indexOf("delay.png")>-1){
+					filterKaizen=2;
+				}
+				else{
+					filterKaizen=0;
+				}
+			}
+			else if(filterVal==1){
+				if(filterPart.indexOf("ok.png")>-1){
+					filterKaizen=2;
+				}
+				else{
+					filterKaizen=0;
+				}
+			}
+			else if(filterVal==2){
+				if(filterPart.indexOf("ok_not.png")>-1){
+					filterKaizen=2;
+				}
+				else{
+					filterKaizen=0;
+				}
+			}
+			
+			filterVal=$("#filter-favorite").val();
+			filterPart=$(this).find(".part-kaizen-favorite").html().toLowerCase().trim();
+			if(filterVal==0){
+				if(filterPart.indexOf("favorite.png")>-1){
+					filterKaizen=2;
+				}
+				else{
+					filterKaizen=0;
+				}
+			}
+			else if(filterVal==1){
+				if(filterPart.indexOf("favorite-not.png")>-1){
+					filterKaizen=2;
+				}
+				else{
+					filterKaizen=0;
+				}
+			}
+			
+			
+			//Listeyi düzenleme
+			if(filterKaizen>0){
+				if($(this).hasClass("hide")){
+					$(this).removeClass("hide");
+				}				
+			}
+			else{
+				if(!$(this).hasClass("hide")){
+					$(this).addClass("hide");
+				}
+			}
+			
+		});
+		
+		
+	}
+}
+
+
+function clear_filter_kaizen_box(list_id){
+	$("#filter-number").val("");
+	$("#filter-start").val("");
+	$("#filter-target").val("");
+	$("#filter-person").val("");
+	$("#filter-department").val("");
+	$("#filter-delay").val("");
+	$("#filter-finished").val("-1");
+	$("#filter-favorite").val("-1");
+	filter_kaizens(list_id);
+}
+
+function get_kaizens_list(){
+	
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getKaizensList,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:xmlsString.getKaizensList,
+				fId:firstKaizenId,
+				lId:lastKaizenId
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		
+		var data;
+		data="";
+		data=prepareKaizenHtmlCode(r);
+		data=$("#"+elementsName.kaizensList).html()+data;
+		$("#"+elementsName.kaizensList).html(data);
+		filter_notes(elementsName.kaizensList);
+		getKaizens=0;
+		//$("#cem").html($("#cem").html()+"<br>"+noteCount+"-"+getNotes);
+		
+	})
+	.fail(function(){
+		//if(pages.login!=find_page_name()) open_page(pages.login,"");
+		alert(messages[userPref.lang][2]);
+		getKaizens=0;
+	});
+	//getNotes=0;
+}
+
+function change_kaizen_favorite(e, eid){
+	var f;
+	if($(e).attr("src")=="images/favorite.png"){
+		f="0";
+	}
+	else{
+		f="1";
+	}
+
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.updateKaizenFavorite,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:xmlsString.updateKaizenFavorite,
+				kId:eid,
+				kf:f
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		data="";
+		$(r).find('result').each(function(index, element) {
+			if($(this).text().trim()=="0"){
+				alert(messages[userPref.lang][5]);
+			}
+			else{
+				if(f==0){
+					$(e).attr("src", "images/favorite-not.png");
+				}
+				else{
+					$(e).attr("src", "images/favorite.png");
+				}
+			}
+		})
+	})
+	.fail(function(){
+		alert(messages[userPref.lang][2]);
+	});
+	
+	
+}
+
+function sort_kaizens(s, eid){
+	var ret=0;
+	if(s=="desc"){
+		$("#"+eid).find(".part-kaizen-no").each(function() {
+			if($(this).parent().parent().next().find(".part-kaizen-no").html()!="" && $(this).parent().parent().next().find(".part-kaizen-no").html()!="undefined"){
+				if($(this).html()<$(this).parent().parent().next().find(".part-kaizen-no").html()){
+					ret=1;
+					var d=$(this).parent().parent()[0].outerHTML;
+					$(this).parent().parent().next().after(d);
+					$(this).parent().parent().remove();
+				}
+			}
+		});
+	}
+	else if(s=="asc"){
+		$("#"+eid).find(".part-kaizen-no").each(function() {
+			if($(this).parent().parent().next().find(".part-kaizen-no").html()!="" && $(this).parent().parent().next().find(".part-kaizen-no").html()!="undefined"){
+				if($(this).html()>$(this).parent().parent().next().find(".part-kaizen-no").html()){
+					ret=1;
+					var d=$(this).parent().parent().next()[0].outerHTML;
+					$(this).parent().parent().next().remove();
+					$(this).parent().parent().before(d);
+				}
+			}
+		});
+	}
+	if(ret==1){
+		sort_kaizens(s, eid);
+	}
+}
+
+
+
+/* Bitiş - page19.html */
+
+/* Başlangıç - page20.html */
+//get_kaizen_type_list
+
+function get_kaizen_type_list(){
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getKaizenTypeList,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:xmlsString.getKaizenTypeList
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var id, name, data;
+		data="";
+		$(r).find('result').each(function(index, element) {
+            id=$(this).find('id').text();
+			name=$(this).find('name').text();
+			data+='<div class="part-2">';
+			data+='<div class="icon-container-l margin-2 kaizen-type-delete-icon"><img class="icon" src="images/delete.png" /></div>';
+			data+='<div class="icon-container-l margin-2 kaizen-type-rename-icon"><img class="icon" src="images/rename.png" /></div>';
+			data+='<div class="kaizen-type margin-2">'+name+'</div>';
+			data+='<div class="kaizen-type-id hide">'+id+'</div>';
+			data+='<div class="kaizen-type-name hide">'+name+'</div>';
+			data+='</div>';
+			
+        });
+		$("#"+elementsName.kaizenTypeList).html(data);
+		
+	})
+	.fail(function(){
+		//if(pages.login!=find_page_name()) open_page(pages.login,"");
+		alert(messages[userPref.lang][2]);
+	});
+}
+
+function change_kaizen_type_rename(){
+	kaizenTypeNewName=$("#kaizen-type-new-name").val();
+	if(kaizenTypeNewName!="" && kaizenTypeID!=""){
+		$.ajax({
+			async: false,		
+			type: xmlDataSendType,
+			crossDomain: true,
+			url: siteUrlAdress+"/"+xmlsUrl.changeKaizenTypeRename,
+			timeout: 260000,
+			data: {un:userPref.uName,
+					p:userPref.uPassword,
+					s:xmlsString.changeKaizenTypeRename,
+					kti:kaizenTypeID,
+					n:kaizenTypeNewName
+				},
+			dataType: "xml"
+		})
+		.done(function(r){
+			var result;
+			result= $(r).find('result').text();
+			if(result=="1"){
+				get_kaizen_type_list();
+				$("#kaizen-type-rename").addClass("hide");
+			}		
+		})
+		.fail(function(){
+			alert(messages[userPref.lang][2]);
+			$("#kaizen-type-rename").addClass("hide");
+		});
+	}
+	else{
+		alert(messages[userPref.lang][3]);
+	}
+}
+
+function change_kaizen_type_delete(){
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getKaizenTypeList,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:xmlsString.changeKaizenTypeDelete,
+				kti:kaizenTypeID
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var result;
+		result= $(r).find('result').text();
+		if(result=="1"){
+			get_kaizen_type_list();
+			$("#kaizen-type-delete").addClass("hide");
+		}		
+	})
+	.fail(function(){
+		alert(messages[userPref.lang][2]);
+		$("#kaizen-type-delete").addClass("hide");
+	});
+}
+
+
+
+function add_kaizen_type_to_database(){
+
+	kaizenTypeName=$("#kaizen-type-add-name").val();
+	if(kaizenTypeName!=""){
+		$.ajax({
+			async: false,		
+			type: xmlDataSendType,
+			crossDomain: true,
+			url: siteUrlAdress+"/"+xmlsUrl.addKaizenType,
+			timeout: 260000,
+			data: {un:userPref.uName,
+					p:userPref.uPassword,
+					s:xmlsString.addKaizenType,
+					n:kaizenTypeName,
+				},
+			dataType: "xml"
+		})
+		.done(function(r){
+			var result;
+			result= $(r).find('result').text();
+			if(result=="1"){
+				get_kaizen_type_list();
+				$("#kaizen-type-add").addClass("hide");
+			}
+			else if(result=="0"){
+				alert(messages[userPref.lang][4]);
+			}
+		})
+		.fail(function(){
+			alert(messages[userPref.lang][2]);
+			$("#kaizen-type-add").addClass("hide");
+		});
+	}
+	else{
+		alert(messages[userPref.lang][3]);
+	}
+}
+
+
+$( function(){	
+	
+	$(document).on("dblclick",".kaizen-type-delete-icon", function(){
+		$("#department-kaizen-type-name").html($(this).parent().find(".kaizen-type").html());
+		kaizenTypeID="";
+		kaizenTypeID=$(this).parent().find(".kaizen-type-id").html();
+		$("#kaizen-type-delete").removeClass("hide");
+	});
+	$(document).on("click","#kaizen-type-delete-yes", function(){
+		change_kaizen_type_delete();
+	});
+	$(document).on("click","#kaizen-type-delete-no", function(){
+		$("#department-delete").addClass("hide");
+	});
+	
+	
+	
+	$(document).on("dblclick",".kaizen-type-rename-icon", function(){
+		kaizenTypeID="";
+		kaizenTypeName="";
+		kaizenTypeID=$(this).parent().find(".kaizen-type-id").html();
+		$("#kaizen-type-rename-name").html($(this).parent().find(".kaizen-type-name").html());		
+		$("#kaizen-type-new-name").val($(this).parent().find(".kaizen-type-name").html());
+		$("#kaizen-type-rename").removeClass("hide");
+	});
+	$(document).on("click","#kaizen-type-rename-yes", function(){
+		change_kaizen_type_rename();
+	});
+	$(document).on("click","#kaizen-type-rename-no", function(){
+		$("#kaizen-type-rename").addClass("hide");
+	});
+	
+	
+	$(document).on("click",".kaizen-type-add-icon", function(){
+		$("#kaizen-type-add-name").val("");		
+		$("#kaizen-type-add").removeClass("hide");
+	});
+	$(document).on("click","#kaizen-type-add-yes", function(){
+		add_kaizen_type_to_database();
+	});
+	$(document).on("click","#kaizen-type-add-no", function(){
+		$("#kaizen-type-add").addClass("hide");
+	});
+	
+});
+
+/* Bitiş - page20.html */
+
+/* Başlangıç - page21.html */
+function get_kaizen(){
+	kaizenId=get_storaged_data(find_page_name());
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getKaizen,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:xmlsString.getKaizen,
+				kId:kaizenId
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		
+		$(r).find('result').each(function(index, element) {
+			
+			$("#kid").val($(this).find('kid').text());
+			$("#no").val($(this).find('kaizen_no').text());
+			$("#date").val($(this).find('proposal_date').text());
+			$("#finished").val($(this).find('finished').text());
+			$("#proposal-problem").val($(this).find('problem').text());
+			$("#proposal-solution").val($(this).find('solution').text());
+			$("#my-note").val($(this).find('my_note').text());
+			$("#proposal-person").val($(this).find('person_id').text());
+			add_kaizen_responsible_group();
+			//$("#kaizen-responsible-group").attr("selected", true);
+			$("#kaizen-responsible-group").val($(this).find('group_id').text());//.attr("selected", true).prop("selected", true);
+			//alert($("#kaizen-responsible-group").val()+"-"+$(this).find('group_id').text());
+			
+			$("#proposal-person-department").val($(this).find('department_id').text());
+			$("#kaizen-type").val($(this).find('kaizen_type_id').text());
+			
+			$("#approval").val($(this).find('approval').text());
+			
+			if($(this).find('point').text()=="-1"){
+				$("#point").val("0");
+			}
+			else{
+				$("#point").val($(this).find('point').text());
+			}
+			
+			$(this).find('referee_person').each(function(index, element) {
+				add_proposal_refree();
+				$(".proposal-refree-select:last").val($(this).find('referee_person_id').text());
+				$(".proposal-refree-point:last").val($(this).find('referee_person_point').text());
+				$(".refree-approval:last").val($(this).find('referee_person_approval').text());
+				
+			});
+			
+			//alert($("#kaizen-responsible-group").val()+"-"+$(this).find('group_id').text());
+			
+        });
+		
+	})
+	.fail(function(){
+		//if(pages.login!=find_page_name()) open_page(pages.login,"");
+		alert(messages[userPref.lang][2]);
+	});
+
+}
+
+function submit_kaizen_edit_form(){
+	
+	var frm = $('#kaizen_edit_form');
+	var d;
+	d=frm.serialize()+"&un="+userPref.uName+"&p="+userPref.uPassword+"&s="+xmlsString.submitKaizenEditForm;
+	
+	$.ajax({
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.submitKaizenEditForm,
+		timeout: 260000,
+		data: d,
+		success: function (r) {
+			$(r).find('result').each(function(index, element) {
+				if($(this).text()=="1"){
+					$("#kaizen-edited").removeClass("hide");
+				}
+				else{
+					$("#kaizen-not-edited").removeClass("hide");
+				}
+			})
+		}
+		
+	});
+
+	e.preventDefault();
+}
+
+$( function(){	
+	$(document).on("click","#kaizen-edited-yes", function(){
+		redirect_page("page21.html","");
+	});
+	$(document).on("click","#kaizen-edited-no", function(){
+		redirect_page("page23.html","");
+	});
+	$(document).on("click","#kaizen-not-edited-ok", function(){
+		$("#kaizen-not-edited").addClass("hide");
+	});
+	
+});
+
+/* Bitiş - page21.html */
+
+
+
+/* Başlangıç - page23.html */
+function show_kaizen(){
+	kaizenId=get_storaged_data(find_page_name());
+	//alert(noteId);
+	//alert("cem"+"-"+kaizenId);
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getKaizenToShow,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:xmlsString.getKaizenToShow,
+				kId:kaizenId
+			},
+		dataType: "xml"
+	})
+	.done(function(r){		
+		var data;
+		data="";
+        data=prepareKaizenHtmlCode(r);
+		data=$("#"+elementsName.kaizen).html()+data;
+		$("#"+elementsName.kaizen).html(data);		
+	})
+	.fail(function(){
+		//if(pages.login!=find_page_name()) open_page(pages.login,"");
+		alert(messages[userPref.lang][2]);
+	});
+
+}
+
+
+
+/* Bitiş - page23.html */
+
+
+/* Başlangıç - page24.html */
+function get_favorite_kaizens_list(){
+	//alert(siteUrlAdress+"/"+xmlsUrl.getFavoriteKaizensList);
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getFavoriteKaizensList,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:xmlsString.getFavoriteKaizensList,
+				fId:firstKaizenId,
+				lId:lastKaizenId
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var data;
+		data="";
+		data=prepareKaizenHtmlCode(r);
+		data=$("#"+elementsName.favoriteKaizensList).html()+data;
+		$("#"+elementsName.favoriteKaizensList).html(data);
+		filter_notes(elementsName.favoriteKaizensList);
+		getKaizens=0;
+		
+	})
+	.fail(function(){
+		//if(pages.login!=find_page_name()) open_page(pages.login,"");
+		alert(messages[userPref.lang][2]);
+		getKaizens=0;
+	});
+	//getNotes=0;
+}
+/* Bitiş - page24.html */
+
+
+
+
+/* Başlangıç - page25.html */
+
+function get_all_kaizen_statistics(){
+	get_kaizens_statistics1();
+	/*get_statistics2();
+	get_statistics3();
+	get_statistics4();
+	get_statistics5();
+	get_statistics6();
+	get_statistics7();
+	get_statistics8();
+	get_statistics9();
+	get_statistics10();*/
+	
+}
+function get_kaizens_statistics1(){
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getKaizensStatistics,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:"0",
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var data;
+		data="";
+		data+='<div class="grid-100">';
+			
+		data+='<div class="grid2-30 part-4 part-yellow">Grup</div>';
+		data+='<div class="grid2-23 part-4 part-yellow center">Bitmiş</div>';
+		data+='<div class="grid2-24 part-4 part-yellow center">Bitmemiş</div>';
+		data+='<div class="grid2-23 part-4 part-yellow center">Toplam Kaizen</div>';
+		
+		data+='</div>';
+		data+='<div class="grid-100"><hr></div>';
+			
+		$(r).find('result').each(function(index, element){
+			
+			data+='<div class="grid-100">';
+			
+			data+='<div class="grid2-30 part-5">'+$(this).find('group').text()+'</div>';
+			data+='<div class="grid2-23 part-5 center">'+$(this).find('finished').text()+'</div>';
+			data+='<div class="grid2-24 part-5 center">'+$(this).find('nfinished').text()+'</div>';
+			data+='<div class="grid2-23 part-5 center">'+$(this).find('count').text()+'</div>';
+			
+			data+='</div>';
+			
+			data+='<div class="grid-100"><hr></div>';
+
+        });
+		data='<div class="part-2">'+data+'</div>';
+		data=$("#"+elementsName.kaizensStatistics).html()+data;
+		$("#"+elementsName.kaizensStatistics).html(data);
+		
+	})
+	.fail(function(){
+		alert(messages[userPref.lang][2]);
+		getNotes=0;
+	});
+}
+
+/*
+function get_statistics2(){
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getMorningNotesStatistics,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:"2",
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var data;
+		data="";
+		data+='<div class="grid-100">';
+			
+		data+='<div class="grid2-30 part-4 part-yellow">Kişi</div>';
+		data+='<div class="grid2-23 part-4 part-yellow center">Bitmiş</div>';
+		data+='<div class="grid2-24 part-4 part-yellow center">Bitmemiş</div>';
+		data+='<div class="grid2-23 part-4 part-yellow center">Toplam</div>';
+		
+		data+='</div>';
+		data+='<div class="grid-100"><hr></div>';
+			
+		$(r).find('result').each(function(index, element){
+			
+			data+='<div class="grid-100">';
+			
+			data+='<div class="grid2-30 part-5">'+$(this).find('person').text()+'</div>';
+			data+='<div class="grid2-23 part-5 center">'+$(this).find('finished').text()+'</div>';
+			data+='<div class="grid2-24 part-5 center">'+$(this).find('unfinished').text()+'</div>';
+			data+='<div class="grid2-23 part-5 center">'+$(this).find('count').text()+'</div>';
+			
+			data+='</div>';
+			
+			data+='<div class="grid-100"><hr></div>';
+
+        });
+		data='<div class="part-2">'+data+'</div>';
+		data=$("#"+elementsName.morningNotesStatistics).html()+data;
+		$("#"+elementsName.morningNotesStatistics).html(data);
+		
+	})
+	.fail(function(){
+		alert(messages[userPref.lang][2]);
+		getNotes=0;
+	});
+}
+
+function get_statistics3(){
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getMorningNotesStatistics,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:"3",
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var data;
+		data="";
+			
+		$(r).find('result').each(function(index, element){
+			
+			data+='<div class="grid-100">';
+			
+			data+='<div class="grid2-50 part-5 part-yellow">Ortalama Erteleme Süresi</div>';
+			data+='<div class="grid2-50 part-5">'+$(this).find('delay_average').text()+'</div>';		
+			data+='</div>';
+
+        });
+		data='<div class="part-2">'+data+'</div>';
+		data=$("#"+elementsName.morningNotesStatistics).html()+data;
+		$("#"+elementsName.morningNotesStatistics).html(data);
+		
+	})
+	.fail(function(){
+		alert(messages[userPref.lang][2]);
+		getNotes=0;
+	});
+}
+
+function get_statistics4(){
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getMorningNotesStatistics,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:"4",
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var data;
+		data="";
+			
+		$(r).find('result').each(function(index, element){
+			
+			data+='<div class="grid-100">';
+			
+			data+='<div class="grid2-50 part-5 part-yellow">Günlük Ortalama Not Oluşturma Sayısı</div>';
+			data+='<div class="grid2-50 part-5">'+$(this).find('note_count').text()+'</div>';		
+			data+='</div>';
+
+        });
+		data='<div class="part-2">'+data+'</div>';
+		data=$("#"+elementsName.morningNotesStatistics).html()+data;
+		$("#"+elementsName.morningNotesStatistics).html(data);
+		
+	})
+	.fail(function(){
+		alert(messages[userPref.lang][2]);
+		getNotes=0;
+	});
+}
+
+function get_statistics5(){
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getMorningNotesStatistics,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:"5",
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var data;
+		data="";
+		
+		data+='<div class="grid-100 part-4 part-yellow center">Başlatılan Not sayısı (Gün)</div>';
+		
+		data+='<div class="grid-100">';
+		data+='<div class="grid2-50 part-4 part-yellow">Tarih</div>';
+		data+='<div class="grid2-50 part-4 part-yellow center">Note Sayısı</div>';		
+		data+='</div>';
+		
+		data+='<div class="grid-100"><hr></div>';
+			
+		$(r).find('result').each(function(index, element){
+			
+			data+='<div class="grid-100">';
+			
+			data+='<div class="grid2-50 part-5">'+$(this).find('date').text()+'</div>';
+			data+='<div class="grid2-50 part-5 center">'+$(this).find('count').text()+'</div>';
+			
+			data+='</div>';
+			
+			data+='<div class="grid-100"><hr></div>';
+
+        });
+		data='<div class="part-2">'+data+'</div>';
+		data=$("#"+elementsName.morningNotesStatistics).html()+data;
+		$("#"+elementsName.morningNotesStatistics).html(data);
+		
+	})
+	.fail(function(){
+		alert(messages[userPref.lang][2]);
+		getNotes=0;
+	});
+}
+
+function get_statistics6(){
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getMorningNotesStatistics,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:"6",
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var data;
+		data="";
+		
+		data+='<div class="grid-100 part-4 part-yellow center">Başlatılan Not sayısı (Ay)</div>';
+		
+		data+='<div class="grid-100">';
+		data+='<div class="grid2-50 part-4 part-yellow">Tarih</div>';
+		data+='<div class="grid2-50 part-4 part-yellow center">Note Sayısı</div>';		
+		data+='</div>';
+		
+		data+='<div class="grid-100"><hr></div>';
+			
+		$(r).find('result').each(function(index, element){
+			
+			data+='<div class="grid-100">';
+			
+			data+='<div class="grid2-50 part-5">';
+			if($(this).find('month').text().length==1) data+='0';
+
+			data+=$(this).find('month').text()+"."+$(this).find('year').text()+'</div>';
+			data+='<div class="grid2-50 part-5 center">'+$(this).find('count').text()+'</div>';
+			
+			data+='</div>';
+			
+			data+='<div class="grid-100"><hr></div>';
+
+        });
+		data='<div class="part-2">'+data+'</div>';
+		data=$("#"+elementsName.morningNotesStatistics).html()+data;
+		$("#"+elementsName.morningNotesStatistics).html(data);
+		
+	})
+	.fail(function(){
+		alert(messages[userPref.lang][2]);
+		getNotes=0;
+	});
+}
+
+function get_statistics7(){
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getMorningNotesStatistics,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:"7",
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var data;
+		data="";
+		
+		data+='<div class="grid-100 part-4 part-yellow center">Bitirilen Not sayısı (Gün)</div>';
+		
+		data+='<div class="grid-100">';
+		data+='<div class="grid2-50 part-4 part-yellow">Tarih</div>';
+		data+='<div class="grid2-50 part-4 part-yellow center">Note Sayısı</div>';		
+		data+='</div>';
+		
+		data+='<div class="grid-100"><hr></div>';
+			
+		$(r).find('result').each(function(index, element){
+			
+			data+='<div class="grid-100">';
+			
+			data+='<div class="grid2-50 part-5">'+$(this).find('date').text()+'</div>';
+			data+='<div class="grid2-50 part-5 center">'+$(this).find('count').text()+'</div>';
+			
+			data+='</div>';
+			
+			data+='<div class="grid-100"><hr></div>';
+
+        });
+		data='<div class="part-2">'+data+'</div>';
+		data=$("#"+elementsName.morningNotesStatistics).html()+data;
+		$("#"+elementsName.morningNotesStatistics).html(data);
+		
+	})
+	.fail(function(){
+		alert(messages[userPref.lang][2]);
+		getNotes=0;
+	});
+}
+
+function get_statistics8(){
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getMorningNotesStatistics,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:"8",
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var data;
+		data="";
+		
+		data+='<div class="grid-100 part-4 part-yellow center">Bitirilen Not sayısı (Ay)</div>';
+		
+		data+='<div class="grid-100">';
+		data+='<div class="grid2-50 part-4 part-yellow">Tarih</div>';
+		data+='<div class="grid2-50 part-4 part-yellow center">Note Sayısı</div>';		
+		data+='</div>';
+		
+		data+='<div class="grid-100"><hr></div>';
+			
+		$(r).find('result').each(function(index, element){
+			
+			data+='<div class="grid-100">';
+			
+			data+='<div class="grid2-50 part-5">';
+			if($(this).find('month').text().length==1) data+='0';
+
+			data+=$(this).find('month').text()+"."+$(this).find('year').text()+'</div>';
+			data+='<div class="grid2-50 part-5 center">'+$(this).find('count').text()+'</div>';
+			
+			data+='</div>';
+			
+			data+='<div class="grid-100"><hr></div>';
+
+        });
+		data='<div class="part-2">'+data+'</div>';
+		data=$("#"+elementsName.morningNotesStatistics).html()+data;
+		$("#"+elementsName.morningNotesStatistics).html(data);
+		
+	})
+	.fail(function(){
+		alert(messages[userPref.lang][2]);
+		getNotes=0;
+	});
+}
+
+function get_statistics9(){
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getMorningNotesStatistics,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:"9",
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var data;
+		data="";
+			
+		$(r).find('result').each(function(index, element){
+			
+			data+='<div class="grid-100">';
+			
+			data+='<div class="grid2-50 part-5 part-yellow">Günlük Ortalama Not Bitirme Sayısı</div>';
+			data+='<div class="grid2-50 part-5">'+$(this).find('note_count').text()+'</div>';		
+			data+='</div>';
+
+        });
+		data='<div class="part-2">'+data+'</div>';
+		data=$("#"+elementsName.morningNotesStatistics).html()+data;
+		$("#"+elementsName.morningNotesStatistics).html(data);
+		
+	})
+	.fail(function(){
+		alert(messages[userPref.lang][2]);
+		getNotes=0;
+	});
+}
+*/
+
+/* Bitiş - page25.html */
+
+
+/* Başlangıç - page26.html */
+
+function show_new_kaizen_group_div(){
+	$("#new-kaizen-group-name").val("");
+	$("#new-kaizen-group-people").html("");
+	if($("#new-kaizen-group").hasClass("hide")){
+		$("#new-kaizen-group").removeClass("hide");
+	}
+	else{
+		$("#new-kaizen-group").addClass("hide");
+	}
+}
+
+function show_kaizen_group_edit_div(kgName, kgNo){
+	if($("#edit-kaizen-group").hasClass("hide")){
+		$("#edit-kaizen-group-name").val(kgName);
+		$("#edit-kaizen-group-id").val(kgNo);
+		fill_kaizen_group_edit_div(kgNo);
+		$("#edit-kaizen-group").removeClass("hide");
+	}
+	else{
+		$("#edit-kaizen-group").addClass("hide");
+	}
+}
+
+function show_kaizen_group_delete_div(kgName, kgNo){
+	if($("#delete-kaizen-group").hasClass("hide")){
+		$("#delete-kaizen-group-name").html(kgName);
+		$("#delete-kaizen-group-no").val(kgNo);
+		$("#delete-kaizen-group").removeClass("hide");
+	}
+	else{
+		$("#delete-kaizen-group").addClass("hide");
+	}
+}
+
+
+
+function add_new_kaizen_group(){
+	
+	var frm = $('#new-kaizen-group-form');
+	var d;
+	d=frm.serialize()+"&un="+userPref.uName+"&p="+userPref.uPassword+"&s="+xmlsString.submitNewKaizenGroup;
+	$.ajax({
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.submitNewKaizenGroup,
+		timeout: 260000,
+		data: d,
+		success: function (r) {
+
+			$(r).find('result').each(function(index, element) {
+				if($(this).text()=="1"){
+					$("#kaizen-group-added").removeClass("hide");
+				}
+				else{
+					$("#kaizen-group-not-added").removeClass("hide");
+				}
+			})
+			
+		}
+	});
+	
+	show_new_kaizen_group_div();
+}
+
+function new_kaizen_group_add_person(){
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:xmlsString.getPeopleList
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var id, name, surname, working, data;
+		data="";
+		data='<div class="grid-100">';
+		data+='<select name="new-kaizen-group-person[]" class="form-element-1 left new-kaizen-group-person">';
+		data+='<option value="0">--</option>';
+		
+		$(r).find('result').each(function(index, element) {
+            id=$(this).find('id').text();
+			name=$(this).find('name').text();
+			surname=$(this).find('surname').text();
+			working=$(this).find('working').text();
+			
+			if(working==1){
+				data+='<option value="'+id+'">'+name+' '+surname+'</option>\';';
+			}
+        });
+		data+='</select>';
+		data+='<div class="icon-container-l-2 margin-left-3">';
+		data+='<img class="icon" src="images/minus-red.png" onclick="delete_new_kaizen_group_person(this);" />';
+		data+='</div>';
+		data+='</div>';
+		$("#new-kaizen-group-people").append(data);
+		
+	})
+	.fail(function(){
+		if(pages.login!=find_page_name()) open_page(pages.login,"");
+		alert(messages[userPref.lang][2]);
+	});
+	stop_search();//home12.html için gerekli
+}
+
+function delete_new_kaizen_group_person(e){
+	$(e).parent().parent().remove();
+	stop_search();//home12.html için gerekli
+}
+
+function edit_kaizen_group_add_person(){
+	$.ajax({
+		async: false,		
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
+		timeout: 260000,
+		data: {un:userPref.uName,
+				p:userPref.uPassword,
+				s:xmlsString.getPeopleList
+			},
+		dataType: "xml"
+	})
+	.done(function(r){
+		var id, name, surname, working, data;
+		data="";
+		data='<div class="grid-100">';
+		data+='<select name="edit-kaizen-group-person[]" class="form-element-1 left edit-kaizen-group-person">';
+		data+='<option value="0">--</option>';
+		
+		$(r).find('result').each(function(index, element) {
+            id=$(this).find('id').text();
+			name=$(this).find('name').text();
+			surname=$(this).find('surname').text();
+			working=$(this).find('working').text();
+			
+			if(working==1){
+				data+='<option value="'+id+'">'+name+' '+surname+'</option>\';';
+			}
+        });
+		data+='</select>';
+		data+='<div class="icon-container-l-2 margin-left-3">';
+		data+='<img class="icon" src="images/minus-red.png" onclick="delete_edit_kaizen_group_person(this);" />';
+		data+='</div>';
+		data+='</div>';
+		$("#edit-kaizen-group-people").append(data);
+		
+	})
+	.fail(function(){
+		if(pages.login!=find_page_name()) open_page(pages.login,"");
+		alert(messages[userPref.lang][2]);
+	});
+	stop_search();//home12.html için gerekli
+}
+
+function delete_edit_kaizen_group_person(e){
+	$(e).parent().parent().remove();
+	stop_search();//home12.html için gerekli
+}
+
+$( function(){	
+	$(document).on("click","#kaizen-group-added-yes", function(){
+		open_page("page26.html","");
+	});
+	$(document).on("click","#kaizen-group-added-no", function(){
+		open_page("page16.html","");
+	});
+	$(document).on("click","#kaizen-group-not-added-ok", function(){
+		$("#kaizen-group-not-added").addClass("hide");
+	});
+	
+	
+	$(document).on("click","#kaizen-group-delete-yes", function(){
+		delete_kaizen_group($("#delete-kaizen-group-no").val());
+		$("#delete-kaizen-group").addClass("hide");
+	});
+	$(document).on("click","#kaizen-group-delete-no", function(){
+		$("#delete-kaizen-group").addClass("hide");
+	});
+	$(document).on("click","#kaizen-group-deleted-ok", function(){
+		open_page("page26.html","");
+	});
+	$(document).on("click","#kaizen-group-not-deleted-ok", function(){
+		$("#kaizen-group-not-deleted").addClass("hide");
+	});
+	
+	$(document).on("click","#kaizen-group-edited-ok", function(){
+		open_page("page26.html","");
+	});
+	$(document).on("click","#kaizen-group-not-edited-ok", function(){
+		$("#kaizen-group-not-edited").addClass("hide");
+	});
+	
+});
+
+function list_kaizen_groups(gNo){
+	if(gNo=="") gNo=0;
+	
+	$.ajax({
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.listKaizenGroups,
+		timeout: 260000,
+		data: {un:userPref.uName,
+			   p:userPref.uPassword,
+			   s:xmlsString.listKaizenGroups,
+			   gno: gNo
+		},
+		success: function (r) {
+			
+			var kgName;
+			var kgNo;
+			var data;
+			data="";
+			//alert(data);
+			//alert($(r).text());
+			//alert(r.toSource());
+			//alert(JSON.stringify(r, null, 4));
+			$(r).find('group').each(function(index, element) {
+				
+				data+='<div class="kaizen-group">';
+				$(this).find('group_name').each(function(index, element) {
+					kgName=$(this).text();
+				});
+				
+				$(this).find('group_id').each(function(index, element) {
+					kgNo=$(this).text();
+				});
+				
+				data+='<div class="kaizen-group-name">'+kgName;
+				data+='<img class="kaizen-group-icon margin-left-5" src="images/edit.png" onclick="show_kaizen_group_edit_div(\''+kgName+'\',\''+kgNo+'\');" />';
+				data+='<img class="kaizen-group-icon margin-left-5" src="images/delete.png" onclick="show_kaizen_group_delete_div(\''+kgName+'\',\''+kgNo+'\');" />';
+				data+='</div>';
+				
+				
+				
+				data+='<div class="group-people">';
+				$(this).find('person').each(function(index, element) {
+					data+='<div class="group-person">'+$(this).text()+'</div>';
+				});
+				data+='</div>';
+				data+='</div>'; 
+			});
+			
+			$("#kaizen-groups").append(data);
+			
+               
+                
+            
+		}
+	});
+}
+
+function delete_kaizen_group(gNo){
+	if(gNo>0){
+		$.ajax({
+			type: xmlDataSendType,
+			crossDomain: true,
+			url: siteUrlAdress+"/"+xmlsUrl.deleteKaizenGroup,
+			timeout: 260000,
+			data: {un:userPref.uName,
+				   p:userPref.uPassword,
+				   s:xmlsString.deleteKaizenGroup,
+				   gno: gNo
+			},
+			success: function (r) {
+				
+				$(r).find('result').each(function(index, element) {
+					if($(this).text()==1){
+						$("#kaizen-group-deleted").removeClass("hide");
+					}
+					else{
+						$("#kaizen-group-not-deleted").removeClass("hide");
+					}
+					
+				});
+				   
+				
+			}
+		});
+	}
+}
+
+function fill_kaizen_group_edit_div(gNo){
+	if(gNo=="") gNo=0;
+	
+	if(gNo>0){
+		var dataPeople;
+		var peopleId=[];
+		
+		$.ajax({
+			async: false,		
+			type: xmlDataSendType,
+			crossDomain: true,
+			url: siteUrlAdress+"/"+xmlsUrl.getPeopleList,
+			timeout: 260000,
+			data: {un:userPref.uName,
+					p:userPref.uPassword,
+					s:xmlsString.getPeopleList
+				},
+			dataType: "xml"
+		})
+		.done(function(r){
+			var id, name, surname, working, data;
+			data="";
+			data='<div class="grid-100">';
+			data+='<select name="edit-kaizen-group-person[]" class="form-element-1 left edit-kaizen-group-person">';
+			data+='<option value="0">--</option>';
+			
+			$(r).find('result').each(function(index, element) {
+				id=$(this).find('id').text();
+				name=$(this).find('name').text();
+				surname=$(this).find('surname').text();
+				working=$(this).find('working').text();
+				
+				if(working==1){
+					data+='<option value="'+id+'">'+name+' '+surname+'</option>\';';
+				}
+			});
+			data+='</select>';
+			data+='<div class="icon-container-l-2 margin-left-3">';
+			data+='<img class="icon" src="images/minus-red.png" onclick="delete_edit_kaizen_group_person(this);" />';
+			data+='</div>';
+			data+='</div>';
+			dataPeople=data;
+		});
+		
+		$.ajax({
+			type: xmlDataSendType,
+			crossDomain: true,
+			url: siteUrlAdress+"/"+xmlsUrl.listKaizenGroupPeopleId,
+			timeout: 260000,
+			data: {un:userPref.uName,
+				   p:userPref.uPassword,
+				   s:xmlsString.listKaizenGroupPeopleId,
+				   gno: gNo
+			},
+			success: function (r) {
+				
+				$(r).find('person_id').each(function(index, element){
+					peopleId[peopleId.length]=$(this).text();
+				});
+				$("#edit-kaizen-group-people").html("");
+				
+				for(var i=0;i<peopleId.length;i++){
+					
+					$("#edit-kaizen-group-people").append(dataPeople);
+					$(".edit-kaizen-group-person:last").val(peopleId[i]);
+				}
+				
+			}
+		});
+	}
+	
+}
+
+function edit_kaizen_group(){
+	
+	var frm = $('#edit-kaizen-group-form');
+	var d;
+	d=frm.serialize()+"&un="+userPref.uName+"&p="+userPref.uPassword+"&s="+xmlsString.submitEditKaizenGroup;
+	
+	$.ajax({
+		type: xmlDataSendType,
+		crossDomain: true,
+		url: siteUrlAdress+"/"+xmlsUrl.submitEditKaizenGroup,
+		timeout: 260000,
+		data: d,
+		success: function (r) {
+
+			$(r).find('result').each(function(index, element) {
+				if($(this).text()=="1"){
+					$("#kaizen-group-edited").removeClass("hide");
+				}
+				else{
+					$("#kaizen-group-not-edited").removeClass("hide");
+				}
+			})
+			
+		}
+	});
+	
+}
+/* Bitiş - page26.html */
+
+
+
+function changeRefreeApproval(){
+	if($("#approval").val()==1){
+		$("#kaizen-refrees").find('.proposal-refree-point').each(function(index, element) {
+			$(this).val("1");
+		});
+		$("#kaizen-refrees").find('.refree-approval').each(function(index, element) {
+			$(this).val("1");
+		});
+	}
+	else if($("#approval").val()==2){
+		$("#kaizen-refrees").find('.proposal-refree-point').each(function(index, element) {
+			$(this).val("0");
+		});
+		$("#kaizen-refrees").find('.refree-approval').each(function(index, element) {
+			$(this).val("2");
+		});
+	}
+	sum_refree_points();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function prepareKaizenHtmlCode(r){
+	var ipn, irn; //i person name
+	var data;
+	data="";
+	$(r).find('result').each(function(index, element) {
+		
+			if(firstKaizenId==0){
+				firstKaizenId=$(this).find('kaizen_id').text();
+				lastKaizenId=firstKaizenId;
+			}
+			else{
+				lastKaizenId=$(this).find('kaizen_id').text();
+			}
+			
+			
+			data+='<div class="part-2">';
+			
+			data+='<div class="grid-100">';
+			
+			data+='<div class="grid-50">';
+			
+			data+='<div class="grid2-60 part-kaizen-no"';
+			data+=' onclick="open_page(\'page23.html\',\''+$(this).find('kaizen_id').text()+'\')"';
+			data+='>'+$(this).find('kaizen_no').text()+'</div>';
+			
+			data+='<div class="grid2-40 part-kaizen-department">'+$(this).find('department_name').text()+'</div>';
+			
+			data+='</div>';
+			data+='<div class="grid-50">';
+			
+			data+='<div class="grid2-84 part-kaizen-group-name">'+$(this).find('group_name').text()+'</div>';
+			
+			data+='<div class="grid2-8 part-kaizen-approval">'
+			if($(this).find('approval').text()=="1"){
+				data+='<img src="images/ok.png" class="icon4" title="Onaylanmış" alt="Onaylanmış" />';
+			}
+			else if($(this).find('approval').text()=="2"){
+				data+='<img src="images/ok_not.png" class="icon4" title="Reddedilmiş" alt="Reddedilmiş" />';
+			}
+			else{
+				data+='<img src="images/delay.png" class="icon4" title="Değerlendirmeyi Bekliyor" alt="Değerlendirmeyi Bekliyor" />';
+			}
+			
+			data+='</div>';
+			data+='<div class="grid2-8 part-kaizen-favorite">';
+			if($(this).find('favorite').text().trim()=="0" || $(this).find('favorite').text().trim()==""){
+				data+='<img src="images/favorite-not.png" class="icon4" title="Favori" alt="Favori" ondblclick="change_kaizen_favorite(this, \''+$(this).find('kaizen_id').text()+'\')" />';
+			}
+			else{
+				data+='<img src="images/favorite.png" class="icon4" title="Favori" alt="Favori" ondblclick="change_kaizen_favorite(this, \''+$(this).find('kaizen_id').text()+'\')" />';
+			}
+			data+='</div>';
+			data+='</div>';
+			
+			data+='</div>';
+			
+			data+='<div class="grid-100"><hr /></div>';
+			
+			data+='<div class="grid-100 part-kaizen-problem" onclick="show_hide_part_unvisible(this);">'+rnTobr($(this).find('problem').html())+'</div>';
+			
+			
+			data+='<div class="grid-100 part-unvisible hide" >';
+			
+			data+='<div class="grid-100"><hr /></div>';
+			
+			data+='<div class="grid-100 part-kaizen-solution" onclick="show_hide_part_unvisible(this);">'+rnTobr($(this).find('solution').html())+'</div>';
+			
+			data+='<div class="grid-100"><hr /></div>';
+			
+			data+='<div class="grid-100 part-kaizen-my-note" onclick="show_hide_part_unvisible(this);">'+rnTobr($(this).find('my_note').html())+'</div>';
+			
+			data+='<div class="grid-100"><hr /></div>';
+			
+			data+='<div class="grid-100">';
+			data+='<div class="grid-50">';
+			data+='<div class="grid2-60 part-kaizen-person" onclick="show_hide_part_unvisible(this);">'+$(this).find('person').text()+'</div>';
+			
+			data+='<div class="grid2-40 part-kaizen-type" onclick="show_hide_part_unvisible(this);">'+$(this).find('kaizen_type').text()+'</div>';
+			
+			data+='</div>';
+			
+			data+='<div class="grid-50">';
+			
+			data+='<div class="grid2-70 part-kaizen-proposal-date" onclick="show_hide_part_unvisible(this);">'+$(this).find('proposal_date').text()+'</div>';
+			
+			data+='<div class="grid2-8 part-kaizen-point" onclick="show_hide_part_unvisible(this);">';
+			if($(this).find('point').text()>"-1"){
+				data+=$(this).find('point').text();
+			}
+			else{
+				data+='<img src="images/delay.png" class="icon4" title="Değerlendirmeyi Bekliyor" alt="Değerlendirmeyi Bekliyor" />';
+			}
+			data+='</div>';
+			
+			data+='</div>';
+			
+			data+='</div>';
+			
+			data+='<div class="grid-100"><hr /></div>';
+			
+			
+			ipn=0;
+			data+='<div class="grid-100 part-kaizen-group">'+$(this).find('group_name').text()+'<br />';
+			$(this).find('group_person').each(function(index, element) {
+				if(ipn>0) data+=', ';
+				data+=$(this).find('group_person_name').text();
+				ipn++;
+			});
+			data+='</div>';
+			
+			data+='<div class="grid-100"><hr /></div>';
+			
+			irn=0;
+			data+='<div class="grid-100 part-kaizen-referee">';
+			$(this).find('referee_person').each(function(index, element) {
+				//if(irn>0) data+='<hr />';
+				data+='<div class="grid2-90">'+$(this).find('referee_person_name').text()+'</div>';
+				if($(this).find('referee_person_point').text()>"-1"){
+					data+='<div class="grid2-5">'+$(this).find('referee_person_point').text()+'</div>';
+				}
+				else{
+					data+='<div class="grid2-5"><img src="images/delay.png" class="icon4" title="Değerlendirmeyi Bekliyor" alt="Değerlendirmeyi Bekliyor" /></div>';
+				}
+			
+				//data+='<div class="grid-25">'+$(this).find('referee_person_point').text()+'</div>';
+				
+				if($(this).find('referee_person_approval').text()=="1"){
+					data+='<div class="grid2-5"><img src="images/ok.png" class="icon4" title="Onay" alt="Onay" /></div>';
+				}
+				else if($(this).find('referee_person_approval').text()=="2"){
+					data+='<div class="grid2-5"><img src="images/ok_not.png" class="icon4" title="Red" alt="Red" /></div>';
+				}
+				else{//$(this).find('referee_person_approval').text()==0 için
+					data+='<div class="grid2-5"><img src="images/delay.png" class="icon4" title="Değerlendirmeyi Bekliyor" alt="Değerlendirmeyi Bekliyor" /></div>';
+				}
+				
+			});
+			data+='</div>';
+			
+			
+			data+='</div>';
+			
+			data+='</div>';
+	});
+	return data;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

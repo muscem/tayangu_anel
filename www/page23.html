@@ -14,8 +14,21 @@
 <script type="text/javascript" src="codes/js/functions.js"></script>
 
 <script>
+var firstKaizenId, lastKaizenId, getKaizens;
+var kaizenId;
+firstKaizenId=0;
+lastKaizenId=0;
+getKaizens=0;
+
 function on_start_this_page(){
+	kaizenId=get_storaged_data(find_page_name());
+	show_kaizen();
+	$("#edit-page-icon").attr("onClick","open_page('page21.html', '"+kaizenId+"', '');");
 }
+
+
+
+
 </script>
 </head>
 
@@ -26,24 +39,26 @@ function on_start_this_page(){
 	
     <div id="header">
     	
-        <div class="icon-container-l"><img src="images/arrow-left.png" class="icon title-0 alt-0" title="Geri" alt="Geri" onClick="open_page(pages.main, '', '')" /></div>
+        <div class="icon-container-l"><img src="images/arrow-left.png" class="icon title-0 alt-0" title="Geri" alt="Geri" onClick="open_back_page();" /></div>
+        
+        <div class="icon-container-l margin-left-5"><img src="images/home.png" class="icon title-1 alt-1" title="Ana Sayfa" alt="Ana Sayfa" onClick="open_page(pages.main, '', '')" /></div>
+        
+        <div class="icon-container-r"><img src="images/edit.png" class="icon title-2 alt-2" title="Kaizeni Düzenle" alt="Kaizeni Düzenle" id="edit-page-icon" onClick="open_page('page21.html', '', '');" /></div>
         
     </div>
     
-    <div id="content">  
+    <div id="content">
         
-        <div class="heading-2 label-0">Sabah Toplantısı Notları</div>
+        <div class="heading-2 label-0">Kaizen Önerisi</div>
         
-        <div class="part-2 label-1" onclick="open_page('page10.html', '')">Yeni Not Ekle</div>
+        <div id="kaizen">
+        </div>
         
-        <div class="part-2 label-2" onclick="open_page('page12.html', '')">Not Ara</div>
-        
-        <div class="part-2 label-3" onclick="open_page('page9.html', '')">Not Listesi</div>
-        
-        <div class="part-2 label-4" onclick="open_page('page14.html', '')">Favori Not Listesi</div>
-        <div class="part-2 label-5" onclick="open_page('page15.html', '')">İstatistikler</div>
     </div>
     
+</div>
+
+
 </div>
 </body>
 </html>

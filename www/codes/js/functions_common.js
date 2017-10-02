@@ -18,6 +18,7 @@ function delete_storaged_data(sData)//Belirli bir çerezi silen kod.
 function find_page_name()
 function get_storaged_data(cName)//Belirli bir çerez degerini ögrenen kod
 function get_user_prefs()
+function nrTobr()
 function on_start()
 function open_page(page, no)
 function redirect_page(page)
@@ -42,10 +43,10 @@ var pageNo;
 //var siteUrlAdress="http://localhost/uygulamalar/tayangu/an-el/1";
 //var siteUrlAdress="http://localhost/my-apps/tayangu/an-el/1";
 var siteUrlAdress="http://www.tayangu.com.tr/anel";
-//var xmlDataSendAddressAdd="";
-var xmlDataSendAddressAdd="mobile/";
+var xmlDataSendAddressAdd="";
+//var xmlDataSendAddressAdd="mobile/";
 
-var xmlDataSendType="POST";//İnternet sitesinde POST, mobil uygulamalarda GET olacak.
+var xmlDataSendType="GET";//İnternet sitesinde POST, mobil uygulamalarda GET olacak.
 
 var messages = {
 	"tr" : {
@@ -111,7 +112,13 @@ var elementsName={
 	"morningNote":"morning-note",
 	"morningNoteContent":"morning-note-content",
 	"favoriteMorningNotesList":"favorite-morning-notes-list",
-	"morningNotesStatistics":"morning-notes-statistics"
+	"morningNotesStatistics":"morning-notes-statistics",
+	"kaizensList":"kaizens-list",
+	"searchKaizensList":"search-kaizens-list",
+	"favoriteKaizensList":"favorite-kaizens-list",
+	"kaizensStatistics":"kaizens-statistics",
+	"kaizen":"kaizen",
+	"kaizenTypeList":"kaizen-type-list"
 }
 
 
@@ -119,6 +126,7 @@ var xmlsUrl = {
 	"userLoginControl":"xmls/"+xmlDataSendAddressAdd+"xml_login_control.php",
 	"getPeopleList":"xmls/"+xmlDataSendAddressAdd+"xml_people_list.php",
 	"getDepartmentList":"xmls/"+xmlDataSendAddressAdd+"xml_department_list.php",
+	"addDepartment":"xmls/"+xmlDataSendAddressAdd+"xml_department_list.php",
 	"getMorningNotesList":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php",
 	"submitNewMorningNote":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php",
 	"getMorningNote":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php",
@@ -128,31 +136,93 @@ var xmlsUrl = {
 	"getMorningNoteToShow":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php",
 	"updateMorningNoteFavorite":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php",
 	"getFavoriteMorningNotesList":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes.php",
-	"getMorningNotesStatistics":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes_statistics.php"
+	"getMorningNotesStatistics":"xmls/"+xmlDataSendAddressAdd+"xml_morning_notes_statistics.php",
+	"submitNewKaizenForm":"xmls/"+xmlDataSendAddressAdd+"xml_kaizens.php",
+	"submitNewKaizenGroup":"xmls/"+xmlDataSendAddressAdd+"xml_kaizens.php",
+	"listKaizenGroups":"xmls/"+xmlDataSendAddressAdd+"xml_kaizens.php",
+	"deleteKaizenGroup":"xmls/"+xmlDataSendAddressAdd+"xml_kaizens.php",
+	"listKaizenGroupPeopleId":"xmls/"+xmlDataSendAddressAdd+"xml_kaizens.php",
+	"submitEditKaizenGroup":"xmls/"+xmlDataSendAddressAdd+"xml_kaizens.php",
+	"getKaizensList":"xmls/"+xmlDataSendAddressAdd+"xml_kaizens.php",
+	"searchKaizens":"xmls/"+xmlDataSendAddressAdd+"xml_kaizens.php",
+	"searchAdvancedKaizens":"xmls/"+xmlDataSendAddressAdd+"xml_kaizens.php",
+	"updateKaizenFavorite":"xmls/"+xmlDataSendAddressAdd+"xml_kaizens.php",
+	"getFavoriteKaizensList":"xmls/"+xmlDataSendAddressAdd+"xml_kaizens.php",
+	"getKaizensStatistics":"xmls/"+xmlDataSendAddressAdd+"xml_kaizens_statistics.php",
+	"getKaizenToShow":"xmls/"+xmlDataSendAddressAdd+"xml_kaizens.php",
+	"getKaizen":"xmls/"+xmlDataSendAddressAdd+"xml_kaizens.php",
+	"submitKaizenEditForm":"xmls/"+xmlDataSendAddressAdd+"xml_kaizens.php",
+	"getKaizenTypeList":"xmls/"+xmlDataSendAddressAdd+"xml_kaizens.php",
+	"addKaizenType":"xmls/"+xmlDataSendAddressAdd+"xml_kaizens.php",
+	"changeKaizenTypeRename":"xmls/"+xmlDataSendAddressAdd+"xml_kaizens.php",
+	"listKaizenTypes":"xmls/"+xmlDataSendAddressAdd+"xml_kaizens.php"
 }
 
 
+/*var xmlsUrl = {
+	"userLoginControl":"xmls/xml_login_control.php",
+	"getPeopleList":"xmls/xml_people_list.php",
+	"getDepartmentList":"xmls/xml_department_list.php",
+	"getMorningNotesList":"xmls/xml_morning_notes.php",
+	"submitNewMorningNote":"xmls/xml_morning_notes.php",
+	"getMorningNote":"xmls/xml_morning_notes.php",
+	"submitEditMorningNote":"xmls/xml_morning_notes.php",
+	"searchMorningNote":"xmls/xml_morning_notes.php",
+	"searchAdvancedMorningNote":"xmls/xml_morning_notes.php",
+	"getMorningNoteToShow":"xmls/xml_morning_notes.php"
+}*/
+/*var xmlsUrl = {
+	"userLoginControl":"xmls/mobile/xml_login_control.php",
+	"getPeopleList":"xmls/mobile/xml_people_list.php",
+	"getDepartmentList":"xmls/mobile/xml_department_list.php",
+	"getMorningNotesList":"xmls/mobile/xml_morning_notes.php",
+	"submitNewMorningNote":"xmls/mobile/xml_morning_notes.php",
+	"getMorningNote":"xmls/mobile/xml_morning_notes.php",
+	"submitEditMorningNote":"xmls/mobile/xml_morning_notes.php",
+	"searchMorningNote":"xmls/mobile/xml_morning_notes.php",
+	"searchAdvancedMorningNote":"xmls/mobile/xml_morning_notes.php",
+	"getMorningNoteToShow":"xmls/mobile/xml_morning_notes.php"
+}*/
 
 var xmlsString = {
-	"userLoginControl":"user_login_control",
-	"getPeopleList":"get-people-list",
-	"changePersonStatus":"change-person-status",
-	"changePersonDelete":"change-person-delete",
-	"changePersonRename":"change-person-rename",
+	"addDepartment":"add-department",
+	"addKaizenType":"add-kaizen-type",
 	"addPerson":"add-person",
-	"getDepartmentList":"get-department-list",
 	"changeDepartmentDelete":"change-department-delete",
 	"changeDepartmentRename":"change-department-rename",
-	"addDepartment":"add-department",
-	"getMorningNotesList":"get-morning-notes-list",
-	"submitNewMorningNote":"submit-new-morning-note",
+	"changeKaizenTypeDelete":"change-kaizen-type-delete",
+	"changeKaizenTypeRename":"change-kaizen-type-rename",
+	"changePersonDelete":"change-person-delete",
+	"changePersonRename":"change-person-rename",
+	"changePersonStatus":"change-person-status",
+	"deleteKaizenGroup":"delete-kaizen-group",
+	"getDepartmentList":"get-department-list",
+	"getFavoriteKaizensList":"get-favorite-kaizens-list",
+	"getFavoriteMorningNotesList":"get-favorite-morning-notes-list",
+	"getKaizen":"get-kaizen",
+	"getKaizenToShow":"get-kaizen-to-show",
+	"getKaizenTypeList":"get-kaizen-type-list",
+	"getKaizensList":"get-kaizens-list",
 	"getMorningNote":"get-morning-note",
-	"submitEditMorningNote":"submit-edit-morning-note",
-	"searchMorningNote":"search-morning-note",
-	"searchAdvancedMorningNote":"search-advanced-morning-note",
+	"getMorningNotesList":"get-morning-notes-list",
 	"getMorningNoteToShow":"get-morning-note-to-show",
+	"getPeopleList":"get-people-list",
+	"listKaizenGroupPeopleId":"list-kaizen-group-people-id",
+	"listKaizenGroups":"list-kaizen-groups",
+	"listKaizenTypes":"list-kaizen-types",
+	"searchAdvancedMorningNote":"search-advanced-morning-note",
+	"searchAdvancedKaizens":"search-advanced-kaizens",
+	"searchMorningNote":"search-morning-note",
+	"searchKaizens":"search-kaizens",
+	"submitEditMorningNote":"submit-edit-morning-note",
+	"submitEditKaizenGroup":"submit-edit-kaizen-group",
+	"submitKaizenEditForm":"submit-kaizen-edit-form",
+	"submitNewMorningNote":"submit-new-morning-note",
+	"submitNewKaizenForm":"submit-new-kaizen",
+	"submitNewKaizenGroup":"submit-new-kaizen-group",
+	"updateKaizenFavorite":"update-kaizen-favorite",
 	"updateMorningNoteFavorite":"update-morning-note-favorite",
-	"getFavoriteMorningNotesList":"get-favorite-morning-notes-list"
+	"userLoginControl":"user_login_control"
 }
 
 
@@ -180,18 +250,41 @@ function onDeviceReady() {
 */
 
 
-	startAllPagesWithThis();
+	//startAllPagesWithThis();
 	
+	
+	/*show_dev();*/
 }
 
 
-
+/*function show_dev(){
+	var d;
+	//alert("4");
+	d="$(window).height()="+$(window).height()+"<br>";
+	//data="$(window).height()="+$(window).height()+"<br>";
+	//alert("5");
+	d+="$(document).height()="+$(document).height()+"<br>";
+	//data+="$(document).height()="+$(document).height()+"<br>";
+	//alert("6");
+	d+="$(window).width()="+$(window).width()+"<br>";
+	//data+="$(window).width()="+$(window).width()+"<br>";
+	//alert("7");
+	d+="$(document).width()="+$(document).width()+"<br>";
+	//data+="$(document).width()="+$(document).width()+"<br>";
+	//alert("8");
+	alert(d);
+	$("#test").html(d);
+}*/
 
 function startAllPagesWithThis(){
 	find_page_number();
+	//alert("cem1");
 	get_user_prefs();
+	//alert("cem2");
 	user_control();
+	//alert("cem3");
 	write_new_language_on_page();
+	//alert("cem4");
 	if($("#wrapper").hasClass("hide")){
 		$("#wrapper").removeClass("hide");
 		$("#background-logo").css("background","url(images/background-logo.jpg) no-repeat top center");
@@ -200,9 +293,10 @@ function startAllPagesWithThis(){
 }
 
 function on_start(){
+	//alert("cem1");
 /*	show_storaged_data();*/
 
-	//startAllPagesWithThis();
+	startAllPagesWithThis();
 	
 	
 /*
@@ -214,7 +308,13 @@ function on_start(){
 	
 */	
 	
-
+/*	var data;
+	data="$(window).height()="+$(window).height()+"<br>";
+	data+="$(document).height()="+$(document).height()+"<br>";
+	data+="$(window).width()="+$(window).width()+"<br>";
+	data+="$(document).width()="+$(document).width()+"<br>";
+	
+	$("#test").html(data);*/
 }
 
 
@@ -351,10 +451,10 @@ function open_page(p, no){
 //	for(var i=1; i<root.length;i++){
 //		backUrl="../"+backUrl;
 //	}
-	
-	
-	//set_storaged_data("back"+p, find_page_name(), "y");
-	set_storaged_data("back"+p, backUrl);
+	//alert(p+"-"+backurl);
+	//alert(p+"-"+backUrl);	
+		//set_storaged_data("back"+p, find_page_name(), "y");
+	if(p!=backUrl) set_storaged_data("back"+p, backUrl);
 	if(no!="") set_storaged_data(p, no);
 	redirect_page(p);
 }
@@ -573,3 +673,17 @@ function user_control(){
 
 
 document.addEventListener("deviceready", onDeviceReady, false);
+
+
+function rnTobr(data){
+	data=data.replace(/(?:\r\n|\r|\n)/g, '<br />');
+	return data;
+}
+
+//iptal
+/*function decodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+}*/
+

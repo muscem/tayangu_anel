@@ -72,7 +72,8 @@ var labels={
 			"3":"Günlük Görüşme Planı",
 			"4":"Notlar",
 			"5":"Araştırmalar",
-			"6":"Dosyalar"
+			"6":"Dosyalar",
+			"7":"Kaizen Önerileri"
 		},
 		"en":{
 			"0":"An-El",
@@ -81,7 +82,8 @@ var labels={
 			"3":"Daily Meeting Plan",
 			"4":"Notes",
 			"5":"Studies",
-			"6":"Files"
+			"6":"Files",
+			"7":"Kaizen Offers"
 		}
 	},
 	"4":{//settings.html
@@ -330,6 +332,24 @@ var labels={
 			"0":"Morning Meeting Note"
 		}
 	},
+	"16":{//morning-notes.html
+		"tr":{
+			"0":"Kaizen Önerileri",
+			"1":"Yeni Kaizen Önerisi Ekleme",
+			"2":"Kaizen Önerisi Arama",
+			"3":"Kaizen Önerileri Listesi",
+			"4":"Favori Kaizen Önerileri Listesi",
+			"5":"İstatistikler"
+		},
+		"en":{
+			"0":"Kaizen Offers",
+			"1":"New Kaizen Offer Additon",
+			"2":"Search Kaizen Offer",
+			"3":"Kaizen Offers List",
+			"4":"Favorite Kaizen Offer List",
+			"5":"Statistics"
+		}
+	}
 }
 
 

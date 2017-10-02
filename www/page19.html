@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Tayangu</title>
+<link rel="stylesheet" href="codes/css/jquery-ui.css">
+<link rel="stylesheet" href="codes/css/mycssframework.css">
+<link rel="stylesheet" href="codes/css/main.css">
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="codes/js/jquery.js"></script>
+<script type="text/javascript" src="codes/js/jquery-ui.js"></script>
+<script type="text/javascript" src="codes/js/languages.js"></script>
+<script type="text/javascript" src="codes/js/functions_common.js"></script>
+<script type="text/javascript" src="codes/js/functions.js"></script>
+
+<script>
+var firstKaizenId, lastKaizenId, getKaizens, kaizenCount, filterOn;
+firstKaizenId=0;
+lastKaizenId=0;
+getKaizens=0;
+kaizenCount=1;
+filterOn=0;
+function on_start_this_page(){
+	
+	get_kaizens_list();
+	//while($(window).height() >= $(document).height()*0.95){
+		//on_start_this_page();
+	//}
+}
+
+/*$('body').bind( "touchstart", function(e){
+        //$('div#extras').fadeTo('fast', 1);
+});
+
+$('body').bind( "touchend", function(e){
+        //$('div#extras').delay(2000).fadeTo(1500, 0);
+});*/
+
+$(window).scroll(function(){
+	if($(window).scrollTop() + $(window).height() > $(document).height()*0.9){
+		if(getKaizens==0) {
+			getKaizens=1;
+			get_kaizens_list();
+		}
+	}   
+});
+
+
+</script>
+</head>
+
+<body onload="on_start();">
+<div id="background-logo"></div>
+
+<div id="wrapper" class="unselectable hide">
+	
+    <div id="header">
+    	
+        <div class="icon-container-l"><img src="images/arrow-left.png" class="icon title-0 alt-0" title="Geri" alt="Geri" onClick="open_page('page16.html', '', '')" /></div>
+        
+        <div class="icon-container-l margin-left-5"><img src="images/home.png" class="icon title-1 alt-1" title="Ana Sayfa" alt="Ana Sayfa" onClick="open_page(pages.main, '', '')" /></div>
+        
+        <div class="icon-container-r"><img src="images/arrow-up.png" class="icon title-2 alt-2" title="Artan Şeklinde Sırala" alt="Azalan Şeklinde Sırala" onClick="sort_kaizens('asc', elementsName.kaizensList)" /></div>
+        
+        <div class="icon-container-r margin-right-5"><img src="images/arrow-down.png" class="icon title-3 alt-3" title="Azalan Şeklinde Sırala" alt="Azalan Şeklinde Sırala" onClick="sort_kaizens('desc', elementsName.kaizensList)" /></div>
+        
+        <div class="icon-container-r margin-right-5"><img src="images/filter.png" class="icon title-4 alt-4" title="Filtrele" alt="Filtrele" onClick="show_hide_filter_menu()" /></div>
+        
+    </div>
+    
+    <div id="filter">
+    
+        <div class="icon-container-l-3">
+			<img src="images/number.png" class="icon2 title-5 alt-5" title="Numara" alt="Numara"/>
+    		<input id="filter-number" size="10" onkeyup="filter_kaizens(elementsName.kaizensList);" class="form-element-1"/>
+        </div>
+        
+        <div class="icon-container-l-3">
+            <img src="images/start.png" class="icon2 title-6 alt-6" title="Tarih" alt="Tarih"/>
+            <input id="filter-date" size="10" onkeyup="filter_kaizens(elementsName.kaizensList);" class="form-element-1"/>
+        </div>
+        
+        <div class="icon-container-l-3">
+            <img src="images/working.png" class="icon2 title-8 alt-8" title="Problem Önerisi" alt="Problem Önerisi"/>
+            <input id="filter-problem" size="10" onkeyup="filter_kaizens(elementsName.kaizensList);" class="form-element-1"/>
+        </div>
+        
+        <div class="icon-container-l-3">
+            <img src="images/working.png" class="icon2 title-8 alt-8" title="Çözüm Önerisi" alt="Çözüm Önerisi"/>
+            <input id="filter-solution" size="10" onkeyup="filter_kaizens(elementsName.kaizensList);" class="form-element-1"/>
+        </div>
+        
+        <div class="icon-container-l-3">
+            <img src="images/working.png" class="icon2 title-8 alt-8" title="Kişi" alt="Kişi"/>
+            <input id="filter-person" size="10" onkeyup="filter_kaizens(elementsName.kaizensList);" class="form-element-1"/>
+        </div>
+        
+        <div class="icon-container-l-3">
+            <img src="images/departments.png" class="icon2 title-9 alt-9" title="Bölüm" alt="Bölüm"/>
+            <input id="filter-department" size="10" onkeyup="filter_kaizens(elementsName.kaizensList);" class="form-element-1"/>
+        </div>
+        
+        <div class="icon-container-l-3">
+            <img src="images/departments.png" class="icon2 title-9 alt-9" title="Grup" alt="Grup"/>
+            <input id="filter-group" size="10" onkeyup="filter_kaizens(elementsName.kaizensList);" class="form-element-1"/>
+        </div>
+        
+        <div class="icon-container-l-3">
+            <img src="images/departments.png" class="icon2 title-9 alt-9" title="Kaizen Türü" alt="Kaizen Türü"/>
+            <input id="filter-kaizen-type" size="10" onkeyup="filter_kaizens(elementsName.kaizensList);" class="form-element-1"/>
+        </div>
+        
+        <div class="icon-container-l-3">
+            <img src="images/finished.png" class="icon2 title-11 alt-1" title="Onay" alt="Onay"/>
+            <select id="filter-approval" onchange="filter_kaizens(elementsName.kaizensList);" class="form-element-1">
+            <option value="-1">---</option>
+            <option value="0">Beklemede</option>
+            <option value="1">Onaylanmış</option>
+            <option value="2">Red Edilmiş</option>
+            </select>
+        </div>
+        
+        
+        <div class="icon-container-l-3">
+            <img src="images/favorite.png" class="icon2 title-12 alt-12" title="Favori" alt="Favori"/>
+            <select id="filter-favorite" onchange="filter_kaizens(elementsName.kaizensList);" class="form-element-1">
+            <option value="-1">---</option>
+            <option value="0">Favori</option>
+            <option value="1">Favori değil</option>
+            </select>
+        </div>
+        
+        <div class="icon-container-l-4">
+        	<img src="images/ok_not.png" class="icon3 title-13 alt-13" title="Filtreyi Temizle" alt="Filtreyi Temizle" onclick="clear_filter_kaizen_box(elementsName.kaizensList);"/>
+        </div>
+    
+    </div>
+    
+    
+    <div id="content">
+        
+        <div class="heading-2 label-0">Kaizen Önerileri Listesi</div>
+        
+        <div id="kaizens-list"></div>
+        
+    </div>
+    
+</div>
+
+</body>
+</html>

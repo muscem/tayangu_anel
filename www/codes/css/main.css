@@ -320,12 +320,12 @@ body{
 /* Baslangiç - page6.html */
 #person-status, #person-delete, #person-rename, #person-add{
 	background:url(../../images/background/bg_black_200.png) repeat;
-	position:fixed;
+	position:absolute;
 	height:100%;
 	width:100%;
 	z-index:999999;
 	overflow:auto;
-	top:0%;
+	top:10%;
 	left:0px;
 	padding:30% 0% 0% 0%;
 }
@@ -348,12 +348,12 @@ body{
 /* Baslangiç - page7.html */
 #department-delete, #department-rename, #department-add{
 	background:url(../../images/background/bg_black_200.png) repeat;
-	position:fixed;
+	position:absolute;
 	height:100%;
 	width:100%;
 	z-index:999999;
 	overflow:auto;
-	top:0%;
+	top:10%;
 	left:0px;
 	padding:30% 0% 0% 0%;
 
@@ -375,28 +375,35 @@ body{
 
 
 
-/* Baslangiç - page10.html */
-#morning-note-added, #morning-note-not-added {
+/* Baslangiç - page10.html (mornin-note), page17.html (kaizen), page26.html (kaizen group) */
+#morning-note-added, #morning-note-not-added, #kaizen-added, #kaizen-not-added, #kaizen-edited, #kaizen-not-edited, #kaizen-group-added, #kaizen-group-not-added,
+#kaizen-group-deleted, #kaizen-group-not-deleted,
+#kaizen-group-edited, #kaizen-group-not-edited{
 	background:url(../../images/background/bg_black_200.png) repeat;
 	position:fixed;
-	height:100%;
-	width:100%;
+	height:auto;
+	width:80%;
 	z-index:999999;
 	overflow:auto;
-	top:0%;
+	top:10%;
 	left:0px;
-	padding:30% 0% 0% 0%;
+	padding:10% 0% 0% 0%;
+	margin:10% 10% 0% 10%;
 }
 
-.morning-note-part {
+.morning-note-part, .kaizen-part, .kaizen-group-part{
 	background:url(../../images/background/bg_white_100.png) repeat;
 	width:90%;
 	margin:1% auto;
 	padding:2%;
 	overflow:auto;
+	font-size:1.5em;
 }
 
-#morning-note-added-no, #morning-note-added-yes, #morning-note-not-added-ok{
+#morning-note-added-no, #morning-note-added-yes, #morning-note-not-added-ok, #kaizen-added-no, #kaizen-added-yes, #kaizen-not-added-ok,
+#kaizen-edited-no, #kaizen-edited-yes, #kaizen-not-edited-ok,
+#kaizen-group-added-no, #kaizen-group-added-yes, #kaizen-group-not-added-ok,
+#kaizen-group-deleted-ok, #kaizen-group-not-deleted-ok{
 	background:url(../../images/background/bg_yellow_50.png) repeat;
 	padding:2% 0%;
 }
@@ -413,12 +420,84 @@ body{
 }
 /* Bitis - page11.html */
 
+/* Baslangiç - page20.html */
+#kaizen-type-delete, #kaizen-type-rename, #kaizen-type-add{
+	background:url(../../images/background/bg_black_200.png) repeat;
+	position:absolute;
+	height:100%;
+	width:100%;
+	z-index:999999;
+	overflow:auto;
+	top:10%;
+	left:0px;
+	padding:30% 0% 0% 0%;
+
+}
+
+.kaizen-type-delete-part, .kaizen-type-rename-part, .kaizen-type-add-part{
+	background:url(../../images/background/bg_white_100.png) repeat;
+	width:90%;
+	margin:1% auto;
+	padding:2%;
+	overflow:auto;
+}
+
+#kaizen-type-add-no, #kaizen-type-add-yes, #kaizen-type-delete-no, #kaizen-type-delete-yes, #kaizen-type-rename-no, #kaizen-type-rename-yes{
+	background:url(../../images/background/bg_yellow_50.png) repeat;
+	padding:2% 0%;
+}
+/* Bitis - page20.html */
 
 
 
 
+/* Baslangiç - page26.html */
+#kaizen-group-delete-no, #kaizen-group-delete-yes, #kaizen-group-deleted-ok, #kaizen-group-not-deleted-ok, #kaizen-group-edited-ok, #kaizen-group-not-edited-ok{
+	background:url(../../images/background/bg_yellow_50.png) repeat;
+	padding:2% 0%;
+}
+#new-kaizen-group, #edit-kaizen-group, #delete-kaizen-group{
+	position:absolute;
+	top:15%;
+	left:0px;
+	width:70%;
+	height:auto;
+	background:url(../../images/background/bg_black_220.png) repeat;
+	padding:10% 10%;
+	margin:0 5%;
+}
+#new-kaizen-group-info, #edit-kaizen-group-info{
+	background:url(../../images/background/bg_white_50.png) repeat;
+	width:90%;
+	padding:5%;
+	font-size:1.5em;
+	overflow:auto;
+}
+#new-kaizen-group-add-icon, #edit-kaizen-group-add-icon{
+	width:10%;
+}
+#new-kaizen-group-buttons, #edit-kaizen-group-buttons{
+	font-size:1em;
+}
+.kaizen-group{
+	margin-top:2%;
+}
+.kaizen-group-name{
+	font-size:1.5em;
+	border-bottom:#999 solid 1px;
+	margin-bottom:3px;
+}
+.group-person{
+	color:#CCC;
+}
+.kaizen-group-icon{
+	width:1em;
+}
+/* Bitis - page26.html */
 
-#search-morning-notes-list{
+
+
+#search-morning-notes-list, #search-kaizens-list{
 	float:left;
 	clear:both;
 	margin-top:1%;

@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Tayangu</title>
+<link rel="stylesheet" href="codes/css/jquery-ui.css">
+<link rel="stylesheet" href="codes/css/mycssframework.css">
+<link rel="stylesheet" href="codes/css/main.css">
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="codes/js/jquery.js"></script>
+<script type="text/javascript" src="codes/js/jquery-ui.js"></script>
+<script type="text/javascript" src="codes/js/languages.js"></script>
+<script type="text/javascript" src="codes/js/functions_common.js"></script>
+<script type="text/javascript" src="codes/js/functions.js"></script>
+
+<style>
+
+</style>
+<script>
+function on_start_this_page(){
+	list_kaizen_groups(0);
+}
+
+</script>
+</head>
+
+<body onload="on_start();">
+<div id="background-logo"></div>
+
+<div id="wrapper" class="unselectable hide">
+	
+    <div id="header">
+        <div class="icon-container-l"><img src="images/arrow-left.png" class="icon title-0 alt-0" title="Geri" alt="Geri" onClick="open_page('page16.html', '', '')" /></div>
+        
+        <div class="icon-container-l margin-left-5"><img src="images/home.png" class="icon title-1 alt-1" title="Ana Sayfa" alt="Ana Sayfa" onClick="open_page(pages.main, '', '')" /></div>
+        <div class="icon-container-r margin-left-5"><img src="images/plus-green.png" class="icon title-1 alt-1" title="Grup Ekle" alt="Grup Ekle" onClick="show_new_kaizen_group_div()" /></div>
+    </div>
+    
+    <div id="content">  
+        
+        <div class="heading-2 label-0">Kaizen Grupları</div>
+        
+        <div class="grid-100"></div>
+        <div class="icon-container-l-2">
+            <img class="icon" src="images/plus-green.png" onclick="show_new_kaizen_group_div();" />
+        </div>
+        
+        <div id="kaizen-groups" class="grid-100">
+            <!--<div class="kaizen-group">
+            	<div class="kaizen-group-name">Grup 1
+                
+                </div>
+                <div class="group-people">
+                	<div class="group-person"></div>
+                </div>
+                
+            </div>-->
+        </div>
+        
+        
+    </div>
+    
+</div>
+
+
+
+
+<div id="new-kaizen-group" class="hide">
+	<form id="new-kaizen-group-form" name="new-kaizen-group-form">
+	<div id="new-kaizen-group-info">
+    	<div id="new-kaizen-group-buttons">Yeni Grup  
+            <input type="button" value="Ekle" onclick="add_new_kaizen_group()" />
+            <input type="button" value="İptal" onclick="show_new_kaizen_group_div();" />
+        </div>
+        
+        <div id="new-kaizen-group-name-section">Grubun Adı:
+            <input type="text" id="new-kaizen-group-name" name="new-kaizen-group-name" value="" />
+        </div>
+        
+        <div id="new-kaizen-group-add-icon">
+            <img class="icon" src="images/plus-green.png" onclick="new_kaizen_group_add_person();" />
+        </div>
+            
+        <div id="new-kaizen-group-people">
+            
+        </div>
+
+    </div>
+    </form>
+</div>
+
+<div id="kaizen-group-added" class="hide">
+    <div class="kaizen-group-part label-13">Kaizen grubu başarıyla kaydedildi.</div>
+    
+    <div class="kaizen-group-part label-14">Yeni bir kaizen grup oluşturmak ister misiniz?</div>
+    
+    <div class="kaizen-part">
+        <div id="kaizen-group-added-yes" class="grid2-40 center label-15">Evet</div>
+        <div id="kaizen-group-added-no" class="grid2-40 center label-16 margin-left-20">Hayır</div>
+    </div>
+</div>
+
+<div id="kaizen-group-not-added" class="hide">
+    <div class="kaizen-group-part label-17">Bir sorun oluştu ve kaizen grubu kaydedilemedi.</div>
+    
+    <div class="kaizen-group-part">
+        <div id="kaizen-group-not-added-ok" class="grid2-60 center label-18 margin-left-20">Tamam</div>
+    </div>
+</div>
+
+
+
+
+
+
+<div id="delete-kaizen-group" class="hide">
+        
+    <div class="kaizen-group-part label-14"><span id="delete-kaizen-group-name"></span> kaizen grubunu silmek mi istiyorsunuz?</div>
+    
+    <div class="kaizen-part">
+    	<input type="text" id="delete-kaizen-group-no" value="" style="display:none" />
+        <div id="kaizen-group-delete-yes" class="grid2-40 center label-15">Evet</div>
+        <div id="kaizen-group-delete-no" class="grid2-40 center label-16 margin-left-20">Hayır</div>
+    </div>
+</div>
+
+
+<div id="kaizen-group-deleted" class="hide">
+    <div class="kaizen-group-part label-17">Kaizen grubu silindi.</div>
+	<div class="kaizen-group-part">
+        <div id="kaizen-group-deleted-ok" class="grid2-60 center label-18 margin-left-20">Tamam</div>
+    </div>
+</div>
+
+<div id="kaizen-group-not-deleted" class="hide">
+    <div class="kaizen-group-part label-17">Bir hata oluştu ve kaizen grubu silinemedi!</div>
+    <div class="kaizen-group-part">
+        <div id="kaizen-group-not-deleted-ok" class="grid2-40 center label-18 margin-left-30">Tamam</div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="edit-kaizen-group" class="hide">
+	<form id="edit-kaizen-group-form" name="edit-kaizen-group-form">
+	<div id="edit-kaizen-group-info">
+    	<div id="edit-kaizen-group-buttons"> 
+            <input type="button" value="Güncelle" onclick="edit_kaizen_group()" />
+            <input type="button" value="İptal" onclick="show_kaizen_group_edit_div();" />
+        </div>
+        
+        <div id="edit-kaizen-group-name-section">Grubun Adı:
+            <input type="text" id="edit-kaizen-group-name" name="edit-kaizen-group-name" value="" />
+            <input type="text" id="edit-kaizen-group-id" name="edit-kaizen-group-id" value="" class="hide" />
+        </div>
+        
+        <div id="edit-kaizen-group-add-icon">
+            <img class="icon" src="images/plus-green.png" onclick="edit_kaizen_group_add_person();" />
+        </div>
+            
+        <div id="edit-kaizen-group-people">
+            
+        </div>
+
+    </div>
+    </form>
+</div>
+
+<div id="kaizen-group-edited" class="hide">
+    <div class="kaizen-group-part label-13">Kaizen grubu başarıyla güncellendi.</div>
+    
+    <div class="kaizen-group-part">
+        <div id="kaizen-group-edited-ok" class="grid2-60 center label-18 margin-left-20">Tamam</div>
+    </div>
+</div>
+
+<div id="kaizen-group-not-edited" class="hide">
+    <div class="kaizen-group-part label-17">Bir sorun oluştu ve kaizen grubu kaydedilemedi.</div>
+    
+    <div class="kaizen-group-part">
+        <div id="kaizen-group-not-edited-ok" class="grid2-60 center label-18 margin-left-20">Tamam</div>
+    </div>
+</div>
+
+</body>
+</html>
