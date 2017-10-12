@@ -43,8 +43,8 @@ var pageNo;
 
 //Bunu, değiştirilebilir ayar haline getirdim.
 //xml bağlantıları gibi gerçek siteyle bağlantılı adreserde kullanılacak.
-var siteUrlAdress="http://localhost/my-apps/tayangu/an-el/1";
-//var siteUrlAdress="http://www.tayangu.com.tr/anel";
+//var siteUrlAdress="http://localhost/my-apps/tayangu/an-el/1";
+var siteUrlAdress="http://www.tayangu.com.tr/anel";
 
 
 
