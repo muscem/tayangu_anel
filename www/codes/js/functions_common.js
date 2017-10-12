@@ -251,7 +251,7 @@ function onDeviceReady() {
 	xmlDataSendType="GET";
 	siteUrlAdress="http://www.tayangu.com.tr/anel";
 	//siteUrlAdress=userPref.siteUrlAdress;
-	
+	xmlDataSendAddressAdd="mobile/";
 	
 	//show_storaged_data();
 	
