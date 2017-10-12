@@ -340,6 +340,16 @@ function change_language(){
 	userPref.lang=lang;
 	write_new_language_on_page();
 }
+
+/*function change_site_url_adress(){
+	//Veritabanı bağlantısını değiştiriyor.
+	
+	var siteUrlA=$("#"+elementsName.siteUrlAdress).val();
+	set_storaged_data(sData.siteUrlAdress, siteUrlA);
+	userPref.siteUrlAdress=siteUrlA;
+	alert(userPref.siteUrlAdress);
+	//write_new_language_on_page();
+}*/
 /* Bitiş - page2.html */
 
 
@@ -347,6 +357,7 @@ function change_language(){
 /* Başlangıç - page4.html */
 function change_settings(){
 	change_language();
+	//change_site_url_adress();
 }
 /* Bitiş - page4.html */
 
@@ -2785,6 +2796,7 @@ function add_proposal_refree_for_search(){
 }
 
 function search_kaizen(){
+	getKaizens=1;
 	firstKaizenId=0;
 	lastKaizenId=0;
 	KaizenCount=1;
@@ -2820,7 +2832,7 @@ function get_search_kaizen(){
 		data=$("#"+elementsName.searchKaizensList).html()+data;
 		$("#"+elementsName.searchKaizensList).html(data);
 		filter_notes(elementsName.searchKaizensList);
-		getNotes=0;
+		getKaizens=0;
 		
 		if($(r).find('result').text()!="" && 
 		($(window).scrollTop()+$(window).height()*1 >= $(document).height()*1)){
@@ -2833,12 +2845,13 @@ function get_search_kaizen(){
 	.fail(function(){
 		//if(pages.login!=find_page_name()) open_page(pages.login,"");
 		alert(messages[userPref.lang][2]);
-		getNotes=0;
+		getKaizens=0;
 	});
 	
 }
 
 function search_advanced_kaizen(){
+	getKaizens=1;
 	firstKaizenId=0;
 	lastKaizenId=0;
 	KaizenCount=1;
@@ -2867,14 +2880,14 @@ function get_search_advanced_kaizen(){
 		data="";
 		
 		data=prepareKaizenHtmlCode(r);
+		//alert(data);
 		data=$("#"+elementsName.searchKaizensList).html()+data;
 		$("#"+elementsName.searchKaizensList).html(data);
 		filter_notes(elementsName.searchKaizensList);
-		getNotes=0;
+		getKaizens=0;
 
 		if($(r).find('result').text()!="" && 
 		($(window).scrollTop()+$(window).height()*1 >= $(document).height()*1)){
-			
 			get_search_advanced_kaizen();
 		}
 		
@@ -2883,7 +2896,7 @@ function get_search_advanced_kaizen(){
 	.fail(function(){
 		//if(pages.login!=find_page_name()) open_page(pages.login,"");
 		alert(messages[userPref.lang][2]);
-		getNotes=0;
+		getKaizens=0;
 	});
 }
 
@@ -3108,6 +3121,46 @@ function filter_kaizens(list_id){
 			}
 			
 			
+			/*
+			Bitmiş-bitmemiş filtresi için kullanılacak.
+			filterVal=$("#filter-finished-date").val().trim().split(",");
+			filterPart=$(this).find(".part-kaizen-finished-date").html();
+			alert(filterVal+"-"+filterPart);
+			for(var i=0;i<filterVal.length;i++){
+				filterVal[i]=filterVal[i].trim();
+				if(filterVal[i]!=""){
+					filterControl=1;
+					if(filterPart.indexOf(filterVal[i])>-1){
+						filterKaizen=2;
+					}
+					else if(filterPart.indexOf(filterVal[i])==-1 && filterKaizen==1 && i==filterVal.length-1){
+						filterKaizen=0;
+					};
+				};
+			};
+			
+			
+			filterVal=$("#filter-finished").val();
+			filterPart=$(this).find(".part-kaizen-finished").html().toLowerCase().trim();
+			if(filterVal==0){
+				if(filterPart!=""){
+					filterKaizen=2;
+				}
+				else{
+					filterKaizen=0;
+				}
+			}
+			else if(filterVal==1){
+				if(filterPart==""){
+					filterKaizen=2;
+				}
+				else{
+					filterKaizen=0;
+				}
+			}
+			*/
+			
+			
 			//Listeyi düzenleme
 			if(filterKaizen>0){
 				if($(this).hasClass("hide")){
@@ -3140,7 +3193,6 @@ function clear_filter_kaizen_box(list_id){
 }
 
 function get_kaizens_list(){
-	
 	$.ajax({
 		async: false,		
 		type: xmlDataSendType,
@@ -4497,8 +4549,9 @@ function prepareKaizenHtmlCode(r){
 	var ipn, irn; //i person name
 	var data;
 	data="";
+	//alert($(r).find('sql').text());
 	$(r).find('result').each(function(index, element) {
-		
+		//alert("cem");
 			if(firstKaizenId==0){
 				firstKaizenId=$(this).find('kaizen_id').text();
 				lastKaizenId=firstKaizenId;
@@ -4523,7 +4576,7 @@ function prepareKaizenHtmlCode(r){
 			data+='</div>';
 			data+='<div class="grid-50">';
 			
-			data+='<div class="grid2-84 part-kaizen-group-name">'+$(this).find('group_name').text()+'</div>';
+			data+='<div class="grid2-76 part-kaizen-group-name">'+$(this).find('group_name').text()+'</div>';
 			
 			data+='<div class="grid2-8 part-kaizen-approval">'
 			if($(this).find('approval').text()=="1"){
@@ -4537,6 +4590,7 @@ function prepareKaizenHtmlCode(r){
 			}
 			
 			data+='</div>';
+			
 			data+='<div class="grid2-8 part-kaizen-favorite">';
 			if($(this).find('favorite').text().trim()=="0" || $(this).find('favorite').text().trim()==""){
 				data+='<img src="images/favorite-not.png" class="icon4" title="Favori" alt="Favori" ondblclick="change_kaizen_favorite(this, \''+$(this).find('kaizen_id').text()+'\')" />';
@@ -4545,10 +4599,19 @@ function prepareKaizenHtmlCode(r){
 				data+='<img src="images/favorite.png" class="icon4" title="Favori" alt="Favori" ondblclick="change_kaizen_favorite(this, \''+$(this).find('kaizen_id').text()+'\')" />';
 			}
 			data+='</div>';
+			
+			data+='<div class="grid2-8 part-kaizen-finished-icon">'
+			if($(this).find('finished').text()!=""){
+				data+='<img src="images/finished.png" class="icon4" title="Onaylanmış" alt="Onaylanmış" />';
+			}
+			else{
+				data+=' ';
+			}
 			data+='</div>';
 			
 			data+='</div>';
 			
+			data+='</div>';
 			data+='<div class="grid-100"><hr /></div>';
 			
 			data+='<div class="grid-100 part-kaizen-problem" onclick="show_hide_part_unvisible(this);">'+rnTobr($(this).find('problem').html())+'</div>';
@@ -4576,7 +4639,15 @@ function prepareKaizenHtmlCode(r){
 			
 			data+='<div class="grid-50">';
 			
-			data+='<div class="grid2-70 part-kaizen-proposal-date" onclick="show_hide_part_unvisible(this);">'+$(this).find('proposal_date').text()+'</div>';
+			data+='<div class="grid2-40 part-kaizen-proposal-date" onclick="show_hide_part_unvisible(this);">'+$(this).find('proposal_date').text()+'</div>';
+			
+			data+='<div class="grid2-40 part-kaizen-finished-date" onclick="show_hide_part_unvisible(this);">';
+			if($(this).find('finished').text()!=""){
+				data+=$(this).find('finished').text();
+			}
+			data+='</div>';
+			
+			
 			
 			data+='<div class="grid2-8 part-kaizen-point" onclick="show_hide_part_unvisible(this);">';
 			if($(this).find('point').text()>"-1"){

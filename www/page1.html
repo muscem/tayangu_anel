@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tayangu</title>
 <link rel="stylesheet" href="codes/css/jquery-ui.css">
 <link rel="stylesheet" href="codes/css/mycssframework.css">
@@ -16,6 +17,7 @@
 <script>
 function on_start_this_page(){
 	$("#language-flag").attr("src", "images/flag-"+userPref.lang+".png");
+	user_control();
 }
 </script>
 </head>
@@ -28,8 +30,6 @@ function on_start_this_page(){
     <div id="header">
         <div class="icon-container-l margin-left-45"><img id="language-flag" src="images/flag-tr.png" class="icon title-0 alt-0" title="Dil" alt="Dil" onClick="open_page(pages.settingLanguage, '', '')" /></div>
         <div class="icon-container-r"><img id="language-flag" src="images/refresh.png" class="icon title-1 alt-1" title="Yenile" alt="Yenile" onClick="open_page(pages.login, '', '')" /></div>
-        <!--<div class="icon-container-r grid2h-10"></div>-->
-        <!--<div class="grid2-7 grid2h-10"></div>-->
     </div>
     
     <div id="content">

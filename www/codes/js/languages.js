@@ -56,12 +56,14 @@ var labels={
 		"tr":{
 			"0":"Dil Ayarı",
 			"1":"Dil",
-			"2":"Tamam"		
+			"2":"Tamam"/*,
+			"3":"Site Bağlantı Adresi"*/		
 		},
 		"en":{
 			"0":"Language Setting",
 			"1":"Language",
-			"2":"Ok"
+			"2":"Ok"/*,
+			"3":"Site Url Address"*/
 		}
 	},
 	"3":{//main.html
@@ -90,12 +92,14 @@ var labels={
 		"tr":{
 			"0":"Ayarlar",
 			"1":"Dil",
-			"2":"Tamam"		
+			"2":"Tamam"/*,
+			"3":"Site Bağlantı Adresi"*/	
 		},
 		"en":{
 			"0":"Settings",
 			"1":"Language",
-			"2":"Ok"
+			"2":"Ok"/*,
+			"3":"Site Url Address"*/
 		}
 	},
 	"5":{//databases.html
@@ -135,7 +139,7 @@ var labels={
 			"2":"'s working status wil be changed. Do you really want this?",
 			"3":"Yes",
 			"4":"No",
-			"5":" will be deleted. Are you sure you want to delete? <br /><br />This name will not be in list anymore. You can not take back this action. To delete a person, he/she does not have any relation with other database tables. You should delete only mistakenly added person.",
+			"5":" will be deleted. Are you sure you want to delete? <br /><br />This name will not be in list anymore. You can not take back this action. To delete a person, there should be no data related with him/her in database. You should delete only mistakenly added person.",
 			"6":"Yes",
 			"7":"No",
 			"8":"Rename",
@@ -165,7 +169,7 @@ var labels={
 		"en":{
 			"0":"An-El",
 			"1":"Departments List",
-			"2":" will be deleted. Are you sure you want to delete? <br /><br />This department's name will not be in list anymore. You can not take back this action. To delete a deparment, it does not have any relation with other database tables. You should delete only mistakenly added department name.",
+			"2":" will be deleted. Are you sure you want to delete? <br /><br />This department's name will not be in list anymore. You can not take back this action. To delete a deparment, there should be no data related with department in database. You should delete only mistakenly added department name.",
 			"3":"Yes",
 			"4":"No",
 			"5":"Rename",
@@ -248,7 +252,7 @@ var labels={
 	},
 	"11":{//morning-note-editting.html
 		"tr":{
-			"0":"Yeni Sabah Notu Ekleme",
+			"0":"Sabah Notu Düzenleme",
 			"1":"No",
 			"2":"Başlangıç Tarihi",
 			"3":"Hedef Tarih",
@@ -269,7 +273,7 @@ var labels={
 			"18":"Tamam"
 		},
 		"en":{
-			"0":"Add New Morning Note",
+			"0":"Morning Note Editing",
 			"1":"Number",
 			"2":"Start",
 			"3":"Target",
@@ -467,21 +471,35 @@ var titles={
 	"10":{//new-morning-notes-adding.html
 		"tr":{
 			"0":"Geri",
-			"1":"Ana Sayfa"		
+			"1":"Ana Sayfa"	,
+			"2":"Hedef Tarihi Ekle",
+			"3":"Bu Hedef Tarihini Çıkart",
+			"4":"Sorumlu Birim Ekle",
+			"5":"Sorumlu Kişi Ekle"
 		},
 		"en":{
 			"0":"Back",
-			"1":"Home Page"
+			"1":"Home Page",
+			"2":"Add Target Date",
+			"3":"Delete This Target Date",
+			"4":"Add Responsible Department",
+			"5":"Add Responsible Person"
 		}
 	},
-	"11":{//new-morning-notes-adding.html
+	"11":{//morning-note-editting.html
 		"tr":{
 			"0":"Geri",
-			"1":"Ana Sayfa"		
+			"1":"Ana Sayfa",
+			"2":"Hedef Tarihi Ekle",
+			"3":"Sorumlu Birim Ekle",
+			"4":"Sorumlu Kişi Ekle"
 		},
 		"en":{
 			"0":"Back",
-			"1":"Home Page"
+			"1":"Home Page",
+			"2":"Add Target Date",
+			"3":"Add Responsible Department",
+			"4":"Add Responsible Person"
 		}
 	},
 	"12":{//search.html
@@ -605,42 +623,80 @@ var alts={
 	},
 	"8":{//morning-notes.html
 		"tr":{
-			"0":"Geri",
-			"1":"Ana Sayfa"		
+			"0":"Geri"	
+
 		},
 		"en":{
-			"0":"Back",
-			"1":"Home Page"
+			"0":"Back"
+
 		}
 	},
 	"9":{//list-of-morning-meeting-notes.html
 		"tr":{
 			"0":"Geri",
-			"1":"Ana Sayfa"		
+			"1":"Ana Sayfa",
+			"2":"Artan Şeklinde Sırala",
+			"3":"Azalan Şeklinde Sırala",
+			"4":"Filtrele",
+			"5":"Numara",
+			"6":"Başlangıç",
+			"7":"Hedef",
+			"8":"Kişi",
+			"9":"Bölüm",
+			"10":"Gecikme",
+			"11":"Bitiş",
+			"12":"Favori",
+			"13":"Filtreyi Temizle"
 		},
 		"en":{
 			"0":"Back",
-			"1":"Home Page"
+			"1":"Home Page",
+			"2":"Sort by Ascending",
+			"3":"Sort by Descending",
+			"4":"Filter",
+			"5":"Number",
+			"6":"Start",
+			"7":"Target",
+			"8":"Person",
+			"9":"Department",
+			"10":"Delay",
+			"11":"Finished",
+			"12":"Favorite",
+			"13":"Clear Filter"
 		}
 	},
 	"10":{//new-morning-notes-adding.html
 		"tr":{
 			"0":"Geri",
-			"1":"Ana Sayfa"		
+			"1":"Ana Sayfa"	,
+			"2":"Hedef Tarihi Ekle",
+			"3":"Bu Hedef Tarihini Çıkart",
+			"4":"Sorumlu Birim Ekle",
+			"5":"Sorumlu Kişi Ekle"
 		},
 		"en":{
 			"0":"Back",
-			"1":"Home Page"
+			"1":"Home Page",
+			"2":"Add Target Date",
+			"3":"Delete This Target Date",
+			"4":"Add Responsible Department",
+			"5":"Add Responsible Person"
 		}
 	},
 	"11":{//morning-note-editting.html
 		"tr":{
 			"0":"Geri",
-			"1":"Ana Sayfa"		
+			"1":"Ana Sayfa",
+			"2":"Hedef Tarihi Ekle",
+			"3":"Sorumlu Birim Ekle",
+			"4":"Sorumlu Kişi Ekle"
 		},
 		"en":{
 			"0":"Back",
-			"1":"Home Page"
+			"1":"Home Page",
+			"2":"Add Target Date",
+			"3":"Add Responsible Department",
+			"4":"Add Responsible Person"
 		}
 	},
 	"12":{//search.html

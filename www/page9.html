@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tayangu</title>
 <link rel="stylesheet" href="codes/css/jquery-ui.css">
 <link rel="stylesheet" href="codes/css/mycssframework.css">
@@ -21,7 +22,6 @@ getNotes=0;
 noteCount=1;
 filterOn=0;
 function on_start_this_page(){
-	//alert("cem5");
 	//if(getNotes==0){
 		get_morning_notes_list();
 		//alert($(window).height() +"-"+ $(document).height())
@@ -50,7 +50,6 @@ $(window).scroll(function(){
 });
 
 /*window.onscroll = function(ev) {
-	//alert("cem");
 	$("#cem").html(
 		"window.innerHeight="+window.innerHeight+"<br>"+
 		"window.scrollHeight="+document.body.scrollHeight+"<br>"+

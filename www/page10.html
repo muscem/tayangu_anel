@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tayangu</title>
 <link rel="stylesheet" href="codes/css/jquery-ui.css">
 <link rel="stylesheet" href="codes/css/mycssframework.css">
@@ -15,9 +16,8 @@
 <script type="text/javascript" src="codes/js/functions.js"></script>
 
 <script>
-//var personId, personStatus, personName, personSurname;
+
 function on_start_this_page(){
-	//get_department_list();
 	add_responsible_person();
 	add_responsible_department();
 	$( ".date-picker" ).datepicker( $.datepicker.regional[ "tr" ] );
@@ -62,14 +62,14 @@ function on_start_this_page(){
                     <div class="grid-40">
                         <span class="label-3 left part-3">Hedef Tarih</span>
                         <div class="icon-container-l-2 margin-left-3">
-                        	<img class="icon" src="images/plus-green.png" onclick="add_target_date();" />
+                        	<img class="icon title-2 alt-2" src="images/plus-green.png" onclick="add_target_date();" title="Hedef Tarihi Ekle" alt="Hedef Tarihi Ekle" />
                         </div>
                     </div>
                     <div class="grid-40" id="target-date">
                         <div class="grid-100">
                             <input type="text" name="target[]"  class="form-element-1 left date-picker" />
                             <div class="icon-container-l-2 margin-left-3">
-                            	<img class="icon" src="images/minus-red.png" onclick="delete_target_date(this);" />
+                            	<img class="icon title-3 alt-3" src="images/minus-red.png" onclick="delete_target_date(this);" title="Bu Hedef Tarihini Çıkart" alt="Bu Hedef Tarihini Çıkart" />
                             </div>
                         </div>
                      </div>
@@ -101,7 +101,7 @@ function on_start_this_page(){
                     <div class="grid-40">
                         <span class="label-9 left part-3">Sorumlu Birim</span>
                         <div class="icon-container-l-2 margin-left-3">
-	                        <img class="icon" src="images/plus-green.png" onclick="add_responsible_department();" />
+	                        <img class="icon title-4 alt-4" src="images/plus-green.png" onclick="add_responsible_department();" title="Sorumlu Birim Ekle" alt="Sorumlu Birim Ekle" />
                         </div>
                     </div>
                     <div class="grid-40" id="resp-dep">
@@ -112,7 +112,7 @@ function on_start_this_page(){
                     <div class="grid-40">
                         <span class="label-10 left part-3">Sorumlu Kişi</span>
                         <div class="icon-container-l-2 margin-left-3">
-                        	<img class="icon" src="images/plus-green.png" onclick="add_responsible_person();" />
+                        	<img class="icon title-5 alt-5" src="images/plus-green.png" onclick="add_responsible_person();" title="Sorumlu Kişi Ekle" alt="Sorumlu Kişi Ekle" />
                         </div>
                     </div>
                     <div class="grid-40" id="resp-pers">

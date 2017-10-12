@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tayangu</title>
 <link rel="stylesheet" href="codes/css/jquery-ui.css">
 <link rel="stylesheet" href="codes/css/mycssframework.css">
@@ -111,7 +112,7 @@ $(window).scroll(function(){
         </div>
         
         <div class="icon-container-l-3">
-            <img src="images/finished.png" class="icon2 title-11 alt-1" title="Onay" alt="Onay"/>
+            <img src="images/finished.png" class="icon2" title="Onay" alt="Onay"/>
             <select id="filter-approval" onchange="filter_kaizens(elementsName.kaizensList);" class="form-element-1">
             <option value="-1">---</option>
             <option value="0">Beklemede</option>
@@ -119,7 +120,6 @@ $(window).scroll(function(){
             <option value="2">Red Edilmiş</option>
             </select>
         </div>
-        
         
         <div class="icon-container-l-3">
             <img src="images/favorite.png" class="icon2 title-12 alt-12" title="Favori" alt="Favori"/>
@@ -129,6 +129,20 @@ $(window).scroll(function(){
             <option value="1">Favori değil</option>
             </select>
         </div>
+        
+       <!-- <div class="icon-container-l-3">
+            <img src="images/finished.png" class="icon2  title-11 alt-1" title="Bitiş" alt="Bitiş"/>
+            <select id="filter-finished" onchange="filter_kaizens(elementsName.kaizensList);" class="form-element-1">
+            <option value="-1">---</option>
+            <option value="0">Bitmiş</option>
+            <option value="1">Bitmemiş</option>
+            </select>
+        </div>
+        
+        <div class="icon-container-l-3">
+            <img src="images/finished.png" class="icon2  title-11 alt-1" title="Bitiş Tarihi" alt="Bitiş Tarihi"/>
+            <input id="filter-kaizen-finished-date" size="10" onkeyup="filter_kaizens(elementsName.kaizensList);" class="form-element-1"/>
+        </div>-->
         
         <div class="icon-container-l-4">
         	<img src="images/ok_not.png" class="icon3 title-13 alt-13" title="Filtreyi Temizle" alt="Filtreyi Temizle" onclick="clear_filter_kaizen_box(elementsName.kaizensList);"/>

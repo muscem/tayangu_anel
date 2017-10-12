@@ -320,14 +320,14 @@ body{
 /* Baslangiç - page6.html */
 #person-status, #person-delete, #person-rename, #person-add{
 	background:url(../../images/background/bg_black_200.png) repeat;
-	position:absolute;
+	position:fixed;
 	height:100%;
 	width:100%;
 	z-index:999999;
 	overflow:auto;
-	top:10%;
+	top:0%;
 	left:0px;
-	padding:30% 0% 0% 0%;
+	padding:20% 0% 0% 0%;
 }
 
 .person-status-part, .person-delete-part, .person-rename-part, .person-add-part{
@@ -348,14 +348,14 @@ body{
 /* Baslangiç - page7.html */
 #department-delete, #department-rename, #department-add{
 	background:url(../../images/background/bg_black_200.png) repeat;
-	position:absolute;
+	position:fixed;
 	height:100%;
 	width:100%;
 	z-index:999999;
 	overflow:auto;
-	top:10%;
+	top:0%;
 	left:0px;
-	padding:30% 0% 0% 0%;
+	padding:20% 0% 0% 0%;
 
 }
 

@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tayangu</title>
 <link rel="stylesheet" href="codes/css/jquery-ui.css">
 <link rel="stylesheet" href="codes/css/mycssframework.css">
@@ -26,7 +27,7 @@ function on_start_this_page(){
 <div id="wrapper" class="unselectable hide">
 	
     <div id="header">
-    	<div class="icon-container-l"><img src="images/arrow-left.png" class="icon title-0 alt-0" title="Geri" onClick="open_page(pages.login, '', '')" /></div>
+    	<div class="icon-container-l"><img src="images/arrow-left.png" class="icon title-0 alt-0" title="Geri" alt="Geri" onClick="open_page(pages.login, '', '')" /></div>
     </div>
     
     <div id="content">
@@ -42,6 +43,15 @@ function on_start_this_page(){
             </div>
         </div>
         
+<!--        <div class="part-1">
+        	<div class="grid-20 label-3">Site Bağlantı Adresi</div>
+            <div class="grid-80">
+            <select name="site-url-adress" id="site-url-adress" class="form-element-1">
+                    <option value="http://www.tayangu.com.tr/anel">İnternet</option>
+                    <option value="http://localhost/my-apps/tayangu/an-el/1">Yerel</option>
+                </select>
+            </div>
+        </div>-->
         
         <div class="part-1">
             <input type="button" name="ok" id="ok" class="form-element-1 label-2" value="Tamam" onclick="change_language();" />

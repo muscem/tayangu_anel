@@ -39,14 +39,19 @@ $( function() {
 
 
 var pageNo;
-//xml bağlantıları gibi gerçek siteyle bağlantılı adreserde kullanılacak.
-//var siteUrlAdress="http://localhost/uygulamalar/tayangu/an-el/1";
-//var siteUrlAdress="http://localhost/my-apps/tayangu/an-el/1";
-var siteUrlAdress="http://www.tayangu.com.tr/anel";
-//var xmlDataSendAddressAdd="";
-var xmlDataSendAddressAdd="mobile/";
 
-var xmlDataSendType="GET";//İnternet sitesinde POST, mobil uygulamalarda GET olacak.
+
+//Bunu, değiştirilebilir ayar haline getirdim.
+//xml bağlantıları gibi gerçek siteyle bağlantılı adreserde kullanılacak.
+var siteUrlAdress="http://localhost/my-apps/tayangu/an-el/1";
+//var siteUrlAdress="http://www.tayangu.com.tr/anel";
+
+
+
+var xmlDataSendAddressAdd="";
+//var xmlDataSendAddressAdd="mobile/";
+
+var xmlDataSendType="POST";//İnternet sitesinde POST, mobil uygulamalarda GET olacak.
 
 var messages = {
 	"tr" : {
@@ -78,6 +83,8 @@ var sData={//Kaydedilen verilerin adları. Mesela kullanıcı adı ur ismiyle ka
 	"userPassword":"up",
 	"userRemember":"ur",
 	"userLanguage":"ul"
+	//"siteUrlAdress":"http://localhost/my-apps/tayangu/an-el/1"
+	//"siteUrlAdress":"http://www.tayangu.com.tr/anel";
 }
 
 //Çerezlerle ilgili olarak;
@@ -89,7 +96,12 @@ var userPref={
 	"uPassword":"",
 	"uRemember":"",
 	"lang":"en"
+	//"siteUrlAdress":"http://localhost/my-apps/tayangu/an-el/1"
+	//"siteUrlAdress":"http://www.tayangu.com.tr/anel";
 }
+
+//siteUrlAdress=userPref.siteUrlAdress;
+
 
 
 var pages={
@@ -118,7 +130,8 @@ var elementsName={
 	"favoriteKaizensList":"favorite-kaizens-list",
 	"kaizensStatistics":"kaizens-statistics",
 	"kaizen":"kaizen",
-	"kaizenTypeList":"kaizen-type-list"
+	"kaizenTypeList":"kaizen-type-list",
+	"siteUrlAdress":"site-url-adress"
 }
 
 
@@ -237,6 +250,9 @@ function onDeviceReady() {
 	
 	xmlDataSendType="GET";
 	siteUrlAdress="http://www.tayangu.com.tr/anel";
+	//siteUrlAdress=userPref.siteUrlAdress;
+	
+	
 	//show_storaged_data();
 	
 	
@@ -278,13 +294,11 @@ function onDeviceReady() {
 
 function startAllPagesWithThis(){
 	find_page_number();
-	//alert("cem1");
 	get_user_prefs();
-	//alert("cem2");
-	user_control();
-	//alert("cem3");
+	//user_control();//Her sayfa başında kullanıcı kontrolü için
 	write_new_language_on_page();
-	//alert("cem4");
+	
+	//Sayfalar Trükçe yazılı. Gerektiğinde dil değişikliği yapılana kadar sayfa gösterilmiyor. Yeni yazılar eklendikten sonra sayfanın üzerindeki resim kaldırılıyor.
 	if($("#wrapper").hasClass("hide")){
 		$("#wrapper").removeClass("hide");
 		$("#background-logo").css("background","url(images/background-logo.jpg) no-repeat top center");
@@ -293,9 +307,7 @@ function startAllPagesWithThis(){
 }
 
 function on_start(){
-	//alert("cem1");
 /*	show_storaged_data();*/
-
 	startAllPagesWithThis();
 	
 	
@@ -313,8 +325,7 @@ function on_start(){
 	data+="$(document).height()="+$(document).height()+"<br>";
 	data+="$(window).width()="+$(window).width()+"<br>";
 	data+="$(document).width()="+$(document).width()+"<br>";
-	
-	$("#test").html(data);*/
+*/
 }
 
 
@@ -671,14 +682,16 @@ function user_control(){
 	});
 }
 
-
-document.addEventListener("deviceready", onDeviceReady, false);
-
-
 function rnTobr(data){
 	data=data.replace(/(?:\r\n|\r|\n)/g, '<br />');
 	return data;
 }
+
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+
+
 
 //iptal
 /*function decodeHtml(html) {
