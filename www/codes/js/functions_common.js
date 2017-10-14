@@ -48,10 +48,11 @@ var siteUrlAdress="http://www.tayangu.com.tr/anel";
 
 
 
-var xmlDataSendAddressAdd="";
-//var xmlDataSendAddressAdd="mobile/";
+//var xmlDataSendAddressAdd="";
+var xmlDataSendAddressAdd="mobile/";
 
-var xmlDataSendType="POST";//İnternet sitesinde POST, mobil uygulamalarda GET olacak.
+//var xmlDataSendType="POST";//İnternet sitesinde POST, mobil uygulamalarda GET olacak.
+var xmlDataSendType="GET";
 
 var messages = {
 	"tr" : {
@@ -251,7 +252,7 @@ function onDeviceReady() {
 	xmlDataSendType="GET";
 	siteUrlAdress="http://www.tayangu.com.tr/anel";
 	//siteUrlAdress=userPref.siteUrlAdress;
-	xmlDataSendAddressAdd="mobile/";
+	
 	
 	//show_storaged_data();
 	
@@ -591,6 +592,7 @@ function user_logout(){
 //Sadece login sayfasında kullanılacak
 function user_login(){	
 	//alert("user_login"+"\n"+siteUrlAdress+"/"+xmlsUrl.userLoginControl+"\n pref Uname="+userPref.uName+"\n pref pass="+userPref.uPassword);
+	
 	var uName=$("#"+elementsName.userName).val();
 	var uPassword=$("#"+elementsName.userPassword).val();
 	var uRemember=$("#"+elementsName.userRememeber).is(":checked");
@@ -629,7 +631,8 @@ function user_login(){
 			alert(messages[userPref.lang][0]);
 		}
 	})
-	.fail(function(){
+	.fail(function(jqXHR, textStatus ) {
+  		alert( "Request failed: " + textStatus );
 		alert(messages[userPref.lang][1]);
 	});
 }
@@ -637,7 +640,7 @@ function user_login(){
 
 //Her sayfanın başında kullanılacak
 function user_control(){	
-	//alert("user_control"+"\n"+siteUrlAdress+"/"+xmlsUrl.userLoginControl+"\n pref Uname="+userPref.uName+"\n pref pass="+userPref.uPassword);
+	alert("user_control"+"\n"+siteUrlAdress+"/"+xmlsUrl.userLoginControl+"\n pref Uname="+userPref.uName+"\n pref pass="+userPref.uPassword+"\n type="+xmlDataSendType+"\n"+	siteUrlAdress+"/"+xmlsUrl.userLoginControl+"?un="+userPref.uName+"&p="+userPref.uPassword+"&s="+xmlsString.userLoginControl);
 	$.ajax({
 		async: false,		
 		type: xmlDataSendType,
@@ -650,7 +653,11 @@ function user_control(){
 			},
 		dataType: "xml"
 	})
+/*	.beforeSend(function(r, settings){
+		alert("cem");
+	})*/
 	.done(function(r){
+		//alert(r);
 		var uc = $(r).find('result').text();
 		//alert("user_control"+"\n uc="+uc+"\n pref Uname="+userPref.uName+"\n pref pass="+userPref.uPassword);
 		if(uc==1){
@@ -676,7 +683,8 @@ function user_control(){
 			//alert("Kullanıcı adını ve şifreyi kontrol edip tekrar deneyin lütfen!");
 		}
 	})
-	.fail(function(){
+	.fail(function(jqXHR, textStatus, errorThrown) {
+  		//alert( "Request failed: " + textStatus +"-"+errorThrown);
 		if(pages.login!=find_page_name()) open_page(pages.login,"");
 		alert(messages[userPref.lang][2]);
 	});
