@@ -640,7 +640,7 @@ function user_login(){
 
 //Her sayfanın başında kullanılacak
 function user_control(){	
-	alert("user_control"+"\n"+siteUrlAdress+"/"+xmlsUrl.userLoginControl+"\n pref Uname="+userPref.uName+"\n pref pass="+userPref.uPassword+"\n type="+xmlDataSendType+"\n"+	siteUrlAdress+"/"+xmlsUrl.userLoginControl+"?un="+userPref.uName+"&p="+userPref.uPassword+"&s="+xmlsString.userLoginControl);
+	//alert("user_control"+"\n"+siteUrlAdress+"/"+xmlsUrl.userLoginControl+"\n pref Uname="+userPref.uName+"\n pref pass="+userPref.uPassword+"\n type="+xmlDataSendType+"\n"+	siteUrlAdress+"/"+xmlsUrl.userLoginControl+"?un="+userPref.uName+"&p="+userPref.uPassword+"&s="+xmlsString.userLoginControl);
 	$.ajax({
 		async: false,		
 		type: xmlDataSendType,
